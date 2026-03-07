@@ -19,914 +19,12 @@
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-
-    <link rel="stylesheet" href="hero.css">
     <link rel="canonical" href="https://theultimatebeauty.hu/">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* --- SZÍNKÓDOK ÉS VÁLTOZÓK --- */
-        
-         :root {
-            --bg-main: #F7F5F2;
-            --card-bg: #FFFFFF;
-            --primary-gold: #C8A96A;
-            --dark-text: #1C1C1C;
-            --secondary-text: #6E6E6E;
-            --border: #E8E6E3;
-            --hover-gold: #B89652;
-            --accent-blue: #7A8B9A;
-            --max-width: 1200px;
-            --spacing-block: 32px;
-            --padding-desktop: 80px;
-            --padding-mobile: 40px;
-            --radius-card: 16px;
-        }
-        /* --- ALAP BEÁLLÍTÁSOK --- */
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Inter', Helvetica, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--dark-text);
-            line-height: 1.6;
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: 'Playfair Display', serif;
-            color: var(--dark-text);
-            font-weight: 400;
-        }
-        
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-        
-        section {
-            padding: var(--padding-desktop) 0;
-        }
-        /* --- TIPOGRÁFIA --- */
-        
-        .hero-title {
-            font-size: 56px;
-            line-height: 1.1;
-            margin-bottom: 24px;
-        }
-        
-        .section-title {
-            font-size: 32px;
-            margin-bottom: 40px;
-        }
-        
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--secondary-text);
-            max-width: 700px;
-            margin: 0 auto 48px;
-        }
-        
-        .card-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .body-text {
-            font-size: 16px;
-            color: var(--secondary-text);
-            margin-bottom: 16px;
-        }
-        
-        .eyebrow {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--primary-gold);
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-        /* --- GOMBOK --- */
-        
-        .btn {
-            display: inline-block;
-            padding: 16px 36px;
-            background-color: var(--primary-gold);
-            font-family: 'Inter', sans-serif;
-            font-size: 24px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 4px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            text-align: center;
-            color: white;
-        }
-        
-        .btn:hover {
-            background-color: var(--hover-gold);
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--primary-gold);
-            color: var(--primary-gold);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--primary-gold);
-            color: #FFF;
-        }
-        
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--dark-text);
-            border: 1px solid var(--border);
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--primary-gold);
-            color: var(--primary-gold);
-        }
-        /* --- GRID --- */
-        
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-block);
-            align-items: start;
-        }
-        
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-        
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-        /* --- KÁRTYÁK --- */
-        
-        .card {
-            background-color: var(--card-bg);
-            border-radius: var(--radius-card);
-            padding: 40px;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .card:hover {
-            box-shadow: 0 12px 32px rgba(200, 169, 106, 0.1);
-            transform: translateY(-4px);
-            border-color: var(--primary-gold);
-        }
-        
-        .card-compact {
-            padding: 24px;
-        }
-        
-        .card-dark {
-            background-color: var(--dark-text);
-            color: #FFFFFF;
-            border: none;
-        }
-        
-        .card-dark .card-title {
-            color: var(--primary-gold);
-        }
-        
-        .card-dark .body-text {
-            color: #E8E6E3;
-        }
-        /* --- LISTÁK --- */
-        
-        .bullet-list {
-            list-style: none;
-            margin-bottom: var(--spacing-block);
-        }
-        
-        .bullet-list li {
-            position: relative;
-            padding-left: 24px;
-            margin-bottom: 12px;
-            color: var(--secondary-text);
-            font-size: 16px;
-        }
-        
-        .bullet-list li::before {
-            content: '•';
-            color: var(--primary-gold);
-            position: absolute;
-            left: 0;
-            font-size: 20px;
-            line-height: 1.5;
-        }
-        /* --- NAVBAR --- */
-        
-        nav {
-            position: sticky;
-            top: 0;
-            background-color: rgba(247, 245, 242, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            padding: 20px 0;
-            z-index: 1000;
-            transition: box-shadow 0.3s ease;
-        }
-        
-        nav.scrolled {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-        
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            color: var(--dark-text);
-            text-decoration: none;
-        }
-        
-        .nav-menu {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-        
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--dark-text);
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-menu a:hover {
-            color: var(--primary-gold);
-        }
-        /* Hamburger Menu */
-        
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            padding: 8px;
-        }
-        
-        .hamburger span {
-            width: 24px;
-            height: 2px;
-            background-color: var(--dark-text);
-            transition: all 0.3s ease;
-        }
-        
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-        /* --- CAROUSEL / SLIDER --- */
-        
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            border-radius: var(--radius-card);
-        }
-        
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        
-        .carousel-slide {
-            min-width: 100%;
-            position: relative;
-        }
-        
-        .carousel-slide img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: var(--radius-card);
-        }
-        
-        .carousel-slide .slide-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 24px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-            color: #FFF;
-            border-radius: 0 0 var(--radius-card) var(--radius-card);
-        }
-        
-        .carousel-slide .slide-caption h4 {
-            color: #FFF;
-            font-size: 20px;
-            margin-bottom: 4px;
-        }
-        
-        .carousel-slide .slide-caption p {
-            font-size: 14px;
-            opacity: 0.9;
-            margin: 0;
-        }
-        /* Carousel Controls */
-        
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-        
-        .carousel-btn:hover {
-            background: var(--primary-gold);
-            color: #FFF;
-        }
-        
-        .carousel-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-        
-        .carousel-btn.prev {
-            left: 16px;
-        }
-        
-        .carousel-btn.next {
-            right: 16px;
-        }
-        /* Carousel Dots */
-        
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--border);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .carousel-dot.active {
-            background: var(--primary-gold);
-            transform: scale(1.2);
-        }
-        /* --- TIMELINE --- */
-        
-        .timeline {
-            position: relative;
-            padding-left: 40px;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 8px;
-            bottom: 8px;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--primary-gold), var(--border));
-        }
-        
-        .timeline-step {
-            position: relative;
-            margin-bottom: 32px;
-        }
-        
-        .timeline-step:last-child {
-            margin-bottom: 0;
-        }
-        
-        .step-number {
-            position: absolute;
-            left: -40px;
-            width: 32px;
-            height: 32px;
-            background: var(--primary-gold);
-            color: #FFF;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 16px;
-            font-weight: 600;
-        }
-        /* --- LAYER DIAGRAM --- */
-        
-        .layer-diagram {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-        
-        .layer-item {
-            display: flex;
-            align-items: stretch;
-            border-left: 3px solid var(--primary-gold);
-        }
-        
-        .layer-item:nth-child(1) {
-            border-color: #E8D4B8;
-        }
-        
-        .layer-item:nth-child(2) {
-            border-color: #D4C4A8;
-        }
-        
-        .layer-item:nth-child(3) {
-            border-color: #C8A96A;
-        }
-        
-        .layer-item:nth-child(4) {
-            border-color: #8B7355;
-        }
-        
-        .layer-name {
-            width: 140px;
-            padding: 16px;
-            font-weight: 600;
-            font-size: 14px;
-            background: var(--bg-main);
-            display: flex;
-            align-items: center;
-        }
-        
-        .layer-desc {
-            flex: 1;
-            padding: 16px 20px;
-            background: var(--card-bg);
-            font-size: 14px;
-            color: var(--secondary-text);
-            border-bottom: 1px solid var(--border);
-        }
-        /* --- COMPARISON --- */
-        
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            border-radius: var(--radius-card);
-            overflow: hidden;
-            border: 1px solid var(--border);
-        }
-        
-        .comparison-side {
-            padding: 40px;
-            background: var(--card-bg);
-        }
-        
-        .comparison-side:first-child {
-            border-right: 1px solid var(--border);
-        }
-        
-        .comparison-side.highlighted {
-            background: linear-gradient(135deg, #FAF8F5 0%, #F7F5F2 100%);
-            border: 2px solid var(--primary-gold);
-            margin: -1px;
-            border-radius: var(--radius-card);
-        }
-        
-        .comparison-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--secondary-text);
-            margin-bottom: 8px;
-        }
-        
-        .comparison-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            margin-bottom: 16px;
-        }
-        /* --- INDICATION CARDS --- */
-        
-        .indication-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .indication-card:hover {
-            border-color: var(--primary-gold);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(200, 169, 106, 0.1);
-        }
-        
-        .indication-icon {
-            width: 48px;
-            height: 48px;
-            margin: 0 auto 16px;
-            background: var(--bg-main);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .indication-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--primary-gold);
-        }
-        
-        .indication-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--dark-text);
-        }
-        /* --- INFOGRAPHIC SECTION --- */
-        
-        .infographic-wrapper {
-            background: var(--card-bg);
-            border-radius: var(--radius-card);
-            padding: 24px;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
-        }
-        
-        .infographic-wrapper img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        /* --- GALLERY GRID --- */
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            cursor: pointer;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent 50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .gallery-item:hover::after {
-            opacity: 1;
-        }
-        
-        .gallery-item .gallery-label {
-            position: absolute;
-            bottom: 16px;
-            left: 16px;
-            color: #FFF;
-            font-weight: 600;
-            font-size: 14px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            z-index: 2;
-        }
-        
-        .gallery-item:hover .gallery-label {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* --- FORM --- */
-        
-        .form-group {
-            margin-bottom: 24px;
-        }
-        
-        .form-label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--dark-text);
-            margin-bottom: 8px;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 16px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            background-color: #FAFAFA;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-gold);
-            box-shadow: 0 0 0 3px rgba(200, 169, 106, 0.1);
-        }
-        /* --- FOOTER --- */
-        
-        footer {
-            padding: 60px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-top: 24px;
-        }
-        
-        .footer-links a {
-            color: var(--secondary-text);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary-gold);
-        }
-        /* --- HIGHLIGHT BOX --- */
-        
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(200, 169, 106, 0.08) 0%, rgba(200, 169, 106, 0.03) 100%);
-            border: 1px solid rgba(200, 169, 106, 0.2);
-            border-radius: 12px;
-            padding: 24px;
-        }
-        /* --- BADGE --- */
-        
-        .badge {
-            display: inline-block;
-            padding: 6px 12px;
-            background: var(--primary-gold);
-            color: #FFF;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 4px;
-        }
-        /* --- HERO IMAGE --- */
-        
-        .hero-image-wrapper {
-            position: relative;
-            border-radius: 200px 200px 16px 16px;
-            overflow: hidden;
-        }
-        
-        .hero-image-wrapper img {
-            width: 100%;
-            height: 580px;
-            object-fit: cover;
-        }
-        
-        .hero-badge {
-            position: absolute;
-            bottom: 24px;
-            left: 24px;
-            background: var(--card-bg);
-            padding: 16px 24px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-        /* --- HARMONIKA (LENYÍLÓ) KÁRTYÁK --- */
-        
-        .hero-accordion {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            /* 2 egyenlő széles oszlop */
-            gap: 16px;
-            align-items: start;
-            /* Ne nyújtsa meg a szomszédos kártyát nyitáskor */
-            margin-top: 34px;
-            max-width: 800px;
-            /* Kicsit szélesebb, hogy jól elférjen a 2 oszlop */
-        }
-        
-        .stat-detail {
-            background: rgba(255, 255, 255, 0.84);
-            border: 1px solid rgba(232, 230, 227, 0.95);
-            backdrop-filter: blur(8px);
-            border-radius: 14px;
-            transition: all 0.3s ease;
-        }
-        
-        .stat-detail[open] {
-            border-color: #C8A96A;
-            box-shadow: 0 4px 12px rgba(200, 169, 106, 0.1);
-        }
-        
-        .stat-summary {
-            padding: 18px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            list-style: none;
-            color: #1C1C1C;
-        }
-        
-        .stat-summary::-webkit-details-marker {
-            display: none;
-        }
-        
-        .stat-summary strong {
-            font-size: 16px;
-            font-weight: 600;
-        }
-        
-        .stat-body {
-            padding: 0 18px 18px 18px;
-            color: #6E6E6E;
-            font-size: 15px;
-            line-height: 1.5;
-        }
-        
-        .stat-summary .arrow {
-            transition: transform 0.3s ease;
-            color: #C8A96A;
-        }
-        
-        .stat-detail[open] .stat-summary .arrow {
-            transform: rotate(180deg);
-        }
-        /* Ikon és szöveg elrendezése a gombban */
-        
-        .stat-summary-content {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        /* Maga a kerek ikon háttér */
-        
-        .stat-icon {
-            width: 36px;
-            height: 36px;
-            background: rgba(200, 169, 106, 0.08);
-            /* Halvány arany háttér */
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            /* Hogy ne nyomódjon össze kisebb képernyőn */
-        }
-        /* Az SVG ikon színe és mérete */
-        
-        .stat-icon svg {
-            width: 18px;
-            height: 18px;
-            stroke: #C8A96A;
-            /* var(--primary-gold) */
-        }
-        /* A legördülő szöveg beljebb húzása, hogy igazodjon a címhez */
-        
-        .stat-body {
-            padding: 0 18px 18px 68px;
-            /* A 68px biztosítja, hogy pontosan a szöveg alatt kezdődjön, ne az ikon alatt */
-        }
-        /* --- MOBILE --- */
-        
-        @media (max-width: 768px) {
-            section {
-                padding: var(--padding-mobile) 0;
-            }
-            .container {
-                padding: 0 20px;
-            }
-            .grid-2,
-            .grid-3,
-            .grid-4 {
-                grid-template-columns: 1fr;
-            }
-            .hero-title {
-                font-size: 36px;
-            }
-            .section-title {
-                font-size: 28px;
-            }
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--bg-main);
-                flex-direction: column;
-                padding: 24px;
-                gap: 16px;
-                border-bottom: 1px solid var(--border);
-            }
-            .nav-menu.active {
-                display: flex;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .btn {
-                width: 100%;
-                padding: 16px 24px;
-            }
-            .comparison-grid {
-                grid-template-columns: 1fr;
-            }
-            .comparison-side:first-child {
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-            }
-            .layer-name {
-                width: 100px;
-                font-size: 12px;
-            }
-            .carousel-slide img {
-                height: 300px;
-            }
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            .gallery-item img {
-                height: 220px;
-            }
-            .hero-image-wrapper {
-                border-radius: 24px;
-            }
-            .hero-image-wrapper img {
-                height: 400px;
-            }
-        }
-    </style>
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -974,116 +72,55 @@
                         A kombinált protokoll a <strong>Volumen + Izom + Biológia</strong> hármas egységére épül:
                     </p>
 
-                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                        <span style="display:flex; align-items:center; gap:8px; font-size:14px; color:var(--dark-text);">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        <strong>Térfogat</strong>
-                    </span>
+                    <div class="concept-pillars">
+                        <div class="pillar-card">
+                            <div class="pillar-icon">+</div>
+                            <div>
+                                <strong>Térfogat</strong>
+                                <p>Az elveszett volumen és kontúrok természetes visszaépítése.</p>
+                            </div>
+                        </div>
 
-                        <span style="display:flex; align-items:center; gap:8px; font-size:14px; color:var(--dark-text);">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        <strong>Izomtónus</strong>
-                    </span>
+                        <div class="pillar-card">
+                            <div class="pillar-icon">+</div>
+                            <div>
+                                <strong>Izomtónus</strong>
+                                <p>Az arc megtámasztásában szerepet játszó izomaktivitás támogatása.</p>
+                            </div>
+                        </div>
 
-                        <span style="display:flex; align-items:center; gap:8px; font-size:14px; color:var(--dark-text);">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        <strong>Sejtszintű regeneráció</strong>
-                    </span>
+                        <div class="pillar-card">
+                            <div class="pillar-icon">+</div>
+                            <div>
+                                <strong>Sejtszintű regeneráció</strong>
+                                <p>Kollagéntermelés, mikrokeringés és bőrminőség több szinten.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-highlight">
+                        Az ULTIMA HILEFT technológia és a modern hialuronsavas töltések kombinációja egyszerre támogatja az izomtónust, a bőrregenerációt és a strukturális volumen helyreállítását.
                     </div>
                 </div>
-
-                <p class="hero-subtext" style="font-style: italic; margin-bottom: 14px;">
-                    A cél nem az arc megváltoztatása, hanem a természetes, fiatal struktúra visszaépítése — harmonikus, elegáns és természetes eredménnyel.
-                </p>
-
-                <div class="hero-note">
-                    Orvosi konzultációval és személyre szabott kezelési tervvel.
-                </div>
-
-                <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top: 30px;">
-                    <a href="#foglalas" class="btn">Konzultáció igénylése</a>
-                    <a href="#technologia" class="btn btn-secondary">Technológia megismerése</a>
-                </div>
             </div>
+
+            <p class="hero-subtext" style="font-style: italic; margin-bottom: 14px;">
+                A cél nem az arc megváltoztatása, hanem a természetes, fiatal struktúra visszaépítése — harmonikus, elegáns és természetes eredménnyel.
+            </p>
+
+            <div class="hero-note">
+                Orvosi konzultációval és személyre szabott kezelési tervvel.
+            </div>
+
+            <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top: 30px;">
+                <a href="#foglalas" class="btn">Konzultáció igénylése</a>
+                <a href="#technologia" class="btn btn-secondary">Technológia megismerése</a>
+            </div>
+        </div>
         </div>
     </section>
 
-    <!-- IDEÁLIS JELÖLTEK -->
-    <section id="jeloltek">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 48px;">
-                <p class="eyebrow">Kinek ajánljuk?</p>
-                <h2 class="section-title">Ideális klinikai indikációk</h2>
-                <p class="section-subtitle">A kombinált protokoll különösen hatékony az alábbi esetekben.</p>
-            </div>
-
-            <div class="grid-3" style="gap: 20px;">
-                <div class="indication-card">
-                    <div class="indication-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                            <circle cx="12" cy="8" r="5"></circle>
-                            <path d="M3 21v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"></path>
-                        </svg>
-                    </div>
-                    <p class="indication-title">Volumenvesztett arc</p>
-                </div>
-                <div class="indication-card">
-                    <div class="indication-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                            <path d="M12 2a10 10 0 0 0-7 17l7 3 7-3a10 10 0 0 0-7-17z"></path>
-                        </svg>
-                    </div>
-                    <p class="indication-title">Bőrlazaság és megereszkedés</p>
-                </div>
-                <div class="indication-card">
-                    <div class="indication-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                        </svg>
-                    </div>
-                    <p class="indication-title">„Fáradt" arckifejezés</p>
-                </div>
-                <div class="indication-card">
-                    <div class="indication-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </div>
-                    <p class="indication-title">Ozempic-face<br><span style="font-size: 12px; color: var(--secondary-text); font-weight: 400;">(gyors fogyás utáni szöveti kollapszus)</span></p>
-                </div>
-                <div class="indication-card">
-                    <div class="indication-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                            <path d="M12 8v8M8 12h8"></path>
-                        </svg>
-                    </div>
-                    <p class="indication-title">Férfi állvonal formázás<br><span style="font-size: 12px; color: var(--secondary-text); font-weight: 400;">(maszkulinizáció)</span></p>
-                </div>
-                <div class="indication-card">
-                    <div class="indication-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="3"></circle>
-                            <path d="M12 5v2M12 17v2M5 12h2M17 12h2"></path>
-                        </svg>
-                    </div>
-                    <p class="indication-title">Periorbitális rejuvenáció<br><span style="font-size: 12px; color: var(--secondary-text); font-weight: 400;">(szem körüli terület)</span></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ÖREGEDÉS -->
+    <!-- problema -->
     <section id="oregedes">
         <div class="container">
             <div style="text-align: center; margin-bottom: 48px;">
@@ -1180,6 +217,75 @@
                 <p style="font-size: 18px; color: var(--dark-text); margin: 0;">
                     Az ULTIMA rendszer egyedülálló módon <strong>egyszerre hat az izmokra és a bőrre</strong>, ami jelentős előnyt jelent a legtöbb esztétikai technológiával szemben.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- kiknek ajanjuk-->
+    <section id="jeloltek">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <p class="eyebrow">Kinek ajánljuk?</p>
+                <h2 class="section-title">Ideális klinikai indikációk</h2>
+                <p class="section-subtitle">A kombinált protokoll különösen hatékony az alábbi esetekben.</p>
+            </div>
+
+            <div class="grid-3" style="gap: 20px;">
+                <div class="indication-card">
+                    <div class="indication-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <circle cx="12" cy="8" r="5"></circle>
+                            <path d="M3 21v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"></path>
+                        </svg>
+                    </div>
+                    <p class="indication-title">Volumenvesztett arc</p>
+                </div>
+                <div class="indication-card">
+                    <div class="indication-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M12 2a10 10 0 0 0-7 17l7 3 7-3a10 10 0 0 0-7-17z"></path>
+                        </svg>
+                    </div>
+                    <p class="indication-title">Bőrlazaság és megereszkedés</p>
+                </div>
+                <div class="indication-card">
+                    <div class="indication-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                        </svg>
+                    </div>
+                    <p class="indication-title">„Fáradt" arckifejezés</p>
+                </div>
+                <div class="indication-card">
+                    <div class="indication-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <p class="indication-title">Ozempic-face<br><span style="font-size: 12px; color: var(--secondary-text); font-weight: 400;">(gyors fogyás utáni szöveti kollapszus)</span></p>
+                </div>
+                <div class="indication-card">
+                    <div class="indication-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                            <path d="M12 8v8M8 12h8"></path>
+                        </svg>
+                    </div>
+                    <p class="indication-title">Férfi állvonal formázás<br><span style="font-size: 12px; color: var(--secondary-text); font-weight: 400;">(maszkulinizáció)</span></p>
+                </div>
+                <div class="indication-card">
+                    <div class="indication-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 5v2M12 17v2M5 12h2M17 12h2"></path>
+                        </svg>
+                    </div>
+                    <p class="indication-title">Periorbitális rejuvenáció<br><span style="font-size: 12px; color: var(--secondary-text); font-weight: 400;">(szem körüli terület)</span></p>
+                </div>
             </div>
         </div>
     </section>
@@ -1555,201 +661,8 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script>
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu on link click
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Keyboard accessibility for hamburger
-        hamburger.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                hamburger.click();
-            }
-        });
-
-        // Carousel functionality
-        let currentSlide = 0;
-        const track = document.getElementById('carouselTrack');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const totalSlides = 4;
-
-        function updateCarousel() {
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        function moveCarousel(direction) {
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            updateCarousel();
-        }
-
-        function goToSlide(index) {
-            currentSlide = index;
-            updateCarousel();
-        }
-
-        // Auto-advance carousel every 5 seconds
-        setInterval(() => {
-            moveCarousel(1);
-        }, 5000);
-
-        // Touch/swipe support for carousel
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const carousel = document.getElementById('clinicCarousel');
-
-        carousel.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, {
-            passive: true
-        });
-
-        carousel.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, {
-            passive: true
-        });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    moveCarousel(1); // Swipe left -> next
-                } else {
-                    moveCarousel(-1); // Swipe right -> prev
-                }
-            }
-        }
-
-        // PDF Slides Carousel functionality
-        let currentSlideNum = 0;
-        const slidesTrack = document.getElementById('slidesTrack');
-        const slidesDots = document.querySelectorAll('#slidesDots .carousel-dot');
-        const slideCounter = document.getElementById('slideCounter');
-        const totalSlidesNum = 15;
-
-        function updateSlides() {
-            slidesTrack.style.transform = `translateX(-${currentSlideNum * 100}%)`;
-            slidesDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlideNum);
-            });
-            slideCounter.textContent = currentSlideNum + 1;
-        }
-
-        function moveSlides(direction) {
-            currentSlideNum = (currentSlideNum + direction + totalSlidesNum) % totalSlidesNum;
-            updateSlides();
-        }
-
-        function goToSlideNum(index) {
-            currentSlideNum = index;
-            updateSlides();
-        }
-
-        // Touch/swipe support for slides carousel
-        const slidesCarousel = document.getElementById('slidesCarousel');
-        let slidesTouchStartX = 0;
-
-        slidesCarousel.addEventListener('touchstart', (e) => {
-            slidesTouchStartX = e.changedTouches[0].screenX;
-        }, {
-            passive: true
-        });
-
-        slidesCarousel.addEventListener('touchend', (e) => {
-            const slidesTouchEndX = e.changedTouches[0].screenX;
-            const diff = slidesTouchStartX - slidesTouchEndX;
-            const swipeThreshold = 50;
-
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    moveSlides(1);
-                } else {
-                    moveSlides(-1);
-                }
-            }
-        }, {
-            passive: true
-        });
-
-        // Keyboard navigation for slides
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                moveSlides(-1);
-            } else if (e.key === 'ArrowRight') {
-                moveSlides(1);
-            }
-        });
-
-        // --- MODAL (FELUGRÓ ABLAK) LOGIKA ---
-
-        // Elemek kiválasztása
-        const modal = document.getElementById("slidesModal");
-        const openBtns = document.querySelectorAll(".open-slides-btn");
-        const closeBtn = document.querySelector(".close-modal");
-
-        // 1. Megnyitás: Bármelyik gombra kattintunk, ami megkapta az 'open-slides-btn' classt
-        openBtns.forEach(btn => {
-            btn.addEventListener("click", (e) => {
-                e.preventDefault();
-                modal.classList.add("show");
-                document.body.style.overflow = "hidden"; // Letiltja a háttér görgetését, amíg nyitva van
-            });
-        });
-
-        // 2. Bezárás: Az "X" gombra kattintva
-        closeBtn.addEventListener("click", () => {
-            modal.classList.remove("show");
-            document.body.style.overflow = "auto"; // Visszaadja a háttér görgethetőségét
-        });
-
-        // 3. Bezárás: Ha a sötét háttérre (a tartalom mellé) kattintunk
-        window.addEventListener("click", (e) => {
-            if (e.target === modal) {
-                modal.classList.remove("show");
-                document.body.style.overflow = "auto";
-            }
-        });
-
-        // 4. Bezárás: Az "Escape" (ESC) billentyű megnyomásával
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape" && modal.classList.contains("show")) {
-                modal.classList.remove("show");
-                document.body.style.overflow = "auto";
-            }
-        });
-    </script>
-
+    <!-- js -->
+    <script src="function.js"></script>
 </body>
 
 </html>
