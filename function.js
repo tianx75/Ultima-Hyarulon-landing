@@ -207,26 +207,12 @@ function togglePillarInfo(element) {
 function toggleIndication(element) {
     const isActive = element.classList.contains('active');
 
-    // Összes kártya bezárása
+    // Minden más kártya bezárása
     document.querySelectorAll('.indication-card').forEach(card => {
         card.classList.remove('active');
     });
 
-    // Csak azt nyitjuk meg, amire rányomtak (ha eddig nem volt nyitva)
-    if (!isActive) {
-        element.classList.add('active');
-    }
-}
-
-function toggleIndication(element) {
-    const isActive = element.classList.contains('active');
-
-    // Összes indikációs kártya alaphelyzetbe állítása
-    document.querySelectorAll('.indication-card').forEach(card => {
-        card.classList.remove('active');
-    });
-
-    // Ha az adott kártya nem volt nyitva, most kinyitjuk
+    // Ha nem volt nyitva, kinyitjuk
     if (!isActive) {
         element.classList.add('active');
     }
