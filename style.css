@@ -1216,6 +1216,90 @@ footer {
     padding: 12px 24px;
 }
 
+.pillar-card {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.pillar-info {
+    max-height: 0;
+    overflow: hidden;
+    font-size: 14px;
+    color: var(--primary-gold);
+    margin-top: 0;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.pillar-card.active {
+    border-color: var(--primary-gold);
+    background: #fff;
+}
+
+.pillar-card.active .pillar-info {
+    max-height: 100px;
+    margin-top: 10px;
+    opacity: 1;
+}
+
+.indication-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    padding: 24px;
+    text-align: center;
+}
+
+.indication-details {
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    color: var(--secondary-text);
+    margin-top: 0;
+    line-height: 1.4;
+}
+
+.indication-card.active {
+    border-color: var(--primary-gold);
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.indication-card.active .indication-details {
+    max-height: 100px;
+    opacity: 1;
+    margin-top: 15px;
+}
+
+.indication-card.active .indication-icon {
+    transform: scale(0.9);
+}
+
+.align-cneter {
+    text-align: center;
+}
+
+.indication-cta {
+    padding: 40px;
+    background: rgba(200, 169, 106, 0.05);
+    /* Nagyon halvány arany háttér */
+    border-radius: var(--radius-card);
+    border: 1px dashed var(--primary-gold);
+    /* Finom keret */
+}
+
+.indication-cta .btn {
+    padding: 16px 40px;
+    font-size: 18px;
+}
+
 @media (max-width: 900px) {
     .hero-stats {
         grid-template-columns: repeat(2, 1fr);
@@ -1228,6 +1312,9 @@ footer {
         min-height: 360px;
     }
 }
+
+
+/* Mobil optimalizálás: ne legyen túl magas a kártya kisebb képernyőn */
 
 @media (max-width: 768px) {
     section {
@@ -1348,5 +1435,8 @@ footer {
         height: 42px;
         border-radius: 12px;
         font-size: 1.15rem;
+    }
+    .flip-card {
+        height: 160px;
     }
 }
