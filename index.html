@@ -54,17 +54,14 @@
             <div class="hero-single">
                 <p class="eyebrow">Új generációs arcfiatalítás</p>
 
-                <h1 class="hero-title">Strukturális és biológiai arcmegújítás</h1>
+                <h1 class="hero-title">Az időtlen, természetes szépség tudománya</h1>
 
                 <p class="hero-lead">
-                    Az arc fiatal struktúrájának visszaépítése sebészeti beavatkozás nélkül.
+                    Arcának fiatalos struktúráját építjük vissza, túlzások és szikék nélkül.
                 </p>
 
                 <p class="hero-subtext">
-                    Az <strong>ULTIMA HILEFT™ technológia</strong> és a
-                    <strong>hialuronsavas feltöltések</strong> kombinációja egyszerre támogatja a
-                    <strong>bőr regenerációját</strong>, az <strong>izomtónust</strong> és a
-                    <strong>strukturális volumen helyreállítását</strong>.
+                    Fedezze fel az <strong>esztétikai medicina új korszakát!</strong> Az ULTIMA HILEFT™ technológia és a hialuronsavas feltöltések szinergiája sejtszinten újítja meg bőrét, miközben visszaadja az arc eredeti, harmonikus vonásait.
                 </p>
 
                 <div class="highlight-box" style="margin-bottom: 28px; max-width: 760px;">
@@ -73,27 +70,30 @@
                     </p>
 
                     <div class="concept-pillars">
-                        <div class="pillar-card">
+                        <div class="pillar-card" onclick="togglePillarInfo(this)">
                             <div class="pillar-icon">+</div>
                             <div>
                                 <strong>Térfogat</strong>
-                                <p>Az elveszett volumen és kontúrok természetes visszaépítése.</p>
+                                <p>Az elveszett térfogat természetes pótlása.</p>
+                                <div class="pillar-info">Az életkor előrehaladtával az arc mélyebb szöveteiben volumenvesztés alakul ki. A strukturális hialuronsavas kezelés visszaállítja az arc kontúrjait és természetes támaszt ad a szöveteknek.</div>
                             </div>
                         </div>
 
-                        <div class="pillar-card">
+                        <div class="pillar-card" onclick="togglePillarInfo(this)">
                             <div class="pillar-icon">+</div>
                             <div>
                                 <strong>Izomtónus</strong>
-                                <p>Az arc megtámasztásában szerepet játszó izomaktivitás támogatása.</p>
+                                <p>Az arc tartószerkezetének megerősítése.</p>
+                                <div class="pillar-info">Az arc izmainak aktivitása és tónusa meghatározza az arckifejezést és a tartást. Az ULTIMA HILEFT™ technológia támogatja az izomtónust, így javítja az arc strukturális stabilitását.</div>
                             </div>
                         </div>
 
-                        <div class="pillar-card">
+                        <div class="pillar-card" onclick="togglePillarInfo(this)">
                             <div class="pillar-icon">+</div>
                             <div>
-                                <strong>Sejtszintű regeneráció</strong>
-                                <p>Kollagéntermelés, mikrokeringés és bőrminőség több szinten.</p>
+                                <strong>Biológia</strong>
+                                <p>Sejtszintű kollagén-stimuláció és regeneráció.</p>
+                                <div class="pillar-info">A fotobiomoduláció és a mikrokeringés javítása serkenti a fibroblasztokat, ami fokozza a kollagéntermelést és javítja a bőr minőségét.</div>
                             </div>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
         </div>
     </section>
 
-    <!-- TECHNOLÓGIA -->
+    <!-- a megoldas -->
     <section id="technologia" style="background-color: #FFFFFF;">
         <div class="container">
             <div style="text-align: center; margin-bottom: 48px;">
@@ -191,9 +191,9 @@
                         </svg>
                     </div>
                     <h3 class="card-title">Fotobiomoduláció</h3>
-                    <p class="body-text"><strong>Fényelnyelés:</strong> Vörös és infravörös fény elnyelése a mitokondriumok citokróm-c oxidáz enzimrendszerében.</p>
-                    <p class="body-text"><strong>Sejtszintű válasz:</strong> ATP termelés növekedése, oxidatív stressz csökkenése.</p>
-                    <p class="body-text" style="margin-bottom: 0;"><strong>Szöveti eredmény:</strong> Fibroblaszt aktivitás fokozódása → Kollagén és elasztin szintézis, jobb hidratáció, gyorsult regeneráció.</p>
+                    <p class="body-text"><strong>Fényből energia:</strong> A speciális vörös fény mélyre hatol, ahol a sejtjeid „napelemként” nyelik el azt.</p>
+                    <p class="body-text"><strong>Sejtszintű ébredés:</strong> A fény hatására a sejtek energiatermelése felpörög. Olyan ez, mint egy ébresztő az ellustult sejteknek: hirtelen több erejük lesz a regenerációhoz.</p>
+                    <p class="body-text" style="margin-bottom: 0;"><strong>Eredmény: Fiatalosabb bőr.</strong> Beindul a természetes kollagéntermelés, a bőr mélyebben hidratálttá válik, a gyulladások és apró sérülések pedig látványosan gyorsabban gyógyulnak.</p>
                 </div>
 
                 <div class="card">
@@ -215,7 +215,7 @@
 
             <div class="highlight-box" style="margin-top: 40px; text-align: center;">
                 <p style="font-size: 18px; color: var(--dark-text); margin: 0;">
-                    Az ULTIMA rendszer egyedülálló módon <strong>egyszerre hat az izmokra és a bőrre</strong>, ami jelentős előnyt jelent a legtöbb esztétikai technológiával szemben.
+                    <a href="images/slides/ULTIMA_HILEFT_Arc_Regeneráció_Tudomány.pdf" class="btn">Az ULTIMA rendszer egyedülálló módon <strong>egyszerre hat az izmokra és a bőrre</strong>, ami jelentős előnyt jelent a legtöbb esztétikai technológiával szemben.</a>
                 </p>
             </div>
         </div>
@@ -231,66 +231,76 @@
             </div>
 
             <div class="grid-3" style="gap: 20px;">
-                <div class="indication-card">
+                <div class="indication-card" onclick="toggleIndication(this)">
                     <div class="indication-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                            <circle cx="12" cy="8" r="5"></circle>
-                            <path d="M3 21v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"></path>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="5"></circle><path d="M3 21v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"></path></svg>
                     </div>
                     <p class="indication-title">Volumenvesztett arc</p>
+                    <div class="indication-details">
+                        Az életkorral az arc mélyebb zsírszövete csökken, ami az arc kontúrjainak ellaposodásához vezet. A strukturális hialuronsavas kezelés visszaállíthatja a természetes volumeneloszlást.
+                    </div>
                 </div>
-                <div class="indication-card">
+
+                <div class="indication-card" onclick="toggleIndication(this)">
                     <div class="indication-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                            <path d="M12 2a10 10 0 0 0-7 17l7 3 7-3a10 10 0 0 0-7-17z"></path>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2a10 10 0 0 0-7 17l7 3 7-3a10 10 0 0 0-7-17z"></path></svg>
                     </div>
                     <p class="indication-title">Bőrlazaság és megereszkedés</p>
+                    <div class="indication-details">
+                        A kollagén- és elasztintermelés csökkenése miatt az arc elveszíti feszességét. A kombinált kezelés a bőrt és a mélyebb struktúrákat is támogatja.
+                    </div>
                 </div>
-                <div class="indication-card">
+
+                <div class="indication-card" onclick="toggleIndication(this)">
                     <div class="indication-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
                     </div>
                     <p class="indication-title">„Fáradt" arckifejezés</p>
-                </div>
-                <div class="indication-card">
-                    <div class="indication-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
+                    <div class="indication-details">
+                        A középarc volumenvesztése és a szem alatti terület változásai miatt az arc fáradtabbnak tűnhet. A kezelés segíthet a frissebb, kipihentebb megjelenés visszaállításában.
                     </div>
-                    <p class="indication-title">Ozempic-face<br><span style="font-size: 12px; color: var(--secondary-text); font-weight: 400;">(gyors fogyás utáni szöveti kollapszus)</span></p>
                 </div>
-                <div class="indication-card">
+
+                <div class="indication-card" onclick="toggleIndication(this)">
                     <div class="indication-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                            <path d="M12 8v8M8 12h8"></path>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                     </div>
-                    <p class="indication-title">Férfi állvonal formázás<br><span style="font-size: 12px; color: var(--secondary-text); font-weight: 400;">(maszkulinizáció)</span></p>
+                    <p class="indication-title">Ozempic-face</p>
+                    <div class="indication-details">
+                        Gyors fogyás után gyakran jelentős volumenvesztés alakul ki az arcon. A strukturális feltöltés segíthet az arc arányainak visszaállításában.
+                    </div>
                 </div>
-                <div class="indication-card">
+
+                <div class="indication-card" onclick="toggleIndication(this)">
                     <div class="indication-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="3"></circle>
-                            <path d="M12 5v2M12 17v2M5 12h2M17 12h2"></path>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M12 8v8M8 12h8"></path></svg>
                     </div>
-                    <p class="indication-title">Periorbitális rejuvenáció<br><span style="font-size: 12px; color: var(--secondary-text); font-weight: 400;">(szem körüli terület)</span></p>
+                    <p class="indication-title">Férfi állvonal formázás</p>
+                    <div class="indication-details">
+                        Az állív és mandibula régió hangsúlyosabbá tétele javíthatja az arc karakterét és arányait.
+                    </div>
                 </div>
+
+                <div class="indication-card" onclick="toggleIndication(this)">
+                    <div class="indication-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="3"></circle><path d="M12 5v2M12 17v2M5 12h2M17 12h2"></path></svg>
+                    </div>
+                    <p class="indication-title">Periorbitális rejuvenáció</p>
+                    <div class="indication-details">
+                        A szem körüli terület regenerációja javíthatja a bőr minőségét és a tekintet frissességét.
+                    </div>
+                </div>
+            </div>
+            <div class="indication-cta" style="text-align: center; margin-top: 48px;">
+                <p style="font-size: 18px; color: var(--dark-text); margin-bottom: 20px; font-family: 'Playfair Display', serif;">
+                    Nem biztos benne, hogy ez a kezelés önnek való?
+                </p>
+                <a href="#foglalas" class="btn">Időpontfoglalás konzultációra</a>
             </div>
         </div>
     </section>
 
-    <!-- SZINERGIA + INFOGRAFIKA -->
+    <!-- miert mukodjunk jobban egyutt -->
     <section id="szinergia">
         <div class="container">
             <div style="text-align: center; margin-bottom: 48px;">
