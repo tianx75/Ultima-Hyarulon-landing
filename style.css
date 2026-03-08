@@ -1313,6 +1313,148 @@ footer {
     }
 }
 
+.science-box {
+    background: #1C1C1C;
+    /* Sötét, elegáns háttér */
+    border: 2px solid var(--primary-gold);
+    /* Kiemelt arany szegély */
+    border-radius: var(--radius-card);
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin: 20px 0;
+    color: #FFFFFF;
+    /* Fehér szöveg a sötét alapon */
+}
+
+.science-box {
+    background: transparent;
+    /* Átlátszó háttér */
+    border: 1px solid var(--primary-gold);
+    /* Arany szegély */
+    border-radius: var(--radius-card);
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin: 20px 0;
+    color: var(--dark-text);
+    /* Sötét szöveg, hogy olvasható maradjon a világos oldalon */
+}
+
+.science-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+.arrow-icon {
+    color: var(--primary-gold);
+    transition: transform 0.3s ease;
+    font-size: 14px;
+}
+
+
+/* Lenyíló tartalom */
+
+.science-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+    color: var(--secondary-text);
+    /* Kicsit világosabb, finomabb szöveg */
+    margin-top: 0;
+}
+
+
+/* Aktív állapot */
+
+.science-box.active {
+    background: rgba(255, 255, 255, 0.5);
+    /* Enyhe, áttetsző fehér réteg nyitáskor */
+    box-shadow: 0 10px 25px rgba(200, 169, 106, 0.1);
+}
+
+.science-box.active .arrow-icon {
+    transform: rotate(180deg);
+}
+
+.science-box.active .science-content {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(200, 169, 106, 0.3);
+}
+
+.indication-card {
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 20px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.arrow-icon {
+    margin-left: auto;
+    font-size: 10px;
+    color: var(--primary-gold);
+    transition: transform 0.3s ease;
+}
+
+.indication-details {
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: var(--secondary-text);
+    margin-top: 0;
+    font-size: 14px;
+}
+
+
+/* Aktív állapot */
+
+.indication-card.active {
+    border-color: var(--primary-gold);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.indication-card.active .arrow-icon {
+    transform: rotate(180deg);
+}
+
+.indication-card.active .indication-details {
+    max-height: 150px;
+    opacity: 1;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.card-bg-image {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+
+/* Ha háttérképes a kártya, legyen a szöveg fehér */
+
+.card-bg-image .indication-title,
+.card-bg-image .indication-details,
+.card-bg-image .arrow-icon {
+    color: #ffffff !important;
+}
+
 
 /* Mobil optimalizálás: ne legyen túl magas a kártya kisebb képernyőn */
 
