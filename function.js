@@ -189,3 +189,45 @@ document.addEventListener("keydown", (e) => {
         document.body.style.overflow = "auto";
     }
 });
+
+function togglePillarInfo(element) {
+    // Ha már nyitva van, bezárjuk
+    if (element.classList.contains('active')) {
+        element.classList.remove('active');
+    } else {
+        // Először bezárjuk az összes többit (opcionális)
+        document.querySelectorAll('.pillar-card').forEach(card => {
+            card.classList.remove('active');
+        });
+        // Megnyitjuk a kattintottat
+        element.classList.add('active');
+    }
+}
+
+function toggleIndication(element) {
+    const isActive = element.classList.contains('active');
+
+    // Összes kártya bezárása
+    document.querySelectorAll('.indication-card').forEach(card => {
+        card.classList.remove('active');
+    });
+
+    // Csak azt nyitjuk meg, amire rányomtak (ha eddig nem volt nyitva)
+    if (!isActive) {
+        element.classList.add('active');
+    }
+}
+
+function toggleIndication(element) {
+    const isActive = element.classList.contains('active');
+
+    // Összes indikációs kártya alaphelyzetbe állítása
+    document.querySelectorAll('.indication-card').forEach(card => {
+        card.classList.remove('active');
+    });
+
+    // Ha az adott kártya nem volt nyitva, most kinyitjuk
+    if (!isActive) {
+        element.classList.add('active');
+    }
+}
