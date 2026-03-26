@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULTIMA LED Beauty Mask – Prémium otthoni fényterápia | The Ultimate Beauty Clinic</title>
+    <meta name="description" content="ULTIMA LED Beauty Mask – 4 hullámhosszú, ultrakönnyű LED maszk a bőr napi szintű megújításáért. 93 gramm, IP67 vízálló, beépített szemvédelem. The Ultimate Beauty Clinic, Budapest.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="maszk.css">
+
+    <!-- ═══════════════════════════════════════════════════════
+         INFLUENCER REF TRACKING — Kedvezmény rendszer CSS
+         ═══════════════════════════════════════════════════════ -->
+    <style>
+      #discount-banner {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 9999;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        border-bottom: 2px solid #c9a84c;
+        box-shadow: 0 4px 24px rgba(201,168,76,0.15);
+        animation: bannerSlideIn 0.5s ease-out;
+      }
+      @keyframes bannerSlideIn {
+        from { transform: translateY(-100%); opacity: 0; }
+        to   { transform: translateY(0); opacity: 1; }
+      }
+      .discount-banner-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .discount-icon {
+        font-size: 28px;
+        color: #c9a84c;
+        flex-shrink: 0;
+        animation: sparkle 2s ease-in-out infinite;
+      }
+      @keyframes sparkle {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50%      { opacity: .7; transform: scale(1.15); }
+      }
+      .discount-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .discount-label {
+        color: #c9a84c;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .discount-detail {
+        color: #e8e8e8;
+        font-size: 15px;
+      }
+      .discount-detail strong { color: #fff; }
+      .discount-detail s { opacity: 0.5; font-weight: 300; }
+      .discount-close {
+        margin-left: auto;
+        background: none;
+        border: 1px solid rgba(201,168,76,0.3);
+        color: #c9a84c;
+        font-size: 20px;
+        cursor: pointer;
+        width: 32px; height: 32px;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        transition: all 0.2s;
+        flex-shrink: 0;
+      }
+      .discount-close:hover {
+        background: rgba(201,168,76,0.15);
+        border-color: #c9a84c;
+      }
+      body.has-discount-banner { padding-top: 72px; }
+      body.has-discount-banner .nav { top: 62px; }
+      @media (max-width: 600px) {
+        .discount-banner-inner { padding: 12px 16px; gap: 10px; }
+        .discount-label { font-size: 11px; }
+        .discount-detail { font-size: 13px; }
+        .discount-icon { font-size: 22px; }
+        body.has-discount-banner { padding-top: 80px; }
+        body.has-discount-banner .nav { top: 70px; }
+      }
+      .price-original-strikethrough {
+        text-decoration: line-through;
+        opacity: 0.5;
+        font-size: 0.85em;
+        margin-left: 8px;
+      }
+      .price-discounted { color: #c9a84c; font-weight: 700; }
+
+      /* ═══ PRODUCT GALLERY ═══ */
+      .gallery-section {
+        padding: 6rem 0;
+        background: linear-gradient(180deg, #0d0d1a 0%, #1a1a2e 50%, #0d0d1a 100%);
+        overflow: hidden;
+      }
+      .gallery-section .section-label {
+        justify-content: center;
+        color: #c9a84c;
+      }
+      .gallery-section .section-title {
+        text-align: center;
+        color: #f5f0e8;
+      }
+      .gallery-section .section-title em {
+        color: #c9a84c;
+      }
+      .gallery-section .section-subtitle {
+        text-align: center;
+        color: rgba(245,240,232,0.6);
+        max-width: 550px;
+        margin: 0 auto 3rem;
+      }
+
+      /* Hero showcase — nagy kép + szöveg */
+      .gallery-hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        margin-bottom: 3rem;
+        border-radius: 16px;
+        overflow: hidden;
+        background: #111;
+        box-shadow: 0 24px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.1);
+      }
+      .gallery-hero-img {
+        position: relative;
+        overflow: hidden;
+        min-height: 420px;
+      }
+      .gallery-hero-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+      }
+      .gallery-hero:hover .gallery-hero-img img {
+        transform: scale(1.03);
+      }
+      .gallery-hero-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 3rem;
+        background: linear-gradient(135deg, #1a1a2e 0%, #0f1a30 100%);
+      }
+      .gallery-hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #c9a84c;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+      }
+      .gallery-hero-badge::before {
+        content: '';
+        width: 24px;
+        height: 1px;
+        background: #c9a84c;
+      }
+      .gallery-hero-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2rem;
+        font-weight: 300;
+        color: #f5f0e8;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+      }
+      .gallery-hero-title strong {
+        font-weight: 600;
+        color: #c9a84c;
+      }
+      .gallery-hero-desc {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: rgba(245,240,232,0.6);
+      }
+
+      /* Galéria grid — 3 oszlop */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+      .gallery-card {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        aspect-ratio: 4/5;
+        cursor: pointer;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      }
+      .gallery-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+      }
+      .gallery-card:hover img {
+        transform: scale(1.06);
+      }
+      .gallery-card-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem 1.25rem 1.25rem;
+        background: linear-gradient(transparent, rgba(0,0,0,0.85));
+        transition: opacity 0.4s;
+      }
+      .gallery-card-tag {
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #c9a84c;
+        margin-bottom: 4px;
+        font-weight: 500;
+      }
+      .gallery-card-label {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.15rem;
+        color: #f5f0e8;
+        font-weight: 400;
+      }
+
+      /* Alsó széles kép */
+      .gallery-wide {
+        margin-top: 1.5rem;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        max-height: 320px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      }
+      .gallery-wide img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+      }
+      .gallery-wide:hover img {
+        transform: scale(1.03);
+      }
+      .gallery-wide .gallery-card-overlay {
+        padding: 2.5rem 2rem 1.5rem;
+      }
+
+      /* Arany vonal szeparátor */
+      .gallery-divider {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+        margin: 0 auto 3rem;
+      }
+
+      @media (max-width: 768px) {
+        .gallery-hero {
+          grid-template-columns: 1fr;
+        }
+        .gallery-hero-img {
+          min-height: 280px;
+        }
+        .gallery-hero-content {
+          padding: 2rem;
+        }
+        .gallery-hero-title {
+          font-size: 1.6rem;
+        }
+        .gallery-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+        }
+        .gallery-grid .gallery-card:last-child {
+          grid-column: 1 / -1;
+          aspect-ratio: 16/9;
+        }
+        .gallery-section {
+          padding: 4rem 0;
+        }
+      }
+      @media (max-width: 480px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        .gallery-grid .gallery-card {
+          aspect-ratio: 4/5;
+        }
+        .gallery-grid .gallery-card:last-child {
+          grid-column: auto;
+        }
+      }
+
+      /* ═══ LIGHTBOX ═══ */
+      .lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: rgba(0,0,0,0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        align-items: center;
+        justify-content: center;
+        animation: lbFadeIn 0.3s ease;
+      }
+      .lightbox.active { display: flex; }
+      @keyframes lbFadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+      .lightbox-img-wrap {
+        position: relative;
+        max-width: 90vw;
+        max-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .lightbox-img-wrap img {
+        max-width: 90vw;
+        max-height: 85vh;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 16px 64px rgba(0,0,0,0.5);
+        transition: opacity 0.3s ease;
+      }
+      .lightbox-caption {
+        position: absolute;
+        bottom: -3.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        white-space: nowrap;
+      }
+      .lightbox-caption-tag {
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #c9a84c;
+        font-weight: 500;
+      }
+      .lightbox-caption-label {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.1rem;
+        color: #f5f0e8;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 44px;
+        height: 44px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(201,168,76,0.25);
+        color: #c9a84c;
+        font-size: 24px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        z-index: 10;
+      }
+      .lightbox-close:hover {
+        background: rgba(201,168,76,0.15);
+        border-color: #c9a84c;
+      }
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(201,168,76,0.2);
+        color: #c9a84c;
+        font-size: 22px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        z-index: 10;
+      }
+      .lightbox-nav:hover {
+        background: rgba(201,168,76,0.15);
+        border-color: #c9a84c;
+      }
+      .lightbox-prev { left: 1.5rem; }
+      .lightbox-next { right: 1.5rem; }
+      .lightbox-counter {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        z-index: 10;
+      }
+      .lightbox-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(201,168,76,0.25);
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+      .lightbox-dot.active {
+        background: #c9a84c;
+        box-shadow: 0 0 8px rgba(201,168,76,0.4);
+      }
+      @media (max-width: 768px) {
+        .gallery-section [style*="grid-template-columns:1fr 1fr"] {
+          grid-template-columns: 1fr !important;
+        }
+      }
+      @media (max-width: 600px) {
+        .lightbox-nav { width: 38px; height: 38px; font-size: 18px; }
+        .lightbox-prev { left: 0.75rem; }
+        .lightbox-next { right: 0.75rem; }
+        .lightbox-close { top: 0.75rem; right: 0.75rem; width: 38px; height: 38px; }
+        .lightbox-caption { display: none; }
+      }
+
+      /* ═══ CLINIC GALLERY GRID ═══ */
+      .clinic-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
+      }
+      .clinic-gallery-card {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        aspect-ratio: 1/1;
+        cursor: pointer;
+        border: 1px solid rgba(201,168,76,0.15);
+        background: #111;
+      }
+      .clinic-gallery-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease, filter 0.5s ease;
+        filter: brightness(0.85);
+      }
+      .clinic-gallery-card:hover img {
+        transform: scale(1.08);
+        filter: brightness(1);
+      }
+      .clinic-gallery-overlay {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        padding: 2rem 0.8rem 0.7rem;
+        pointer-events: none;
+      }
+      .clinic-gallery-overlay span {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .clinic-visual { position: relative; }
+
+      @media (max-width: 768px) {
+        .clinic-gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.75rem;
+        }
+        .clinic-gallery-card:last-child:nth-child(odd) {
+          grid-column: 1 / -1;
+          aspect-ratio: 16/9;
+        }
+      }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     KEDVEZMÉNY BANNER (csak influencer ref-nél jelenik meg)
+     ═══════════════════════════════════════════════════════ -->
+<div id="discount-banner">
+  <div class="discount-banner-inner">
+    <div class="discount-icon">✦</div>
+    <div class="discount-text">
+      <span class="discount-label">Exkluzív influencer kedvezmény aktiválva</span>
+      <span class="discount-detail">15% kedvezmény · <strong>102.000 Ft</strong> <s>120.000 Ft</s></span>
+    </div>
+    <button class="discount-close" onclick="document.getElementById('discount-banner').style.display='none';document.body.classList.remove('has-discount-banner')" aria-label="Bezárás">&times;</button>
+  </div>
+</div>
+
+<nav class="nav" id="nav">
+    <div class="container">
+        <a href="#" class="nav-logo">ULTIMA <span>LED MASK</span></a>
+        <ul class="nav-links">
+            <li><a href="#wavelengths">Technológia</a></li>
+            <li><a href="#features">Jellemzők</a></li>
+            <li><a href="#gallery">Galéria</a></li>
+            <li><a href="#synergy">Szinergia</a></li>
+            <li><a href="#pricing">Ár</a></li>
+            <li><a href="https://pci.jotform.com/form/260373420481047" target="_blank" rel="noopener noreferrer" class="nav-cta jotform-link">Érdeklődöm</a></li>
+        </ul>
+        <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<section class="hero" id="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge">Prémium otthoni fényterápia</div>
+            <h1>
+                ULTIMA LED<br>
+                <span class="line-gold">Beauty Mask</span>
+            </h1>
+            <p class="hero-desc">
+                4 hullámhosszú, ultrakönnyű LED maszk a bőr napi szintű megújításáért. Meghosszabbítja és fokozza a klinikai kezelések hatását — otthonról.
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-num">93 g</div>
+                    <div class="hero-stat-label">Ultrakönnyű</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num">4</div>
+                    <div class="hero-stat-label">Hullámhossz</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num">IP67</div>
+                    <div class="hero-stat-label">Vízálló</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="https://pci.jotform.com/form/260373420481047" target="_blank" rel="noopener noreferrer" class="btn-primary jotform-link">Érdeklődöm</a>
+                <a href="#wavelengths" class="btn-secondary">Felfedezem</a>
+            </div>
+            <div class="hero-banner">
+                <section class="video-section">
+                    <div class="container">
+                        <div class="video-wrapper">
+                            <video autoplay muted loop playsinline class="premium-video">
+                                <source src="images/mask/mask-hero.mp4" type="video/mp4">
+                                böngésződ nem támogatja a videót.
+                            </video>
+                            <div class="video-overlay"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="wavelengths">
+    <div class="container">
+        <div class="fade-in" style="text-align:center; max-width:650px; margin:0 auto;">
+            <div class="section-label" style="justify-content:center;">4 terápiás hullámhossz</div>
+            <h2 class="section-title">Minden fénynek <em>megvan a feladata</em></h2>
+            <p class="section-subtitle" style="margin:0 auto;">A specifikus hullámhosszú fények eltérő mélységben hatolnak a bőrbe, más-más módon támogatva a regenerációt.</p>
+        </div>
+        <div class="wave-grid">
+            <div class="wave-card fade-in" data-color="nir">
+                <div class="wave-nm">850</div>
+                <div class="wave-unit">nanométer</div>
+                <div class="wave-name">Közeli infravörös</div>
+                <div class="wave-desc">Mélyszöveti megújulás. Eléri az izomzatot és a hipodermiszt, serkenti a sejtek regenerációját.</div>
+            </div>
+            <div class="wave-card fade-in" data-color="red">
+                <div class="wave-nm">630</div>
+                <div class="wave-unit">nanométer</div>
+                <div class="wave-name">Vörös fény</div>
+                <div class="wave-desc">Kollagén és elasztin fokozása. Fibroblaszt stimuláció a dermiszben — a bőr feszesebb és rugalmasabb lesz.</div>
+            </div>
+            <div class="wave-card fade-in" data-color="yellow">
+                <div class="wave-nm">590</div>
+                <div class="wave-unit">nanométer</div>
+                <div class="wave-name">Sárga fény</div>
+                <div class="wave-desc">Csökkenti a bőrpírt és kiegyenlíti a tónust. Nyugtatja az érzékeny bőrt és ragyogóbb megjelenést biztosít.</div>
+            </div>
+            <div class="wave-card fade-in" data-color="blue">
+                <div class="wave-nm">415</div>
+                <div class="wave-unit">nanométer</div>
+                <div class="wave-name">Kék fény</div>
+                <div class="wave-desc">Antibakteriális hatás. Csökkenti az aknét okozó baktériumokat és nyugtatja a gyulladt bőrt.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section features-bg" id="science">
+    <div class="container">
+        <div class="fade-in" style="text-align:center; max-width:700px; margin:0 auto;">
+            <div class="section-label" style="justify-content:center;">Tudományos háttér</div>
+            <h2 class="section-title">Fotobiomoduláció — <em>a fény mint üzemanyag</em></h2>
+            <p class="section-subtitle" style="margin:0 auto;">A LED-fény nem hőhatással dolgozik, hanem biológiai válaszreakciókat vált ki. Fokozza a sejtek energiatermelését és a természetes regenerációs folyamatokat.</p>
+        </div>
+        <div class="science-cards">
+            <div class="sci-card fade-in">
+                <div class="sci-card-num">01</div>
+                <h3>Mitokondriális aktiváció</h3>
+                <p>A fényenergia célpontja a citokróm-c-oxidáz (CCO) enzim a mitokondrium belső membránjában. A nitrogén-monoxid disszociálódik, lehetővé téve az ATP-szintézis fokozódását.</p>
+            </div>
+            <div class="sci-card fade-in">
+                <div class="sci-card-num">02</div>
+                <h3>Kollagén génexpresszió</h3>
+                <p>A Reaktív Oxigénfajták (ROS) aktiválják a kollagén és elasztin génexpresszióját. A fibroblasztok termelése fokozódik, ami feszesebb, sűrűbb bőrstruktúrát eredményez.</p>
+            </div>
+            <div class="sci-card fade-in">
+                <div class="sci-card-num">03</div>
+                <h3>Folyamatos aktiválás</h3>
+                <p>A napi LED használat „bekapcsolva tartja" a kollagénaktivációt a klinikai kezelések között — így a bőr regenerációja nem lassul le az egyes alkalmak között.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="features">
+    <div class="container">
+        <div class="fade-in">
+            <div class="section-label">Miért az ULTIMA?</div>
+            <h2 class="section-title">Prémium technológia, <em>minden részletben</em></h2>
+        </div>
+        <div class="feat-grid">
+            <div class="feat-card fade-in">
+                <div class="feat-icon">⊘</div>
+                <h4>Ultrakönnyű: 93 gramm</h4>
+                <p>A világ egyik legkönnyebb LED maszkja. Élelmiszer-minőségű szilikon, rugalmas kialakítás — elfér a kézitáskádban, tökéletes utazáshoz.</p>
+            </div>
+            <div class="feat-card fade-in">
+                <div class="feat-icon">◎</div>
+                <h4>Beépített szemvédelem</h4>
+                <p>Szabadalmaztatott szemárnyékoló rendszer — biztonságosan olvashatsz, nézhetsz TV-t vagy dolgozhatsz a kezelés alatt. Más maszkok ezt nem tudják.</p>
+            </div>
+            <div class="feat-card fade-in">
+                <div class="feat-icon">◈</div>
+                <h4>Légáteresztő méhsejt dizájn</h4>
+                <p>3D lebegő szerkezet a fény egyenletes eloszlásáért. Méhsejt kialakítás a hő- és párafelépülés ellen — kényelmes, még hosszabb használat mellett is.</p>
+            </div>
+            <div class="feat-card fade-in">
+                <div class="feat-icon">❋</div>
+                <h4>IP67 vízálló</h4>
+                <p>Por- és vízálló kialakítás. Egyszerűen tisztítható, higiénikus és tartós — a prémium anyagok hosszú élettartamot biztosítanak.</p>
+            </div>
+            <div class="feat-card fade-in">
+                <div class="feat-icon">✦</div>
+                <h4>Szabadalmaztatott 3D struktúra</h4>
+                <p>A lebegő szerkezet biztosítja, hogy minden LED optimális távolságról világítsa meg a bőrt — egyenletes, hatékony fényeloszlás az egész arcon.</p>
+            </div>
+            <div class="feat-card fade-in">
+                <div class="feat-icon">◇</div>
+                <h4>Bárhol, bármikor</h4>
+                <p>Használd pihenés közben, olvasás, munka vagy utazás közben. A beépített szemvédelem lehetővé teszi, hogy a kezelés illeszkedjen a mindennapjaidba.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PRODUCT GALLERY — Elegáns termékbemutató
+     ═══════════════════════════════════════════════════════ -->
+<section class="gallery-section" id="gallery">
+    <div class="container">
+        <div class="fade-in" style="text-align:center; max-width:650px; margin:0 auto;">
+            <div class="section-label" style="justify-content:center;">A maszk közelről</div>
+            <h2 class="section-title">Elegancia, <em>minden szögből</em></h2>
+            <p class="section-subtitle">Prémium anyagok, szabadalmaztatott dizájn, 93 gramm — közelről is lenyűgöző.</p>
+        </div>
+        <div class="gallery-divider"></div>
+
+        <!-- Hero showcase: sötét modell kép + szöveg -->
+        <div class="gallery-hero fade-in" style="cursor:pointer" onclick="openLightbox(0)">
+            <div class="gallery-hero-img">
+                <img src="images/mask/mask-model-dark.jpg" alt="ULTIMA LED Beauty Mask — elegáns portré" loading="lazy">
+            </div>
+            <div class="gallery-hero-content">
+                <div class="gallery-hero-badge">Prémium kivitelezés</div>
+                <div class="gallery-hero-title">Nem csak eszköz.<br><strong>Szépségélmény.</strong></div>
+                <p class="gallery-hero-desc">
+                    A 93 grammos, élelmiszer-minőségű szilikonból készült maszk a bőrre simul, nem nyom, és beépített szemvédelemmel rendelkezik. Szabadalmaztatott 3D struktúrája biztosítja a fény egyenletes eloszlását — kényelmesen, akár olvasás vagy munka közben is.
+                </p>
+            </div>
+        </div>
+
+        <!-- 3 oszlopos grid -->
+        <div class="gallery-grid">
+            <div class="gallery-card fade-in" onclick="openLightbox(1)">
+                <img src="images/mask/mask-product.jpg" alt="ULTIMA LED Mask — termékfotó" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-tag">Méhsejt dizájn</div>
+                    <div class="gallery-card-label">Légáteresztő 3D struktúra</div>
+                </div>
+            </div>
+            <div class="gallery-card fade-in" onclick="openLightbox(2)">
+                <img src="images/mask/mask-waterproof.jpg" alt="ULTIMA LED Mask — IP67 vízálló" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-tag">IP67 vízálló</div>
+                    <div class="gallery-card-label">Higiénikus, egyszerűen tisztítható</div>
+                </div>
+            </div>
+            <div class="gallery-card fade-in" onclick="openLightbox(3)">
+                <img src="images/mask/mask-exploded.jpg" alt="ULTIMA LED Mask — robbantott nézet" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-tag">Szabadalom</div>
+                    <div class="gallery-card-label">Többrétegű LED panel</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Széles alsó képek: modell + kolléganő a klinikán -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1.5rem;">
+            <div class="gallery-wide fade-in" style="margin-top:0" onclick="openLightbox(4)">
+                <img src="images/mask/mask-model-light.jpg" alt="ULTIMA LED Beauty Mask — kezelés közben" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-tag">Beépített szemvédelem</div>
+                    <div class="gallery-card-label">Napi fényterápia, kényelemben</div>
+                </div>
+            </div>
+            <div class="gallery-wide fade-in" style="margin-top:0" onclick="openLightbox(5)">
+                <img src="images/mask/heni-mask-red.jpg" alt="ULTIMA LED Mask — vörös fényterápia a klinikán" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-tag">Vörös fényterápia</div>
+                    <div class="gallery-card-label">Élő kezelés a klinikánkon</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section features-bg" id="synergy">
+    <div class="container">
+        <div class="synergy-grid">
+            <div class="synergy-visual" onclick="document.getElementById('pdfModal').style.display='flex'">
+                <img src="images/mask/mask-slide-01.jpg" alt="slide-elonezet">
+            </div>
+            <div class="fade-in">
+                <div class="section-label">Klinikai szinergia</div>
+                <h2 class="section-title">A kezelések <em>biológiai kapcsolója</em></h2>
+                <p class="section-subtitle">
+                    A maszk nem helyettesíti a klinikai kezeléseket — hanem aktívan meghosszabbítja és fokozza azok hatását az otthoni utóápolás során.
+                </p>
+                <ul class="synergy-list">
+                    <li class="synergy-item">
+                        <div class="synergy-num">01</div>
+                        <div>
+                            <h4>Eredmények fenntartása</h4>
+                            <p>Meghosszabbítja a klinikai kezelések eredményeit és növeli azok tartósságát — a kollagénaktiváció a kezelések között is fennmarad.</p>
+                        </div>
+                    </li>
+                    <li class="synergy-item">
+                        <div class="synergy-num">02</div>
+                        <div>
+                            <h4>Gyorsabb regeneráció</h4>
+                            <p>Lézer, RF és HIFU kezelések után csökkenti a gyulladást és gyorsítja a szöveti helyreállítást a fényterápia ATP-pótló hatásával.</p>
+                        </div>
+                    </li>
+                    <li class="synergy-item">
+                        <div class="synergy-num">03</div>
+                        <div>
+                            <h4>Töltések stabilizálása</h4>
+                            <p>A kollagénháló erősítésével megerősíti a bőrt a hialuronsavas töltőanyag felett — természetesebb, tartósabb eredmény.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="fade-in" style="text-align:center; max-width:650px; margin:0 auto;">
+            <div class="section-label" style="justify-content:center;">Ajánlott beavatkozások után</div>
+            <h2 class="section-title">Tökéletes kiegészítő <em>ezekhez a kezelésekhez</em></h2>
+        </div>
+        <div class="treat-list">
+            <div class="treat-item fade-in">
+                <h4>Botox kezelés</h4>
+                <p>Megelőzi az izomstimuláció hiánya miatti atrófiát, miközben a bőrminőség folyamatosan javul. Az arc tónusos marad, nem „lapos".</p>
+            </div>
+            <div class="treat-item fade-in">
+                <h4>Hialuronsavas töltés</h4>
+                <p>A kollagénháló megerősítésével stabilizálja a fillert, csökkenti a migrációt és elnyújtja az elégedettségi időszakot két töltés között.</p>
+            </div>
+            <div class="treat-item fade-in">
+                <h4>Lézer & RF kezelések</h4>
+                <p>A vörös és NIR fény ATP-t pótol a hősérült sejtekben, gyorsítva a hámosodást. A HILEFT-tel kombinálva a teljes szöveti vastagság kezelhető.</p>
+            </div>
+            <div class="treat-item fade-in">
+                <h4>HIFU kezelés</h4>
+                <p>Míg a HIFU a SMAS réteget célozza, a maszk a felületes dermisz és izomtónus minőségét javítja — kiegészítő rétegkezelés, trauma nélkül.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section features-bg">
+    <div class="container">
+        <div class="fade-in" style="text-align:center; max-width:650px; margin:0 auto;">
+            <div class="section-label" style="justify-content:center;">Összehasonlítás</div>
+            <h2 class="section-title">Miért jobb, mint <em>a többi maszk?</em></h2>
+        </div>
+        <div class="vs-grid">
+            <div class="vs-col vs-ultima fade-in">
+                <div class="vs-col-title">ULTIMA LED Mask</div>
+                <ul class="vs-list">
+                    <li>Rugalmas, 93 g — bármikor viselhető</li>
+                    <li>Légáteresztő méhsejt kialakítás</li>
+                    <li>Precíziós LED-ek + szabadalmaztatott dizájn</li>
+                    <li>Beépített szemvédelem — biztonságos olvasáshoz, TV-zéshez</li>
+                    <li>IP67 vízálló — higiénikus, tartós</li>
+                    <li>Élelmiszer-minőségű szilikon</li>
+                    <li>4 terápiás hullámhossz</li>
+                </ul>
+            </div>
+            <div class="vs-col vs-others fade-in">
+                <div class="vs-col-title">Egyéb prémium maszkok</div>
+                <ul class="vs-list">
+                    <li>Merev, nehéz, kényelmetlen (200–450 g)</li>
+                    <li>Zárt kialakítás — hőfelépülés, izzadás</li>
+                    <li>Alapszintű LED-ek</li>
+                    <li>Nincs valódi szemvédelem — nem biztonságos képernyő előtt</li>
+                    <li>Nincs vízállóság</li>
+                    <li>Hagyományos szilikon / műanyag</li>
+                    <li>Gyakran csak 1–2 hullámhossz</li>
+                </ul>
+            </div>
+        </div>
+        <table class="spec-table fade-in" style="margin-top:4rem;">
+            <thead>
+                <tr>
+                    <th>Jellemző</th>
+                    <th>ULTIMA LED Mask</th>
+                    <th>Prémium alternatívák</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Súly</td>
+                    <td class="gold-val">93 g (ultrakönnyű)</td>
+                    <td>200–450 g</td>
+                </tr>
+                <tr>
+                    <td>Anyag</td>
+                    <td class="gold-val">Élelmiszer-minőségű szilikon</td>
+                    <td>Hagyományos szilikon / műanyag</td>
+                </tr>
+                <tr>
+                    <td>Szemvédelem</td>
+                    <td class="gold-val">Igen — képernyő előtt is biztonságos</td>
+                    <td>Nincs</td>
+                </tr>
+                <tr>
+                    <td>Vízállóság</td>
+                    <td class="gold-val">IP67</td>
+                    <td>Nincs</td>
+                </tr>
+                <tr>
+                    <td>Rugalmasság</td>
+                    <td class="gold-val">Hajlékony, utazásbarát</td>
+                    <td>Merev, nehézkes</td>
+                </tr>
+                <tr>
+                    <td>Szabadalmaztatott dizájn</td>
+                    <td class="gold-val">Igen</td>
+                    <td>Korlátozott / nincs</td>
+                </tr>
+                <tr>
+                    <td>Ár</td>
+                    <td class="gold-val mask-price">120.000 Ft</td>
+                    <td>120.000–180.000 Ft</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="section pricing-bg" id="pricing">
+    <div class="container">
+        <div class="fade-in" style="text-align:center;">
+            <div class="section-label" style="justify-content:center;">Ár</div>
+            <h2 class="section-title">Befektetés a <em>mindennapi szépségbe</em></h2>
+        </div>
+        <div class="pricing-card fade-in">
+            <div class="pricing-treatment">ULTIMA LED Beauty Mask</div>
+            <div class="pricing-amount mask-price">120.000 Ft</div>
+            <div class="pricing-unit">ajánlott kiskereskedelmi ár</div>
+            <ul class="pricing-features">
+                <li>4 terápiás hullámhossz (850, 630, 590, 415 nm)</li>
+                <li>Ultrakönnyű, 93 grammos kialakítás</li>
+                <li>Szabadalmaztatott 3D lebegő struktúra</li>
+                <li>Beépített szemvédelmi rendszer</li>
+                <li>IP67 vízálló — egyszerűen tisztítható</li>
+                <li>Élelmiszer-minőségű szilikon</li>
+            </ul>
+            <a href="https://pci.jotform.com/form/260373420481047" target="_blank" rel="noopener noreferrer" class="btn-primary jotform-link">Érdeklődöm a vásárlásról</a>
+        </div>
+
+        <!-- Bónusz ajánlat -->
+        <div class="fade-in" style="max-width:600px; margin:2.5rem auto 0; border:1px solid var(--gold-dark); background:linear-gradient(135deg, rgba(201,169,110,0.06) 0%, rgba(201,169,110,0.02) 100%); padding:2.5rem; text-align:center; position:relative; overflow:hidden;">
+            <div style="position:absolute; top:-1px; left:30%; right:30%; height:2px; background:linear-gradient(90deg, transparent, var(--gold), transparent);"></div>
+            <div style="font-size:0.7rem; font-weight:500; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">✦ Exkluzív bónusz a vásárlóknak</div>
+            <div style="font-family:var(--font-display); font-size:1.6rem; font-weight:300; color:var(--text-primary); line-height:1.3; margin-bottom:1rem;">Ingyenes konzultáció és<br><em style="color:var(--gold-light);">Observ 520 bőrdiagnosztika</em></div>
+            <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.7; max-width:460px; margin:0 auto;">Minden maszkvásárlónk személyes konzultációt és professzionális Observ 520 bőranalízist kap ajándékba a The Ultimate Beauty Clinic-en. Pontosan látni fogod, mire van szüksége a bőrödnek.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="clinic">
+    <div class="container">
+        <div class="clinic-grid">
+            <div class="clinic-visual" onclick="openClinicLightbox(0)">
+                <img src="images/clinic/waiting-room-1.jpg" alt="The Ultimate Beauty Clinic — váró">
+                <div style="position:absolute; bottom:12px; right:12px; background:rgba(0,0,0,0.5); color:var(--gold); font-size:0.7rem; padding:4px 10px; border-radius:4px; letter-spacing:0.1em; text-transform:uppercase; backdrop-filter:blur(4px);">Galéria ▸</div>
+            </div>
+            <div class="fade-in">
+                <div class="section-label">Elérhető nálunk</div>
+                <h2 class="section-title">The Ultimate Beauty Clinic</h2>
+                <p class="section-subtitle">Budapest, Buda — prémium esztétikai klinika</p>
+                <div class="clinic-features">
+                    <div class="clinic-feature">Exkluzív budai villa, diszkrét környezetben</div>
+                    <div class="clinic-feature">Személyre szabott konzultáció a maszk használatáról</div>
+                    <div class="clinic-feature">HILEFT™ kezelésekkel kombinálható kúrák</div>
+                    <div class="clinic-feature">Nemzetközi protokollok, több mint 8.000 páciens tapasztalata</div>
+                    <div class="clinic-feature">Az ULTIMA technológia budapesti referencia klinikája</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Klinika galéria -->
+        <div class="clinic-gallery-grid fade-in" style="margin-top:3rem;">
+            <div class="clinic-gallery-card" onclick="openClinicLightbox(1)">
+                <img src="images/clinic/waiting-room-2.jpg" alt="Elegáns váróterem">
+                <div class="clinic-gallery-overlay"><span>Váróterem</span></div>
+            </div>
+            <div class="clinic-gallery-card" onclick="openClinicLightbox(2)">
+                <img src="images/clinic/team-together.jpg" alt="Csapat">
+                <div class="clinic-gallery-overlay"><span>Csapatunk</span></div>
+            </div>
+            <div class="clinic-gallery-card" onclick="openClinicLightbox(3)">
+                <img src="images/clinic/team-products-1.jpg" alt="Prémium termékek">
+                <div class="clinic-gallery-overlay"><span>Termékeink</span></div>
+            </div>
+            <div class="clinic-gallery-card" onclick="openClinicLightbox(4)">
+                <img src="images/clinic/colleague-portrait.jpg" alt="Munkatárs">
+                <div class="clinic-gallery-overlay"><span>Csapattag</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="cta">
+    <div class="container">
+        <div class="fade-in">
+            <div class="section-label" style="justify-content:center;">Következő lépés</div>
+            <h2 class="section-title">Vidd haza a <em>klinikai fényterápiát</em></h2>
+            <p class="section-subtitle">
+                A bőröd megújulása nem áll meg a rendelő ajtajában. Az ULTIMA LED Beauty Mask-kal napi szinten tartod bekapcsolva a kollagénaktivációt.
+            </p>
+            <a href="https://pci.jotform.com/form/260373420481047" target="_blank" rel="noopener noreferrer" class="btn-primary jotform-link" style="display:inline-flex; margin-top:1rem;">Érdeklődöm a maszkról</a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-left">&copy; 2025 The Ultimate Beauty Clinic. Minden jog fenntartva.</div>
+        <div class="footer-logo">ULTIMA</div>
+        <div class="footer-right">Budapest, Buda &nbsp;&middot;&nbsp; www.theultimatebeauty.net</div>
+    </div>
+</footer>
+
+<div class="pdf-modal" id="pdfModal" onclick="if(event.target===this)this.style.display='none'">
+    <div class="pdf-modal-inner" style="max-width:960px;">
+        <div class="pdf-modal-header">
+            <div class="pdf-modal-title">ULTIMA LED Beauty Mask — Kezelési szinergiák</div>
+            <div style="display:flex; align-items:center; gap:1rem;">
+                <span style="font-size:0.75rem; color:var(--text-muted);" id="slideCounter">1 / 6</span>
+                <button class="pdf-modal-close" onclick="document.getElementById('pdfModal').style.display='none'">&times;</button>
+            </div>
+        </div>
+        <div class="pdf-modal-body" style="overflow:hidden; background:#000; display:flex; align-items:center; justify-content:center;">
+            <div class="modal-slide active" data-slide="1"><img src="images/mask/mask-slide-01.jpg" alt="Slide 1" style="width:100%; display:block;"></div>
+            <div class="modal-slide" data-slide="2"><img src="images/mask/mask-slide-02.jpg" alt="Slide 2" style="width:100%; display:block;"></div>
+            <div class="modal-slide" data-slide="3"><img src="images/mask/mask-slide-03.jpg" alt="Slide 3" style="width:100%; display:block;"></div>
+            <div class="modal-slide" data-slide="4"><img src="images/mask/mask-slide-04.jpg" alt="Slide 4" style="width:100%; display:block;"></div>
+            <div class="modal-slide" data-slide="5"><img src="images/mask/mask-slide-05.jpg" alt="Slide 5" style="width:100%; display:block;"></div>
+            <div class="modal-slide" data-slide="6"><img src="images/mask/mask-slide-06.jpg" alt="Slide 6" style="width:100%; display:block;"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:1rem 1.5rem; border-top:1px solid var(--border); background:var(--bg-card);">
+            <button onclick="changeSlide(-1)" style="padding:0.5rem 1.5rem; background:none; border:1px solid var(--border); color:var(--text-secondary); cursor:pointer; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; transition:all 0.3s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-secondary)'">&larr; Előző</button>
+            <div style="display:flex; gap:0.5rem;" id="slideDots"></div>
+            <button onclick="changeSlide(1)" style="padding:0.5rem 1.5rem; background:none; border:1px solid var(--border); color:var(--text-secondary); cursor:pointer; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; transition:all 0.3s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-secondary)'">Következő &rarr;</button>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     LIGHTBOX — Elegáns képnézegető lapozással
+     ═══════════════════════════════════════════════════════ -->
+<div class="lightbox" id="galleryLightbox" onclick="if(event.target===this)closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Bezárás">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="lbNav(-1)" aria-label="Előző">&#8249;</button>
+    <div class="lightbox-img-wrap">
+        <img id="lbImg" src="" alt="">
+        <div class="lightbox-caption">
+            <div class="lightbox-caption-tag" id="lbTag"></div>
+            <div class="lightbox-caption-label" id="lbLabel"></div>
+        </div>
+    </div>
+    <button class="lightbox-nav lightbox-next" onclick="lbNav(1)" aria-label="Következő">&#8250;</button>
+    <div class="lightbox-counter" id="lbDots"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CLINIC LIGHTBOX — Klinika galéria képnézegető
+     ═══════════════════════════════════════════════════════ -->
+<div class="lightbox" id="clinicLightbox" onclick="if(event.target===this)closeClinicLightbox()">
+    <button class="lightbox-close" onclick="closeClinicLightbox()" aria-label="Bezárás">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="clinicLbNav(-1)" aria-label="Előző">&#8249;</button>
+    <div class="lightbox-img-wrap">
+        <img id="clinicLbImg" src="" alt="">
+        <div class="lightbox-caption">
+            <div class="lightbox-caption-tag" id="clinicLbTag"></div>
+            <div class="lightbox-caption-label" id="clinicLbLabel"></div>
+        </div>
+    </div>
+    <button class="lightbox-nav lightbox-next" onclick="clinicLbNav(1)" aria-label="Következő">&#8250;</button>
+    <div class="lightbox-counter" id="clinicLbDots"></div>
+</div>
+
+<script src="maszk.js"></script>
+
+<!-- ═══════════════════════════════════════════════════════
+     INFLUENCER REF TRACKING — JavaScript
+     ═══════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ── 1. REF PARAMÉTER KINYERÉSE ──
+  var params = new URLSearchParams(window.location.search);
+  var ref = params.get('ref');
+
+  if (ref) {
+    try { sessionStorage.setItem('ultima_ref', ref); } catch(e) {}
+  } else {
+    try { ref = sessionStorage.getItem('ultima_ref'); } catch(e) {}
+  }
+
+  // ── 2. INFLUENCER ADATOK ──
+  var influencers = {
+    'zsedavue':            { name: 'Zsédenyi Adrienn',    ig: '@zsedavue' },
+    'anikoungar':          { name: 'Ungár Anikó',         ig: '@anikoungar' },
+    'brigittaerdohegyi':   { name: 'Erdőhegyi Brigitta',  ig: '@brigittaerdohegyiofficial' },
+    'vigmann_berni':       { name: 'Vigmann Bernadett',    ig: '@vigmann_berni' },
+    'noraaradi':           { name: 'Aradi Nóra',           ig: '@noraaradimakeup' }
+  };
+
+  // Ha nincs érvényes ref, nem csinálunk semmit
+  if (!ref || !influencers[ref]) return;
+
+  // ── 3. KEDVEZMÉNY BANNER MEGJELENÍTÉSE ──
+  var banner = document.getElementById('discount-banner');
+  if (banner) {
+    banner.style.display = 'block';
+    document.body.classList.add('has-discount-banner');
+  }
+
+  // ── 4. ÁRAK MÓDOSÍTÁSA ──
+  // Pricing card fő ár
+  var priceEls = document.querySelectorAll('.mask-price');
+  priceEls.forEach(function(el) {
+    el.innerHTML = '<span class="price-discounted">102.000 Ft</span> <span class="price-original-strikethrough">120.000 Ft</span>';
+  });
+
+  // Pricing amount specifikus
+  var pricingAmount = document.querySelector('.pricing-amount');
+  if (pricingAmount && !pricingAmount.classList.contains('mask-price')) {
+    var txt = pricingAmount.textContent.trim();
+    if (txt.match(/120[\.\s,]?000/)) {
+      pricingAmount.innerHTML = '<span class="price-discounted">102.000 Ft</span> <span class="price-original-strikethrough">120.000 Ft</span>';
+    }
+  }
+
+  // ── 5. JOTFORM LINKEK MÓDOSÍTÁSA (ref paraméter hozzáfűzése) ──
+  var jotformLinks = document.querySelectorAll('.jotform-link, a[href*="jotform"]');
+  jotformLinks.forEach(function(link) {
+    var href = link.getAttribute('href');
+    if (href && href.indexOf('jotform') > -1) {
+      var sep = href.indexOf('?') > -1 ? '&' : '?';
+      link.setAttribute('href', href + sep + 'influencer_ref=' + encodeURIComponent(ref) + '&discount_code=ULTIMA15');
+    }
+  });
+
+  // ── 6. GOOGLE ANALYTICS EVENT ──
+  if (typeof gtag === 'function') {
+    gtag('event', 'influencer_visit', {
+      'influencer_ref': ref,
+      'influencer_name': influencers[ref].name
+    });
+  }
+
+  // ── 7. KONZOL LOG ──
+  console.log('[ULTIMA Mask] Influencer ref aktív:', ref, '—', influencers[ref].name);
+
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════════════════
+     LIGHTBOX — Galéria képnézegető JavaScript
+     ═══════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  var lbImages = [
+    { src: 'images/mask/mask-model-dark.jpg',  tag: 'Prémium kivitelezés',   label: 'Elegáns portré — gyöngy nyaklánc, vörös LED' },
+    { src: 'images/mask/mask-product.jpg',     tag: 'Méhsejt dizájn',        label: 'Légáteresztő 3D struktúra' },
+    { src: 'images/mask/mask-waterproof.jpg',  tag: 'IP67 vízálló',          label: 'Higiénikus, egyszerűen tisztítható' },
+    { src: 'images/mask/mask-exploded.jpg',    tag: 'Szabadalom',            label: 'Többrétegű LED panel — robbantott nézet' },
+    { src: 'images/mask/mask-model-light.jpg', tag: 'Beépített szemvédelem', label: 'Napi fényterápia, kényelemben' },
+    { src: 'images/mask/heni-mask-red.jpg',    tag: 'Vörös fényterápia',     label: 'Élő kezelés a klinikánkon' }
+  ];
+
+  var currentIdx = 0;
+  var lb = document.getElementById('galleryLightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbTag = document.getElementById('lbTag');
+  var lbLabel = document.getElementById('lbLabel');
+  var lbDots = document.getElementById('lbDots');
+
+  // Dots generálása
+  lbImages.forEach(function(_, i) {
+    var dot = document.createElement('div');
+    dot.className = 'lightbox-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = function(e) { e.stopPropagation(); showLbImage(i); };
+    lbDots.appendChild(dot);
+  });
+
+  function showLbImage(idx) {
+    currentIdx = idx;
+    lbImg.style.opacity = '0';
+    setTimeout(function() {
+      lbImg.src = lbImages[idx].src;
+      lbImg.alt = lbImages[idx].label;
+      lbTag.textContent = lbImages[idx].tag;
+      lbLabel.textContent = lbImages[idx].label;
+      lbImg.style.opacity = '1';
+      var dots = lbDots.querySelectorAll('.lightbox-dot');
+      dots.forEach(function(d, i) {
+        d.className = 'lightbox-dot' + (i === idx ? ' active' : '');
+      });
+    }, 150);
+  }
+
+  window.openLightbox = function(idx) {
+    currentIdx = idx;
+    lbImg.src = lbImages[idx].src;
+    lbImg.alt = lbImages[idx].label;
+    lbTag.textContent = lbImages[idx].tag;
+    lbLabel.textContent = lbImages[idx].label;
+    lbImg.style.opacity = '1';
+    var dots = lbDots.querySelectorAll('.lightbox-dot');
+    dots.forEach(function(d, i) {
+      d.className = 'lightbox-dot' + (i === idx ? ' active' : '');
+    });
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeLightbox = function() {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  window.lbNav = function(dir) {
+    var newIdx = (currentIdx + dir + lbImages.length) % lbImages.length;
+    showLbImage(newIdx);
+  };
+
+  // Billentyűzet támogatás
+  document.addEventListener('keydown', function(e) {
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
+  });
+
+  // Swipe támogatás mobilon
+  var touchStartX = 0;
+  lb.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  lb.addEventListener('touchend', function(e) {
+    var diff = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(diff) > 50) {
+      lbNav(diff > 0 ? -1 : 1);
+    }
+  }, { passive: true });
+
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════════════════
+     CLINIC LIGHTBOX — Klinika galéria JavaScript
+     ═══════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  var clinicImages = [
+    { src: 'images/clinic/waiting-room-1.jpg',     tag: 'Váróterem',   label: 'Elegáns fogadótér — szürke bútorok, arany részletek' },
+    { src: 'images/clinic/waiting-room-2.jpg',     tag: 'Váróterem',   label: 'A klinika belső tere — prémium hangulat' },
+    { src: 'images/clinic/team-together.jpg',      tag: 'Csapatunk',   label: 'Szakmai csapatunk fehérben' },
+    { src: 'images/clinic/team-products-1.jpg',    tag: 'Termékeink',  label: 'Prémium esztétikai termékek' },
+    { src: 'images/clinic/colleague-portrait.jpg', tag: 'Csapattag',   label: 'Munkatársunk a klinikán' }
+  ];
+
+  var currentIdx = 0;
+  var lb = document.getElementById('clinicLightbox');
+  var lbImg = document.getElementById('clinicLbImg');
+  var lbTag = document.getElementById('clinicLbTag');
+  var lbLabel = document.getElementById('clinicLbLabel');
+  var lbDots = document.getElementById('clinicLbDots');
+
+  clinicImages.forEach(function(_, i) {
+    var dot = document.createElement('div');
+    dot.className = 'lightbox-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = function(e) { e.stopPropagation(); showImg(i); };
+    lbDots.appendChild(dot);
+  });
+
+  function showImg(idx) {
+    currentIdx = idx;
+    lbImg.style.opacity = '0';
+    setTimeout(function() {
+      lbImg.src = clinicImages[idx].src;
+      lbImg.alt = clinicImages[idx].label;
+      lbTag.textContent = clinicImages[idx].tag;
+      lbLabel.textContent = clinicImages[idx].label;
+      lbImg.style.opacity = '1';
+      var dots = lbDots.querySelectorAll('.lightbox-dot');
+      dots.forEach(function(d, i) {
+        d.className = 'lightbox-dot' + (i === idx ? ' active' : '');
+      });
+    }, 150);
+  }
+
+  window.openClinicLightbox = function(idx) {
+    currentIdx = idx;
+    lbImg.src = clinicImages[idx].src;
+    lbImg.alt = clinicImages[idx].label;
+    lbTag.textContent = clinicImages[idx].tag;
+    lbLabel.textContent = clinicImages[idx].label;
+    lbImg.style.opacity = '1';
+    var dots = lbDots.querySelectorAll('.lightbox-dot');
+    dots.forEach(function(d, i) {
+      d.className = 'lightbox-dot' + (i === idx ? ' active' : '');
+    });
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeClinicLightbox = function() {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  window.clinicLbNav = function(dir) {
+    var newIdx = (currentIdx + dir + clinicImages.length) % clinicImages.length;
+    showImg(newIdx);
+  };
+
+  document.addEventListener('keydown', function(e) {
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape') closeClinicLightbox();
+    if (e.key === 'ArrowLeft') clinicLbNav(-1);
+    if (e.key === 'ArrowRight') clinicLbNav(1);
+  });
+
+  var touchStartX = 0;
+  lb.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  lb.addEventListener('touchend', function(e) {
+    var diff = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(diff) > 50) {
+      clinicLbNav(diff > 0 ? -1 : 1);
+    }
+  }, { passive: true });
+
+})();
+</script>
+
+</body>
+</html>
