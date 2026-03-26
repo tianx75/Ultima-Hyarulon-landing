@@ -442,6 +442,60 @@
         .lightbox-close { top: 0.75rem; right: 0.75rem; width: 38px; height: 38px; }
         .lightbox-caption { display: none; }
       }
+
+      /* ═══ CLINIC GALLERY GRID ═══ */
+      .clinic-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
+      }
+      .clinic-gallery-card {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        aspect-ratio: 1/1;
+        cursor: pointer;
+        border: 1px solid rgba(201,168,76,0.15);
+        background: #111;
+      }
+      .clinic-gallery-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease, filter 0.5s ease;
+        filter: brightness(0.85);
+      }
+      .clinic-gallery-card:hover img {
+        transform: scale(1.08);
+        filter: brightness(1);
+      }
+      .clinic-gallery-overlay {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        padding: 2rem 0.8rem 0.7rem;
+        pointer-events: none;
+      }
+      .clinic-gallery-overlay span {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .clinic-visual { position: relative; }
+
+      @media (max-width: 768px) {
+        .clinic-gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.75rem;
+        }
+        .clinic-gallery-card:last-child:nth-child(odd) {
+          grid-column: 1 / -1;
+          aspect-ratio: 16/9;
+        }
+      }
     </style>
 </head>
 <body>
@@ -880,8 +934,9 @@
 <section class="section" id="clinic">
     <div class="container">
         <div class="clinic-grid">
-            <div class="clinic-visual" onclick="document.getElementById('imageModal').style.display='flex'">
-                <img src="images/clinic-buttom.png" alt="clinic-buttom">
+            <div class="clinic-visual" onclick="openClinicLightbox(0)">
+                <img src="images/clinic/waiting-room-1.jpg" alt="The Ultimate Beauty Clinic — váró">
+                <div style="position:absolute; bottom:12px; right:12px; background:rgba(0,0,0,0.5); color:var(--gold); font-size:0.7rem; padding:4px 10px; border-radius:4px; letter-spacing:0.1em; text-transform:uppercase; backdrop-filter:blur(4px);">Galéria ▸</div>
             </div>
             <div class="fade-in">
                 <div class="section-label">Elérhető nálunk</div>
@@ -894,6 +949,26 @@
                     <div class="clinic-feature">Nemzetközi protokollok, több mint 8.000 páciens tapasztalata</div>
                     <div class="clinic-feature">Az ULTIMA technológia budapesti referencia klinikája</div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Klinika galéria -->
+        <div class="clinic-gallery-grid fade-in" style="margin-top:3rem;">
+            <div class="clinic-gallery-card" onclick="openClinicLightbox(1)">
+                <img src="images/clinic/waiting-room-2.jpg" alt="Elegáns váróterem">
+                <div class="clinic-gallery-overlay"><span>Váróterem</span></div>
+            </div>
+            <div class="clinic-gallery-card" onclick="openClinicLightbox(2)">
+                <img src="images/clinic/team-together.jpg" alt="Csapat">
+                <div class="clinic-gallery-overlay"><span>Csapatunk</span></div>
+            </div>
+            <div class="clinic-gallery-card" onclick="openClinicLightbox(3)">
+                <img src="images/clinic/team-products-1.jpg" alt="Prémium termékek">
+                <div class="clinic-gallery-overlay"><span>Termékeink</span></div>
+            </div>
+            <div class="clinic-gallery-card" onclick="openClinicLightbox(4)">
+                <img src="images/clinic/colleague-portrait.jpg" alt="Munkatárs">
+                <div class="clinic-gallery-overlay"><span>Csapattag</span></div>
             </div>
         </div>
     </div>
@@ -960,6 +1035,23 @@
     </div>
     <button class="lightbox-nav lightbox-next" onclick="lbNav(1)" aria-label="Következő">&#8250;</button>
     <div class="lightbox-counter" id="lbDots"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CLINIC LIGHTBOX — Klinika galéria képnézegető
+     ═══════════════════════════════════════════════════════ -->
+<div class="lightbox" id="clinicLightbox" onclick="if(event.target===this)closeClinicLightbox()">
+    <button class="lightbox-close" onclick="closeClinicLightbox()" aria-label="Bezárás">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="clinicLbNav(-1)" aria-label="Előző">&#8249;</button>
+    <div class="lightbox-img-wrap">
+        <img id="clinicLbImg" src="" alt="">
+        <div class="lightbox-caption">
+            <div class="lightbox-caption-tag" id="clinicLbTag"></div>
+            <div class="lightbox-caption-label" id="clinicLbLabel"></div>
+        </div>
+    </div>
+    <button class="lightbox-nav lightbox-next" onclick="clinicLbNav(1)" aria-label="Következő">&#8250;</button>
+    <div class="lightbox-counter" id="clinicLbDots"></div>
 </div>
 
 <script src="maszk.js"></script>
@@ -1129,6 +1221,97 @@
     var diff = e.changedTouches[0].screenX - touchStartX;
     if (Math.abs(diff) > 50) {
       lbNav(diff > 0 ? -1 : 1);
+    }
+  }, { passive: true });
+
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════════════════
+     CLINIC LIGHTBOX — Klinika galéria JavaScript
+     ═══════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  var clinicImages = [
+    { src: 'images/clinic/waiting-room-1.jpg',     tag: 'Váróterem',   label: 'Elegáns fogadótér — szürke bútorok, arany részletek' },
+    { src: 'images/clinic/waiting-room-2.jpg',     tag: 'Váróterem',   label: 'A klinika belső tere — prémium hangulat' },
+    { src: 'images/clinic/team-together.jpg',      tag: 'Csapatunk',   label: 'Szakmai csapatunk fehérben' },
+    { src: 'images/clinic/team-products-1.jpg',    tag: 'Termékeink',  label: 'Prémium esztétikai termékek' },
+    { src: 'images/clinic/colleague-portrait.jpg', tag: 'Csapattag',   label: 'Munkatársunk a klinikán' }
+  ];
+
+  var currentIdx = 0;
+  var lb = document.getElementById('clinicLightbox');
+  var lbImg = document.getElementById('clinicLbImg');
+  var lbTag = document.getElementById('clinicLbTag');
+  var lbLabel = document.getElementById('clinicLbLabel');
+  var lbDots = document.getElementById('clinicLbDots');
+
+  clinicImages.forEach(function(_, i) {
+    var dot = document.createElement('div');
+    dot.className = 'lightbox-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = function(e) { e.stopPropagation(); showImg(i); };
+    lbDots.appendChild(dot);
+  });
+
+  function showImg(idx) {
+    currentIdx = idx;
+    lbImg.style.opacity = '0';
+    setTimeout(function() {
+      lbImg.src = clinicImages[idx].src;
+      lbImg.alt = clinicImages[idx].label;
+      lbTag.textContent = clinicImages[idx].tag;
+      lbLabel.textContent = clinicImages[idx].label;
+      lbImg.style.opacity = '1';
+      var dots = lbDots.querySelectorAll('.lightbox-dot');
+      dots.forEach(function(d, i) {
+        d.className = 'lightbox-dot' + (i === idx ? ' active' : '');
+      });
+    }, 150);
+  }
+
+  window.openClinicLightbox = function(idx) {
+    currentIdx = idx;
+    lbImg.src = clinicImages[idx].src;
+    lbImg.alt = clinicImages[idx].label;
+    lbTag.textContent = clinicImages[idx].tag;
+    lbLabel.textContent = clinicImages[idx].label;
+    lbImg.style.opacity = '1';
+    var dots = lbDots.querySelectorAll('.lightbox-dot');
+    dots.forEach(function(d, i) {
+      d.className = 'lightbox-dot' + (i === idx ? ' active' : '');
+    });
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeClinicLightbox = function() {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  window.clinicLbNav = function(dir) {
+    var newIdx = (currentIdx + dir + clinicImages.length) % clinicImages.length;
+    showImg(newIdx);
+  };
+
+  document.addEventListener('keydown', function(e) {
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape') closeClinicLightbox();
+    if (e.key === 'ArrowLeft') clinicLbNav(-1);
+    if (e.key === 'ArrowRight') clinicLbNav(1);
+  });
+
+  var touchStartX = 0;
+  lb.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  lb.addEventListener('touchend', function(e) {
+    var diff = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(diff) > 50) {
+      clinicLbNav(diff > 0 ? -1 : 1);
     }
   }, { passive: true });
 
