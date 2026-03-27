@@ -525,7 +525,7 @@
             <li><a href="#gallery">Galéria</a></li>
             <li><a href="#synergy">Szinergia</a></li>
             <li><a href="#pricing">Ár</a></li>
-            <li><a href="https://pci.jotform.com/form/260373420481047" target="_blank" rel="noopener noreferrer" class="nav-cta jotform-link">Érdeklődöm</a></li>
+            <li><a href="rendeles.html" target="_blank" rel="noopener noreferrer" class="nav-cta jotform-link">Érdeklődöm</a></li>
         </ul>
         <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menü megnyitása">
             <span></span><span></span><span></span>
@@ -559,7 +559,7 @@
                 </div>
             </div>
             <div class="hero-buttons">
-                <a href="https://pci.jotform.com/form/260373420481047" target="_blank" rel="noopener noreferrer" class="btn-primary jotform-link">Érdeklődöm</a>
+                <a href="rendeles.html" target="_blank" rel="noopener noreferrer" class="btn-primary jotform-link">Érdeklődöm</a>
                 <a href="#wavelengths" class="btn-secondary">Felfedezem</a>
             </div>
             <div class="hero-banner">
@@ -920,7 +920,7 @@
                 <li>IP67 vízálló — egyszerűen tisztítható</li>
                 <li>Élelmiszer-minőségű szilikon</li>
             </ul>
-            <a href="https://pci.jotform.com/form/260373420481047" target="_blank" rel="noopener noreferrer" class="btn-primary jotform-link">Érdeklődöm a vásárlásról</a>
+            <a href="rendeles.html" target="_blank" rel="noopener noreferrer" class="btn-primary jotform-link">Megrendelés</a>
         </div>
 
         <!-- Bónusz ajánlat -->
@@ -984,7 +984,7 @@
             <p class="section-subtitle">
                 A bőröd megújulása nem áll meg a rendelő ajtajában. Az ULTIMA LED Beauty Mask-kal napi szinten tartod bekapcsolva a kollagénaktivációt.
             </p>
-            <a href="https://pci.jotform.com/form/260373420481047" target="_blank" rel="noopener noreferrer" class="btn-primary jotform-link" style="display:inline-flex; margin-top:1rem;">Érdeklődöm a maszkról</a>
+            <a href="rendeles.html" target="_blank" rel="noopener noreferrer" class="btn-primary jotform-link" style="display:inline-flex; margin-top:1rem;">Megrendelés</a>
         </div>
     </div>
 </section>
@@ -1110,11 +1110,11 @@
     }
   }
 
-  // ── 5. JOTFORM LINKEK MÓDOSÍTÁSA (ref paraméter hozzáfűzése) ──
-  var jotformLinks = document.querySelectorAll('.jotform-link, a[href*="jotform"]');
-  jotformLinks.forEach(function(link) {
+  // ── 5. RENDELÉSI LINKEK MÓDOSÍTÁSA (influencer paraméterek hozzáfűzése) ──
+  var orderLinks = document.querySelectorAll('.jotform-link, a[href*="rendeles"]');
+  orderLinks.forEach(function(link) {
     var href = link.getAttribute('href');
-    if (href && href.indexOf('jotform') > -1) {
+    if (href && href.indexOf('rendeles') > -1) {
       var sep = href.indexOf('?') > -1 ? '&' : '?';
       link.setAttribute('href', href + sep + 'influencer_ref=' + encodeURIComponent(ref) + '&discount_code=ULTIMA15');
     }
