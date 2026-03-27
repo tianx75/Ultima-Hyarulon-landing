@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ULTIMA LED Beauty Mask - Rendelés</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #c9a96e;
+  --gold-light: #e4cfa0;
+  --gold-dark: #9a7b4f;
+  --gold-alt: #c9a84c;
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-card: #161616;
+  --text-primary: #f0ece4;
+  --text-secondary: #a09a90;
+  --text-muted: #8a857d;
+  --border: #2a2520;
+  --error: #e74c3c;
+  --success: #27ae60;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 20% 20%, rgba(139,0,0,0.06), transparent),
+    radial-gradient(ellipse 500px 300px at 80% 80%, rgba(36,113,163,0.04), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== HEADER ===== */
+.form-header {
+  text-align: center;
+  padding: 40px 20px 32px;
+  margin-bottom: 24px;
+}
+
+.form-header .brand {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.form-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.form-header h1 span {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.form-header .subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+/* ===== OBSERV BANNER ===== */
+.observ-banner {
+  background: linear-gradient(135deg, #161616 0%, #1a1a2e 50%, #161616 100%);
+  border: 1px solid var(--gold-dark);
+  border-radius: 16px;
+  padding: 32px 28px;
+  margin-bottom: 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.observ-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.observ-banner .bonus-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-alt);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.observ-banner .bonus-label .star {
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.observ-banner h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.observ-banner h2 .highlight {
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
+.observ-banner p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.observ-banner p strong {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ===== PRICING BADGE ===== */
+.pricing-badge {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.price-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 28px;
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  max-width: 280px;
+  transition: border-color 0.3s;
+}
+
+.price-card.active {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, rgba(201,169,110,0.06) 0%, var(--bg-card) 100%);
+}
+
+.price-card .price-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.price-card .price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.price-card .price small {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.price-card.active .price {
+  color: var(--gold);
+}
+
+.price-card .price-note {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.discount-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--bg-primary);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+/* ===== FORM SECTIONS ===== */
+.form-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  margin-bottom: 16px;
+}
+
+.form-section .section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.04em;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+
+.form-group label .req {
+  color: var(--gold);
+  margin-left: 2px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  -webkit-appearance: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+  font-weight: 200;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold-dark);
+  box-shadow: 0 0 0 3px rgba(201,169,110,0.1);
+}
+
+.form-group input.error {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgba(231,76,60,0.1);
+}
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.error-msg {
+  font-size: 11px;
+  color: var(--error);
+  margin-top: 4px;
+  display: none;
+}
+
+.form-group input.error + .error-msg {
+  display: block;
+}
+
+/* ===== CHECKBOX ===== */
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  -webkit-tap-highlight-color: transparent;
+  margin-bottom: 12px;
+}
+
+.checkbox-row:hover {
+  border-color: var(--gold-dark);
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--gold);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.checkbox-row span {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.checkbox-row span a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.checkbox-row.required-error {
+  border-color: var(--error);
+}
+
+/* ===== SUBMIT ===== */
+.submit-btn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(201,169,110,0.25);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-btn .spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(10,10,10,0.3);
+  border-top-color: var(--bg-primary);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin: 0 auto;
+}
+
+.submit-btn.loading .btn-text { display: none; }
+.submit-btn.loading .spinner { display: inline-block; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ===== FOOTER ===== */
+.form-footer {
+  text-align: center;
+  margin-top: 24px;
+  padding: 20px;
+}
+
+.form-footer .secure {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.form-footer .clinic-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 12px;
+  letter-spacing: 0.08em;
+}
+
+.form-footer .clinic-name a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* ===== THANK YOU ===== */
+.thank-you {
+  display: none;
+  text-align: center;
+  padding: 60px 24px;
+  animation: fadeUp 0.6s ease-out;
+}
+
+.thank-you.show { display: block; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.thank-you .check-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 36px;
+  color: var(--gold);
+}
+
+.thank-you h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.thank-you p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.thank-you .bonus-box {
+  background: linear-gradient(135deg, #161616 0%, #1a1a2e 50%, #161616 100%);
+  border: 1px solid var(--gold-dark);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 28px 0;
+  text-align: center;
+}
+
+.thank-you .bonus-box .star {
+  color: var(--gold-alt);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.thank-you .bonus-box h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--gold-light);
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.thank-you .bonus-box p {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.thank-you .booking-link {
+  display: inline-block;
+  padding: 14px 36px;
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  margin-top: 16px;
+}
+
+.thank-you .booking-link:hover {
+  background: var(--gold);
+  color: var(--bg-primary);
+}
+
+/* ===== QR CODE SECTION ===== */
+.qr-section {
+  text-align: center;
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.qr-section h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.qr-section .qr-placeholder {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 12px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.qr-section .qr-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.qr-section .qr-placeholder canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.qr-section p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .form-header h1 { font-size: 28px; }
+  .form-row { flex-direction: column; gap: 0; }
+  .pricing-badge { flex-direction: column; align-items: center; }
+  .price-card { max-width: 100%; }
+  .observ-banner { padding: 24px 20px; }
+  .observ-banner h2 { font-size: 22px; }
+  .form-section { padding: 22px 18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- ===== FORM ===== -->
+  <div id="formContainer">
+
+    <div class="form-header">
+      <div class="brand">The Ultimate Beauty</div>
+      <h1><span>ULTIMA</span> LED Beauty Mask</h1>
+      <p class="subtitle">Rendelési Űrlap</p>
+    </div>
+
+    <!-- Observ 520 Banner -->
+    <div class="observ-banner">
+      <div class="bonus-label">
+        <span class="star">&#9733;</span>
+        EXKLUZÍV BÓNUSZ A VÁSÁRLÓKNAK
+        <span class="star">&#9733;</span>
+      </div>
+      <h2>Ingyenes konzultáció és<br><span class="highlight">Observ 520</span> bőrdiagnosztika</h2>
+      <p>Minden maszkvásárlónk személyes konzultációt és professzionális
+      <strong>Observ 520 bőranalízist</strong> kap ingyenesen a The Ultimate Beauty Clinic-en.
+      Pontosan látni fogod, mire van szüksége a bőrödnek.</p>
+    </div>
+
+    <!-- Pricing -->
+    <div class="pricing-badge">
+      <div class="price-card" id="priceNormal">
+        <div class="price-label">Normál ár</div>
+        <div class="price">120.000 <small>Ft</small></div>
+        <div class="price-note">Direkt vásárlás</div>
+      </div>
+      <div class="price-card active" id="priceInfluencer" style="display:none;">
+        <div class="discount-tag">-15% KEDVEZMÉNY</div>
+        <div class="price-label">Influencer ár</div>
+        <div class="price">102.000 <small>Ft</small></div>
+        <div class="price-note" id="influencerRefName"></div>
+      </div>
+    </div>
+
+    <form id="orderForm" novalidate>
+      <!-- Hidden fields -->
+      <input type="hidden" name="influencer_ref" id="influencerRef" value="">
+      <input type="hidden" name="discount_code" id="discountCode" value="">
+
+      <!-- Personal info -->
+      <div class="form-section">
+        <div class="section-title">Személyes adatok</div>
+
+        <div class="form-group">
+          <label>Teljes név <span class="req">*</span></label>
+          <input type="text" name="nev" required placeholder="Vezetéknév Keresztnév" autocomplete="name">
+          <div class="error-msg">Kérjük adja meg a teljes nevét</div>
+        </div>
+
+        <div class="form-group">
+          <label>Email cím <span class="req">*</span></label>
+          <input type="email" name="email" required placeholder="pelda@email.com" autocomplete="email">
+          <div class="error-msg">Érvényes email címet adjon meg</div>
+        </div>
+
+        <div class="form-group">
+          <label>Telefonszám <span class="req">*</span></label>
+          <input type="tel" name="telefon" required placeholder="+36 30 123 4567" autocomplete="tel">
+          <div class="error-msg">Kérjük adja meg telefonszámát</div>
+        </div>
+      </div>
+
+      <!-- Shipping -->
+      <div class="form-section">
+        <div class="section-title">Szállítási adatok</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Irányítószám <span class="req">*</span></label>
+            <input type="text" name="iranyitoszam" required placeholder="1234" autocomplete="postal-code" maxlength="5">
+            <div class="error-msg">Kötelező mező</div>
+          </div>
+          <div class="form-group">
+            <label>Város <span class="req">*</span></label>
+            <input type="text" name="varos" required placeholder="Budapest" autocomplete="address-level2">
+            <div class="error-msg">Kötelező mező</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Utca + házszám <span class="req">*</span></label>
+          <input type="text" name="utca" required placeholder="Példa utca 12. 3/A" autocomplete="street-address">
+          <div class="error-msg">Kötelező mező</div>
+        </div>
+
+        <div class="form-group">
+          <label>Megjegyzés</label>
+          <textarea name="megjegyzes" placeholder="Kapucsengő, emelet, szállítási időpont preferencia..."></textarea>
+        </div>
+      </div>
+
+      <!-- Terms -->
+      <div class="form-section">
+        <div class="section-title">Összesítés</div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);margin-bottom:16px;">
+          <span style="font-size:14px;color:var(--text-secondary)">ULTIMA LED Beauty Mask</span>
+          <span id="summaryPrice" style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);font-weight:600;">120.000 Ft</span>
+        </div>
+
+        <label class="checkbox-row" id="aszfRow">
+          <input type="checkbox" name="aszf" id="aszfCheck" required>
+          <span>Elolvastam és elfogadom az <a href="https://mask.theultimatebeauty.net/aszf.pdf" target="_blank">Általános Szerződési Feltételeket</a>.</span>
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">
+        <span class="btn-text">MEGRENDELÉS</span>
+        <span class="spinner"></span>
+      </button>
+    </form>
+
+    <div class="form-footer">
+      <div class="secure">&#128274; Biztonságos kapcsolat &bull; Adatai védve vannak</div>
+      <div class="clinic-name">
+        <a href="https://theultimatebeauty.net" target="_blank">The Ultimate Beauty Clinic</a> &bull; Budapest
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== THANK YOU PAGE ===== -->
+  <div class="thank-you" id="thankYou">
+    <div class="check-circle">&#10003;</div>
+    <h2>Köszönjük a rendelést!</h2>
+    <p>Hamarosan felvesszük Önnel a kapcsolatot a szállítási részletekről.</p>
+
+    <div class="bonus-box">
+      <div class="star">&#9733; Bónusz</div>
+      <h3>Ingyenes Observ 520 bőrdiagnosztika</h3>
+      <p>a The Ultimate Beauty Clinic-en!</p>
+    </div>
+
+    <p style="font-size:13px;color:var(--text-muted)">Időpontfoglalás:</p>
+    <a href="https://theultimatebeauty.net" target="_blank" class="booking-link">theultimatebeauty.net</a>
+  </div>
+
+  <!-- ===== QR CODE ===== -->
+  <div class="qr-section" id="qrSection">
+    <h3>Influencer QR kód</h3>
+    <div class="qr-placeholder" id="qrPlaceholder">
+      <canvas id="qrCanvas"></canvas>
+    </div>
+    <p id="qrLabel">Szkenneld be a kedvezményes rendeléshez</p>
+  </div>
+
+</div>
+
+<!-- QR Code library (lightweight) -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+
+<script>
+// ============ URL PARAMS (influencer tracking) ============
+const params = new URLSearchParams(window.location.search);
+const influencerRef = params.get('influencer_ref') || '';
+const discountCode = params.get('discount_code') || '';
+const isInfluencer = !!(influencerRef && discountCode);
+
+document.getElementById('influencerRef').value = influencerRef;
+document.getElementById('discountCode').value = discountCode;
+
+if (isInfluencer) {
+  document.getElementById('priceInfluencer').style.display = 'block';
+  document.getElementById('priceNormal').classList.remove('active');
+  document.getElementById('priceInfluencer').classList.add('active');
+  document.getElementById('influencerRefName').textContent = 'Kód: ' + discountCode;
+  document.getElementById('summaryPrice').textContent = '102.000 Ft';
+}
+
+// ============ QR CODE ============
+const qrSection = document.getElementById('qrSection');
+
+// Generate QR for the current page URL (or influencer URL)
+function generateQR() {
+  const baseUrl = window.location.origin + window.location.pathname;
+  let qrUrl = baseUrl;
+
+  if (isInfluencer) {
+    qrUrl = baseUrl + '?influencer_ref=' + encodeURIComponent(influencerRef) + '&discount_code=' + encodeURIComponent(discountCode);
+    document.getElementById('qrLabel').textContent = influencerRef + ' - kedvezményes rendelési link';
+  } else {
+    document.getElementById('qrLabel').textContent = 'ULTIMA LED Beauty Mask rendelés';
+  }
+
+  if (typeof QRCode !== 'undefined') {
+    QRCode.toCanvas(document.getElementById('qrCanvas'), qrUrl, {
+      width: 280,
+      margin: 1,
+      color: { dark: '#1a1a2e', light: '#ffffff' }
+    }, function(err) {
+      if (err) {
+        console.error('QR error:', err);
+        qrSection.style.display = 'none';
+      }
+    });
+  } else {
+    qrSection.style.display = 'none';
+  }
+}
+
+// Wait for QR lib to load
+if (document.readyState === 'complete') {
+  generateQR();
+} else {
+  window.addEventListener('load', generateQR);
+}
+
+// ============ FORM VALIDATION ============
+const form = document.getElementById('orderForm');
+
+function validateField(input) {
+  let valid = true;
+
+  if (input.required && !input.value.trim()) {
+    valid = false;
+  }
+
+  if (input.type === 'email' && input.value) {
+    valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
+  }
+
+  if (valid) {
+    input.classList.remove('error');
+  } else {
+    input.classList.add('error');
+  }
+
+  return valid;
+}
+
+// Real-time validation
+form.querySelectorAll('input[required], textarea[required]').forEach(input => {
+  input.addEventListener('blur', () => validateField(input));
+  input.addEventListener('input', () => {
+    if (input.classList.contains('error')) validateField(input);
+  });
+});
+
+// ============ FORM SUBMIT ============
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  // Validate all required fields
+  let allValid = true;
+  form.querySelectorAll('input[required]').forEach(input => {
+    if (!validateField(input)) allValid = false;
+  });
+
+  // Check ÁSZF
+  const aszf = document.getElementById('aszfCheck');
+  const aszfRow = document.getElementById('aszfRow');
+  if (!aszf.checked) {
+    aszfRow.classList.add('required-error');
+    allValid = false;
+  } else {
+    aszfRow.classList.remove('required-error');
+  }
+
+  if (!allValid) {
+    // Scroll to first error
+    const firstError = form.querySelector('.error, .required-error');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  // Collect data
+  const btn = document.getElementById('submitBtn');
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  const formData = new FormData(form);
+  const data = {};
+  formData.forEach((val, key) => data[key] = val);
+  data.timestamp = new Date().toISOString();
+  data.ar = isInfluencer ? '102000' : '120000';
+  data.influencer = influencerRef || 'direkt';
+
+  // Save to Google Sheets (if configured)
+  const sheetsUrl = localStorage.getItem('tub_mask_sheets_url');
+  if (sheetsUrl) {
+    try {
+      await fetch(sheetsUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch (err) {
+      console.error('Sheets error:', err);
+    }
+  }
+
+  // Save locally
+  try {
+    const key = 'mask_order_' + data.nev.replace(/\s/g, '_') + '_' + Date.now();
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch(e) {}
+
+  // Show thank you
+  setTimeout(() => {
+    document.getElementById('formContainer').style.display = 'none';
+    const ty = document.getElementById('thankYou');
+    ty.classList.add('show');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    btn.classList.remove('loading');
+    btn.disabled = false;
+  }, 800);
+});
+
+// ÁSZF checkbox listener
+document.getElementById('aszfCheck').addEventListener('change', function() {
+  document.getElementById('aszfRow').classList.remove('required-error');
+});
+</script>
+</body>
+</html>
