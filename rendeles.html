@@ -155,11 +155,140 @@ body::before {
   font-weight: 500;
 }
 
+.observ-value {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 14px;
+  background: rgba(201,169,110,0.12);
+  border: 1px solid rgba(201,169,110,0.25);
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--gold-light);
+  letter-spacing: 0.05em;
+}
+
+/* ===== DELIVERY SELECTOR ===== */
+.delivery-selector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.delivery-option {
+  flex: 1;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.delivery-option:hover {
+  border-color: var(--gold-dark);
+}
+
+.delivery-option.selected {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, rgba(201,169,110,0.08) 0%, var(--bg-card) 100%);
+}
+
+.delivery-option.selected::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.delivery-option .icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.delivery-option .option-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.delivery-option.selected .option-title {
+  color: var(--gold);
+}
+
+.delivery-option .option-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.delivery-option .option-bonus {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(39,174,96,0.12);
+  border: 1px solid rgba(39,174,96,0.25);
+  border-radius: 20px;
+  font-size: 11px;
+  color: var(--success);
+  font-weight: 500;
+}
+
+.delivery-option .option-fee {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(201,169,110,0.08);
+  border: 1px solid rgba(201,169,110,0.2);
+  border-radius: 20px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.delivery-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Check indicator */
+.delivery-option .check-indicator {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  transition: all 0.3s;
+}
+
+.delivery-option.selected .check-indicator {
+  border-color: var(--gold);
+  background: var(--gold);
+}
+
+.delivery-option.selected .check-indicator::after {
+  content: '✓';
+  color: var(--bg-primary);
+  font-size: 13px;
+  font-weight: 700;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* ===== PRICING BADGE ===== */
 .pricing-badge {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 12px;
   margin-bottom: 24px;
   flex-wrap: wrap;
 }
@@ -168,11 +297,11 @@ body::before {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 20px 28px;
+  padding: 16px 20px;
   text-align: center;
   flex: 1;
-  min-width: 200px;
-  max-width: 280px;
+  min-width: 140px;
+  max-width: 220px;
   transition: border-color 0.3s;
 }
 
@@ -182,22 +311,22 @@ body::before {
 }
 
 .price-card .price-label {
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .price-card .price {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 600;
   color: var(--text-primary);
 }
 
 .price-card .price small {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--text-secondary);
 }
@@ -207,9 +336,9 @@ body::before {
 }
 
 .price-card .price-note {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-muted);
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .discount-tag {
@@ -221,7 +350,7 @@ body::before {
   letter-spacing: 0.1em;
   padding: 3px 10px;
   border-radius: 20px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 /* ===== FORM SECTIONS ===== */
@@ -286,7 +415,8 @@ body::before {
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
   outline: none;
   border-color: var(--gold-dark);
   box-shadow: 0 0 0 3px rgba(201,169,110,0.1);
@@ -300,6 +430,14 @@ body::before {
 .form-group textarea {
   min-height: 80px;
   resize: vertical;
+}
+
+.form-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238a857d' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
 }
 
 .form-row {
@@ -319,6 +457,80 @@ body::before {
 }
 
 .form-group input.error + .error-msg {
+  display: block;
+}
+
+/* ===== APPOINTMENT SECTION ===== */
+.appointment-section {
+  background: linear-gradient(135deg, #161616 0%, #12161e 50%, #161616 100%);
+  border: 1px solid var(--gold-dark);
+  border-radius: 16px;
+  padding: 28px 24px;
+  margin-bottom: 16px;
+}
+
+.appointment-section .section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--gold-light);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(201,169,110,0.2);
+  letter-spacing: 0.04em;
+}
+
+.appointment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.appointment-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.appointment-option:hover {
+  border-color: var(--gold-dark);
+}
+
+.appointment-option.selected {
+  border-color: var(--gold);
+  background: rgba(201,169,110,0.06);
+}
+
+.appointment-option input[type="radio"] {
+  accent-color: var(--gold);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.appointment-option .appt-label {
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.appointment-option .appt-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.date-picker-container {
+  margin-top: 12px;
+  display: none;
+}
+
+.date-picker-container.show {
   display: block;
 }
 
@@ -364,6 +576,57 @@ body::before {
 
 .checkbox-row.required-error {
   border-color: var(--error);
+}
+
+/* ===== SUMMARY ===== */
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.summary-line .label {
+  color: var(--text-secondary);
+}
+
+.summary-line .value {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.summary-line.total {
+  border-bottom: none;
+  padding-top: 14px;
+  margin-top: 4px;
+}
+
+.summary-line.total .label {
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.summary-line.total .value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.summary-line .original-price {
+  text-decoration: line-through;
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-right: 8px;
+}
+
+.summary-line .free-tag {
+  color: var(--success);
+  font-weight: 500;
+  font-size: 13px;
 }
 
 /* ===== SUBMIT ===== */
@@ -417,6 +680,21 @@ body::before {
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
+.payment-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 14px;
+  opacity: 0.6;
+}
+
+.payment-icons span {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
 /* ===== FOOTER ===== */
 .form-footer {
   text-align: center;
@@ -434,11 +712,18 @@ body::before {
   gap: 6px;
 }
 
+.form-footer .clinic-info {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
 .form-footer .clinic-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 14px;
   color: var(--text-secondary);
-  margin-top: 12px;
+  margin-top: 8px;
   letter-spacing: 0.08em;
 }
 
@@ -539,60 +824,31 @@ body::before {
   color: var(--bg-primary);
 }
 
-/* ===== QR CODE SECTION ===== */
-.qr-section {
-  text-align: center;
-  margin-top: 32px;
-  padding: 24px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
+/* ===== HIDDEN SECTIONS ===== */
+.hidden { display: none !important; }
+
+.slide-in {
+  animation: slideIn 0.4s ease-out;
 }
 
-.qr-section h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  color: var(--text-primary);
-  margin-bottom: 12px;
-}
-
-.qr-section .qr-placeholder {
-  width: 160px;
-  height: 160px;
-  margin: 0 auto 12px;
-  background: #fff;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-}
-
-.qr-section .qr-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.qr-section .qr-placeholder canvas {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.qr-section p {
-  font-size: 12px;
-  color: var(--text-muted);
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
   .form-header h1 { font-size: 28px; }
   .form-row { flex-direction: column; gap: 0; }
-  .pricing-badge { flex-direction: column; align-items: center; }
-  .price-card { max-width: 100%; }
+  .delivery-selector { flex-direction: column; }
+  .pricing-badge { flex-direction: row; }
+  .price-card { max-width: 100%; min-width: 0; }
   .observ-banner { padding: 24px 20px; }
   .observ-banner h2 { font-size: 22px; }
   .form-section { padding: 22px 18px; }
+  .appointment-section { padding: 22px 18px; }
+  .delivery-option { padding: 20px 14px; }
+  .delivery-option .option-title { font-size: 18px; }
 }
 </style>
 </head>
@@ -619,16 +875,38 @@ body::before {
       <p>Minden maszkvásárlónk személyes konzultációt és professzionális
       <strong>Observ 520 bőranalízist</strong> kap ingyenesen a The Ultimate Beauty Clinic-en.
       Pontosan látni fogod, mire van szüksége a bőrödnek.</p>
+      <div class="observ-value">Értéke: 15.000 Ft — neked INGYENES</div>
+    </div>
+
+    <!-- ===== DELIVERY SELECTOR ===== -->
+    <div class="delivery-selector">
+      <label class="delivery-option selected" id="optClinic" onclick="selectDelivery('clinic')">
+        <input type="radio" name="delivery" value="clinic" checked>
+        <div class="check-indicator"></div>
+        <span class="icon">🏥</span>
+        <div class="option-title">Klinikai élmény</div>
+        <div class="option-desc">Személyes átvétel a The Ultimate Beauty Clinic-en, professzionális betanítással</div>
+        <div class="option-bonus">+ Observ 520 bőranalízis INGYEN</div>
+      </label>
+
+      <label class="delivery-option" id="optShipping" onclick="selectDelivery('shipping')">
+        <input type="radio" name="delivery" value="shipping">
+        <div class="check-indicator"></div>
+        <span class="icon">📦</span>
+        <div class="option-title">Házhozszállítás</div>
+        <div class="option-desc">Kényelmes kiszállítás az ajtódig, videó betanítással</div>
+        <div class="option-fee">+ 1.990 Ft szállítási díj</div>
+      </label>
     </div>
 
     <!-- Pricing -->
     <div class="pricing-badge">
-      <div class="price-card" id="priceNormal">
-        <div class="price-label">Normál ár</div>
-        <div class="price">120.000 <small>Ft</small></div>
-        <div class="price-note">Direkt vásárlás</div>
+      <div class="price-card active" id="priceNormal">
+        <div class="price-label">Maszk ára</div>
+        <div class="price" id="mainPrice">120.000 <small>Ft</small></div>
+        <div class="price-note" id="priceNote">Direkt vásárlás</div>
       </div>
-      <div class="price-card active" id="priceInfluencer" style="display:none;">
+      <div class="price-card" id="priceInfluencer" style="display:none;">
         <div class="discount-tag">-15% KEDVEZMÉNY</div>
         <div class="price-label">Influencer ár</div>
         <div class="price">102.000 <small>Ft</small></div>
@@ -640,6 +918,7 @@ body::before {
       <!-- Hidden fields -->
       <input type="hidden" name="influencer_ref" id="influencerRef" value="">
       <input type="hidden" name="discount_code" id="discountCode" value="">
+      <input type="hidden" name="delivery_method" id="deliveryMethod" value="clinic">
 
       <!-- Personal info -->
       <div class="form-section">
@@ -664,26 +943,26 @@ body::before {
         </div>
       </div>
 
-      <!-- Shipping -->
-      <div class="form-section">
+      <!-- Shipping (only for delivery) -->
+      <div class="form-section hidden" id="shippingSection">
         <div class="section-title">Szállítási adatok</div>
 
         <div class="form-row">
           <div class="form-group">
             <label>Irányítószám <span class="req">*</span></label>
-            <input type="text" name="iranyitoszam" required placeholder="1234" autocomplete="postal-code" maxlength="5">
+            <input type="text" name="iranyitoszam" id="iranyitoszamInput" placeholder="1234" autocomplete="postal-code" maxlength="5">
             <div class="error-msg">Kötelező mező</div>
           </div>
           <div class="form-group">
             <label>Város <span class="req">*</span></label>
-            <input type="text" name="varos" required placeholder="Budapest" autocomplete="address-level2">
+            <input type="text" name="varos" id="varosInput" placeholder="Budapest" autocomplete="address-level2">
             <div class="error-msg">Kötelező mező</div>
           </div>
         </div>
 
         <div class="form-group">
           <label>Utca + házszám <span class="req">*</span></label>
-          <input type="text" name="utca" required placeholder="Példa utca 12. 3/A" autocomplete="street-address">
+          <input type="text" name="utca" id="utcaInput" placeholder="Példa utca 12. 3/A" autocomplete="street-address">
           <div class="error-msg">Kötelező mező</div>
         </div>
 
@@ -693,31 +972,128 @@ body::before {
         </div>
       </div>
 
-      <!-- Terms -->
+      <!-- Appointment (only for clinic pickup) -->
+      <div class="appointment-section" id="appointmentSection">
+        <div class="section-title">&#128197; Időpontfoglalás — Observ 520 + átvétel</div>
+
+        <div class="appointment-options">
+          <label class="appointment-option selected" onclick="selectAppointment('choose')">
+            <input type="radio" name="appointment_type" value="choose" checked>
+            <div>
+              <div class="appt-label">Szeretnék időpontot választani</div>
+              <div class="appt-desc">Válassz egy számodra megfelelő dátumot</div>
+            </div>
+          </label>
+
+          <label class="appointment-option" onclick="selectAppointment('callback')">
+            <input type="radio" name="appointment_type" value="callback">
+            <div>
+              <div class="appt-label">Keressenek telefonon</div>
+              <div class="appt-desc">Munkatársunk egyeztet a legmegfelelőbb időpontról</div>
+            </div>
+          </label>
+        </div>
+
+        <div class="date-picker-container" id="datePickerContainer">
+          <div class="form-group" style="margin-top:14px;">
+            <label>Preferált időpont</label>
+            <input type="date" name="preferred_date" id="preferredDate" min="">
+          </div>
+          <div class="form-group">
+            <label>Preferált napszak</label>
+            <select name="preferred_time">
+              <option value="">Válassz...</option>
+              <option value="delelott">Délelőtt (9:00-12:00)</option>
+              <option value="kora_du">Kora délután (12:00-15:00)</option>
+              <option value="keso_du">Késő délután (15:00-18:00)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Számlázási adatok (ha eltér) -->
+      <div class="form-section" id="billingSection">
+        <div class="section-title">Számlázási adatok</div>
+
+        <label class="checkbox-row" style="margin-bottom:16px;">
+          <input type="checkbox" id="sameAsBilling" checked onchange="toggleBilling()">
+          <span>A számlázási adatok megegyeznek a személyes adatokkal</span>
+        </label>
+
+        <div id="billingFields" class="hidden">
+          <div class="form-group">
+            <label>Számlázási név</label>
+            <input type="text" name="billing_name" placeholder="Cégnév vagy magánszemély neve">
+          </div>
+          <div class="form-group">
+            <label>Adószám (ha céges)</label>
+            <input type="text" name="adoszam" placeholder="12345678-1-23">
+          </div>
+          <div class="form-group">
+            <label>Számlázási cím</label>
+            <input type="text" name="billing_address" placeholder="1234 Budapest, Példa utca 12.">
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary & Terms -->
       <div class="form-section">
         <div class="section-title">Összesítés</div>
 
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);margin-bottom:16px;">
-          <span style="font-size:14px;color:var(--text-secondary)">ULTIMA LED Beauty Mask</span>
-          <span id="summaryPrice" style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);font-weight:600;">120.000 Ft</span>
+        <div class="summary-line">
+          <span class="label">ULTIMA LED Beauty Mask</span>
+          <span class="value" id="summaryMaskPrice">120.000 Ft</span>
         </div>
 
-        <label class="checkbox-row" id="aszfRow">
-          <input type="checkbox" name="aszf" id="aszfCheck" required>
-          <span>Elolvastam és elfogadom az <a href="https://mask.theultimatebeauty.net/aszf.pdf" target="_blank">Általános Szerződési Feltételeket</a>.</span>
-        </label>
+        <div class="summary-line" id="summaryObserv">
+          <span class="label">Observ 520 bőranalízis</span>
+          <span class="value"><span class="original-price">15.000 Ft</span><span class="free-tag">INGYENES</span></span>
+        </div>
+
+        <div class="summary-line" id="summaryShipping" style="display:none;">
+          <span class="label">Szállítási díj</span>
+          <span class="value" id="summaryShippingPrice">1.990 Ft</span>
+        </div>
+
+        <div class="summary-line total">
+          <span class="label">Összesen</span>
+          <span class="value" id="summaryTotal">120.000 Ft</span>
+        </div>
+
+        <div style="margin-top:20px;">
+          <label class="checkbox-row" id="aszfRow">
+            <input type="checkbox" name="aszf" id="aszfCheck" required>
+            <span>Elolvastam és elfogadom az <a href="https://mask.theultimatebeauty.net/aszf.pdf" target="_blank">Általános Szerződési Feltételeket</a> és az <a href="https://mask.theultimatebeauty.net/aszf.pdf" target="_blank">Adatkezelési tájékoztatót</a>.</span>
+          </label>
+
+          <label class="checkbox-row">
+            <input type="checkbox" name="marketing" id="marketingCheck">
+            <span>Feliratkozom a The Ultimate Beauty hírlevélre és elfogadom, hogy promóciós ajánlatokat kapjak.</span>
+          </label>
+        </div>
       </div>
 
       <button type="submit" class="submit-btn" id="submitBtn">
-        <span class="btn-text">MEGRENDELÉS</span>
+        <span class="btn-text">TOVÁBB A FIZETÉSHEZ</span>
         <span class="spinner"></span>
       </button>
+
+      <div class="payment-icons">
+        <span>Biztonságos fizetés:</span>
+        <span>💳 Kártya</span>
+        <span> Apple Pay</span>
+        <span>🔗 Link</span>
+      </div>
     </form>
 
     <div class="form-footer">
-      <div class="secure">&#128274; Biztonságos kapcsolat &bull; Adatai védve vannak</div>
+      <div class="secure">&#128274; Adataid biztonságban vannak &bull; SSL titkosítás</div>
+      <div class="clinic-info">
+        The Ultimate Beauty Kft. &bull; Adószám: 32868289-2-43<br>
+        1124 Budapest, Németvölgyi út 68. &bull; +36 70 554 9497
+      </div>
       <div class="clinic-name">
-        <a href="https://theultimatebeauty.net" target="_blank">The Ultimate Beauty Clinic</a> &bull; Budapest
+        <a href="https://theultimatebeauty.net" target="_blank">The Ultimate Beauty Clinic</a>
       </div>
     </div>
   </div>
@@ -726,38 +1102,47 @@ body::before {
   <div class="thank-you" id="thankYou">
     <div class="check-circle">&#10003;</div>
     <h2>Köszönjük a rendelést!</h2>
-    <p>Hamarosan felvesszük Önnel a kapcsolatot a szállítási részletekről.</p>
+    <p>A fizetés sikeres. Visszaigazoló emailt küldtünk a megadott címre.</p>
 
-    <div class="bonus-box">
-      <div class="star">&#9733; Bónusz</div>
+    <div class="bonus-box" id="thankYouClinic">
+      <div class="star">&#9733; BÓNUSZ &#9733;</div>
       <h3>Ingyenes Observ 520 bőrdiagnosztika</h3>
-      <p>a The Ultimate Beauty Clinic-en!</p>
+      <p>Várunk a The Ultimate Beauty Clinic-en!<br>
+      <strong>1124 Budapest, Németvölgyi út 68.</strong></p>
     </div>
 
-    <p style="font-size:13px;color:var(--text-muted)">Időpontfoglalás:</p>
-    <a href="https://theultimatebeauty.net" target="_blank" class="booking-link">theultimatebeauty.net</a>
-  </div>
-
-  <!-- ===== QR CODE ===== -->
-  <div class="qr-section" id="qrSection">
-    <h3>Influencer QR kód</h3>
-    <div class="qr-placeholder" id="qrPlaceholder">
-      <canvas id="qrCanvas"></canvas>
+    <div class="bonus-box" id="thankYouShipping" style="display:none;">
+      <div class="star">&#9733; SZÁLLÍTÁS &#9733;</div>
+      <h3>Csomagod úton van!</h3>
+      <p>A szállítási adatokat emailben küldjük el.<br>Várható kézbesítés: 2-4 munkanap.</p>
     </div>
-    <p id="qrLabel">Szkenneld be a kedvezményes rendeléshez</p>
+
+    <p style="font-size:13px;color:var(--text-muted);margin-top:20px;">Kérdésed van? Írj nekünk:</p>
+    <p><a href="tel:+36705549497" style="color:var(--gold);text-decoration:none;">+36 70 554 9497</a> &bull;
+    <a href="mailto:info@theultimatebeauty.net" style="color:var(--gold);text-decoration:none;">info@theultimatebeauty.net</a></p>
   </div>
 
 </div>
 
-<!-- QR Code library (lightweight) -->
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
-
 <script>
+// ============ CONFIGURATION ============
+// STRIPE PAYMENT LINKS — cseréld ki az éles linkekre!
+const STRIPE_LINKS = {
+  normal_clinic: 'STRIPE_LINK_120000',         // 120.000 Ft - klinikai átvétel
+  normal_shipping: 'STRIPE_LINK_121990',        // 121.990 Ft - szállítással
+  influencer_clinic: 'STRIPE_LINK_102000',      // 102.000 Ft - influencer klinika
+  influencer_shipping: 'STRIPE_LINK_103990'     // 103.990 Ft - influencer szállítás
+};
+
 // ============ URL PARAMS (influencer tracking) ============
 const params = new URLSearchParams(window.location.search);
-const influencerRef = params.get('influencer_ref') || '';
-const discountCode = params.get('discount_code') || '';
+const influencerRef = params.get('influencer_ref') || sessionStorage.getItem('mask_influencer_ref') || '';
+const discountCode = params.get('discount_code') || sessionStorage.getItem('mask_discount_code') || '';
 const isInfluencer = !!(influencerRef && discountCode);
+
+// Persist in session
+if (influencerRef) sessionStorage.setItem('mask_influencer_ref', influencerRef);
+if (discountCode) sessionStorage.setItem('mask_discount_code', discountCode);
 
 document.getElementById('influencerRef').value = influencerRef;
 document.getElementById('discountCode').value = discountCode;
@@ -767,46 +1152,112 @@ if (isInfluencer) {
   document.getElementById('priceNormal').classList.remove('active');
   document.getElementById('priceInfluencer').classList.add('active');
   document.getElementById('influencerRefName').textContent = 'Kód: ' + discountCode;
-  document.getElementById('summaryPrice').textContent = '102.000 Ft';
+  updatePricing();
 }
 
-// ============ QR CODE ============
-const qrSection = document.getElementById('qrSection');
+// Set min date for date picker (tomorrow)
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+document.getElementById('preferredDate').min = tomorrow.toISOString().split('T')[0];
 
-// Generate QR for the current page URL (or influencer URL)
-function generateQR() {
-  const baseUrl = window.location.origin + window.location.pathname;
-  let qrUrl = baseUrl;
+// ============ DELIVERY SELECTOR ============
+let currentDelivery = 'clinic';
 
-  if (isInfluencer) {
-    qrUrl = baseUrl + '?influencer_ref=' + encodeURIComponent(influencerRef) + '&discount_code=' + encodeURIComponent(discountCode);
-    document.getElementById('qrLabel').textContent = influencerRef + ' - kedvezményes rendelési link';
+function selectDelivery(type) {
+  currentDelivery = type;
+  document.getElementById('deliveryMethod').value = type;
+
+  // Visual state
+  document.getElementById('optClinic').classList.toggle('selected', type === 'clinic');
+  document.getElementById('optShipping').classList.toggle('selected', type === 'shipping');
+
+  // Show/hide sections
+  const shippingSection = document.getElementById('shippingSection');
+  const appointmentSection = document.getElementById('appointmentSection');
+
+  if (type === 'clinic') {
+    shippingSection.classList.add('hidden');
+    appointmentSection.classList.remove('hidden');
+    appointmentSection.classList.add('slide-in');
+    // Remove required from shipping fields
+    toggleShippingRequired(false);
   } else {
-    document.getElementById('qrLabel').textContent = 'ULTIMA LED Beauty Mask rendelés';
+    shippingSection.classList.remove('hidden');
+    shippingSection.classList.add('slide-in');
+    appointmentSection.classList.add('hidden');
+    // Add required to shipping fields
+    toggleShippingRequired(true);
   }
 
-  if (typeof QRCode !== 'undefined') {
-    QRCode.toCanvas(document.getElementById('qrCanvas'), qrUrl, {
-      width: 280,
-      margin: 1,
-      color: { dark: '#1a1a2e', light: '#ffffff' }
-    }, function(err) {
-      if (err) {
-        console.error('QR error:', err);
-        qrSection.style.display = 'none';
-      }
-    });
+  updatePricing();
+}
+
+function toggleShippingRequired(required) {
+  ['iranyitoszamInput', 'varosInput', 'utcaInput'].forEach(id => {
+    const el = document.getElementById(id);
+    if (required) {
+      el.setAttribute('required', '');
+    } else {
+      el.removeAttribute('required');
+      el.classList.remove('error');
+    }
+  });
+}
+
+// ============ APPOINTMENT SELECTOR ============
+function selectAppointment(type) {
+  document.querySelectorAll('.appointment-option').forEach(opt => opt.classList.remove('selected'));
+  event.currentTarget.closest('.appointment-option').classList.add('selected');
+
+  const datePicker = document.getElementById('datePickerContainer');
+  if (type === 'choose') {
+    datePicker.classList.add('show');
   } else {
-    qrSection.style.display = 'none';
+    datePicker.classList.remove('show');
   }
 }
 
-// Wait for QR lib to load
-if (document.readyState === 'complete') {
-  generateQR();
-} else {
-  window.addEventListener('load', generateQR);
+// Show date picker by default
+document.getElementById('datePickerContainer').classList.add('show');
+
+// ============ BILLING TOGGLE ============
+function toggleBilling() {
+  const same = document.getElementById('sameAsBilling').checked;
+  const fields = document.getElementById('billingFields');
+  if (same) {
+    fields.classList.add('hidden');
+  } else {
+    fields.classList.remove('hidden');
+    fields.classList.add('slide-in');
+  }
 }
+
+// ============ PRICING ============
+function updatePricing() {
+  const maskPrice = isInfluencer ? 102000 : 120000;
+  const shippingPrice = currentDelivery === 'shipping' ? 1990 : 0;
+  const total = maskPrice + shippingPrice;
+
+  // Update mask price display
+  const priceFormatted = maskPrice.toLocaleString('hu-HU');
+  document.getElementById('summaryMaskPrice').textContent = priceFormatted + ' Ft';
+
+  // Show/hide shipping line
+  document.getElementById('summaryShipping').style.display = currentDelivery === 'shipping' ? 'flex' : 'none';
+
+  // Show/hide observ line based on delivery
+  document.getElementById('summaryObserv').style.display = 'flex';
+
+  // Total
+  document.getElementById('summaryTotal').textContent = total.toLocaleString('hu-HU') + ' Ft';
+
+  // Main price card
+  if (!isInfluencer) {
+    document.getElementById('mainPrice').innerHTML = maskPrice.toLocaleString('hu-HU') + ' <small>Ft</small>';
+  }
+}
+
+updatePricing();
 
 // ============ FORM VALIDATION ============
 const form = document.getElementById('orderForm');
@@ -832,8 +1283,10 @@ function validateField(input) {
 }
 
 // Real-time validation
-form.querySelectorAll('input[required], textarea[required]').forEach(input => {
-  input.addEventListener('blur', () => validateField(input));
+form.querySelectorAll('input, textarea').forEach(input => {
+  input.addEventListener('blur', () => {
+    if (input.required) validateField(input);
+  });
   input.addEventListener('input', () => {
     if (input.classList.contains('error')) validateField(input);
   });
@@ -843,11 +1296,25 @@ form.querySelectorAll('input[required], textarea[required]').forEach(input => {
 form.addEventListener('submit', async function(e) {
   e.preventDefault();
 
-  // Validate all required fields
+  // Validate all visible required fields
   let allValid = true;
-  form.querySelectorAll('input[required]').forEach(input => {
+  form.querySelectorAll('input[required]:not(.hidden input)').forEach(input => {
+    // Skip hidden section inputs
+    const section = input.closest('.hidden');
+    if (section) return;
     if (!validateField(input)) allValid = false;
   });
+
+  // Also validate shipping fields if shipping is selected
+  if (currentDelivery === 'shipping') {
+    ['iranyitoszamInput', 'varosInput', 'utcaInput'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.classList.add('error');
+        allValid = false;
+      }
+    });
+  }
 
   // Check ÁSZF
   const aszf = document.getElementById('aszfCheck');
@@ -860,32 +1327,34 @@ form.addEventListener('submit', async function(e) {
   }
 
   if (!allValid) {
-    // Scroll to first error
     const firstError = form.querySelector('.error, .required-error');
     if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
 
-  // Collect data
+  // Show loading
   const btn = document.getElementById('submitBtn');
   btn.classList.add('loading');
   btn.disabled = true;
 
+  // Collect form data
   const formData = new FormData(form);
   const data = {};
   formData.forEach((val, key) => data[key] = val);
   data.timestamp = new Date().toISOString();
-  data.ar = isInfluencer ? '102000' : '120000';
+  data.delivery_method = currentDelivery;
+  data.ar = isInfluencer ? (currentDelivery === 'shipping' ? '103990' : '102000') : (currentDelivery === 'shipping' ? '121990' : '120000');
   data.influencer = influencerRef || 'direkt';
+  data.marketing = document.getElementById('marketingCheck').checked ? 'igen' : 'nem';
 
-  // Save to Google Sheets (if configured)
+  // Save to Google Sheets
   const sheetsUrl = localStorage.getItem('tub_mask_sheets_url');
   if (sheetsUrl) {
     try {
       await fetch(sheetsUrl, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify(data)
       });
     } catch (err) {
@@ -893,20 +1362,49 @@ form.addEventListener('submit', async function(e) {
     }
   }
 
-  // Save locally
+  // Save locally as backup
   try {
-    const key = 'mask_order_' + data.nev.replace(/\s/g, '_') + '_' + Date.now();
+    const key = 'mask_order_' + (data.nev || 'unknown').replace(/\s/g, '_') + '_' + Date.now();
     localStorage.setItem(key, JSON.stringify(data));
   } catch(e) {}
 
-  // Show thank you
+  // Determine Stripe link
+  let stripeLink = '';
+  if (isInfluencer) {
+    stripeLink = currentDelivery === 'shipping' ? STRIPE_LINKS.influencer_shipping : STRIPE_LINKS.influencer_clinic;
+  } else {
+    stripeLink = currentDelivery === 'shipping' ? STRIPE_LINKS.normal_shipping : STRIPE_LINKS.normal_clinic;
+  }
+
+  // Add customer info to Stripe link as prefill
+  const stripeParams = new URLSearchParams();
+  if (data.email) stripeParams.set('prefilled_email', data.email);
+
+  // Redirect to Stripe OR show thank you if no Stripe configured
   setTimeout(() => {
-    document.getElementById('formContainer').style.display = 'none';
-    const ty = document.getElementById('thankYou');
-    ty.classList.add('show');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    btn.classList.remove('loading');
-    btn.disabled = false;
+    if (stripeLink && !stripeLink.startsWith('STRIPE_LINK_')) {
+      // Redirect to Stripe Checkout
+      const separator = stripeLink.includes('?') ? '&' : '?';
+      window.location.href = stripeLink + separator + stripeParams.toString();
+    } else {
+      // No Stripe configured — show thank you (for testing)
+      document.getElementById('formContainer').style.display = 'none';
+      const ty = document.getElementById('thankYou');
+      ty.classList.add('show');
+
+      // Show appropriate thank you section
+      if (currentDelivery === 'clinic') {
+        document.getElementById('thankYouClinic').style.display = 'block';
+        document.getElementById('thankYouShipping').style.display = 'none';
+      } else {
+        document.getElementById('thankYouClinic').style.display = 'none';
+        document.getElementById('thankYouShipping').style.display = 'block';
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }
   }, 800);
 });
 
