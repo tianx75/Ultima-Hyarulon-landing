@@ -1056,6 +1056,667 @@
     <div class="lightbox-counter" id="clinicLbDots"></div>
 </div>
 
+<!-- ═══════════════════════════════════════════════════════
+     KEZELÉSI PROGRAMOK — Floating Button + Slide Panel
+     ═══════════════════════════════════════════════════════ -->
+
+<!-- Floating Action Button -->
+<button class="programs-fab" id="programsFab" onclick="togglePrograms()" aria-label="Kezelési programok">
+  <span class="fab-icon">✦</span>
+  <span class="fab-text">Kezelési programok</span>
+</button>
+
+<!-- Overlay -->
+<div class="programs-overlay" id="programsOverlay" onclick="togglePrograms()"></div>
+
+<!-- Slide Panel -->
+<div class="programs-panel" id="programsPanel">
+  <div class="pp-header">
+    <div>
+      <div class="pp-header-label">ULTIMA LED MASK</div>
+      <h2 class="pp-header-title">Kezelési programok</h2>
+      <p class="pp-header-sub">Válassza ki a bőrtípusának megfelelő programot</p>
+    </div>
+    <button class="pp-close" onclick="togglePrograms()" aria-label="Bezárás">&times;</button>
+  </div>
+
+  <div class="pp-body">
+
+    <!-- Szín magyarázat -->
+    <div class="pp-color-guide">
+      <div class="pp-color-guide-title">A fény ereje — mit tesz minden hullámhossz?</div>
+      <div class="pp-colors">
+        <div class="pp-color-item">
+          <div class="pp-color-dot" style="background:#c62828;box-shadow:0 0 12px rgba(198,40,40,0.5)"></div>
+          <div><strong>Piros — 630 nm</strong><br><span>Kollagén aktiválás, ránccsökkentés, rugalmasság</span></div>
+        </div>
+        <div class="pp-color-item">
+          <div class="pp-color-dot" style="background:#7b1fa2;box-shadow:0 0 12px rgba(123,31,162,0.4)"></div>
+          <div><strong>NIR — 850 nm</strong><br><span>Mély sejtmegújulás, gyógyulás támogatás</span></div>
+        </div>
+        <div class="pp-color-item">
+          <div class="pp-color-dot" style="background:#f9a825;box-shadow:0 0 12px rgba(249,168,37,0.5)"></div>
+          <div><strong>Sárga — 590 nm</strong><br><span>Bőrtónus kiegyenlítés, ragyogás</span></div>
+        </div>
+        <div class="pp-color-item">
+          <div class="pp-color-dot" style="background:#1565c0;box-shadow:0 0 12px rgba(21,101,192,0.5)"></div>
+          <div><strong>Kék — 415 nm</strong><br><span>Tisztább megjelenés, pórusfinomítás</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Program 1: Anti-Aging -->
+    <div class="pp-program" onclick="this.classList.toggle('open')">
+      <div class="pp-program-header">
+        <div class="pp-program-colors">
+          <span class="pp-dot" style="background:#c62828"></span>
+          <span class="pp-dot" style="background:#7b1fa2"></span>
+        </div>
+        <div class="pp-program-info">
+          <h3>Anti-Aging Renewal</h3>
+          <p>Kollagén újjáépítés & feszesítés</p>
+        </div>
+        <div class="pp-program-meta">
+          <span class="pp-duration">8 hét</span>
+          <span class="pp-arrow">›</span>
+        </div>
+      </div>
+      <div class="pp-program-details">
+        <div class="pp-detail-grid">
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Kinek ajánljuk</div>
+            <div class="pp-detail-value">35+ korosztály, ráncok, bőrtónus vesztés, megereszkedés</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Hullámhosszak</div>
+            <div class="pp-detail-value">🔴 Piros 630nm + 🟤 NIR 850nm</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Napi kezelési idő</div>
+            <div class="pp-detail-value">15 perc</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Gyakoriság</div>
+            <div class="pp-detail-value">Naponta, reggel vagy este</div>
+          </div>
+        </div>
+        <div class="pp-weekly">
+          <div class="pp-weekly-title">Heti bontás</div>
+          <div class="pp-week"><strong>1–2. hét:</strong> Napi 10 perc — bőr hozzászoktatása</div>
+          <div class="pp-week"><strong>3–4. hét:</strong> Napi 15 perc — kollagén aktiválás megkezdődik</div>
+          <div class="pp-week"><strong>5–6. hét:</strong> Napi 15 perc — látható feszesedés, tónus javulás</div>
+          <div class="pp-week"><strong>7–8. hét:</strong> Napi 15 perc — mély regeneráció, tartós eredmények</div>
+        </div>
+        <div class="pp-expected">
+          <div class="pp-expected-title">Várt eredmények</div>
+          <p>Finomabb szarkalábak, feszesebb kontúr, ragyogóbb bőrtónus. A NIR mélyen behatolva támogatja a sejtek energiatermelését, míg a piros fény a felszíni kollagén hálót erősíti.</p>
+        </div>
+        <div class="pp-tip">
+          <strong>Tipp:</strong> Kombinálva klinikai ULTIMA Face kezeléssel az eredmények akár 3× gyorsabban jelentkezhetnek.
+        </div>
+      </div>
+    </div>
+
+    <!-- Program 2: Glow & Brighten -->
+    <div class="pp-program" onclick="this.classList.toggle('open')">
+      <div class="pp-program-header">
+        <div class="pp-program-colors">
+          <span class="pp-dot" style="background:#f9a825"></span>
+          <span class="pp-dot" style="background:#c62828"></span>
+        </div>
+        <div class="pp-program-info">
+          <h3>Glow & Brighten</h3>
+          <p>Ragyogás & egyenletes bőrtónus</p>
+        </div>
+        <div class="pp-program-meta">
+          <span class="pp-duration">4 hét</span>
+          <span class="pp-arrow">›</span>
+        </div>
+      </div>
+      <div class="pp-program-details">
+        <div class="pp-detail-grid">
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Kinek ajánljuk</div>
+            <div class="pp-detail-value">Fakó, fáradt megjelenés, egyenetlen bőrtónus, stresszes életmód</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Hullámhosszak</div>
+            <div class="pp-detail-value">🟡 Sárga 590nm + 🔴 Piros 630nm</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Napi kezelési idő</div>
+            <div class="pp-detail-value">10 perc</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Gyakoriság</div>
+            <div class="pp-detail-value">Naponta, lehetőleg reggel</div>
+          </div>
+        </div>
+        <div class="pp-weekly">
+          <div class="pp-weekly-title">Heti bontás</div>
+          <div class="pp-week"><strong>1. hét:</strong> Napi 8 perc sárga fény — tónus kiegyenlítés indul</div>
+          <div class="pp-week"><strong>2. hét:</strong> Napi 10 perc sárga + piros váltakozva</div>
+          <div class="pp-week"><strong>3. hét:</strong> Napi 10 perc kombinált — ragyogás fokozódik</div>
+          <div class="pp-week"><strong>4. hét:</strong> Napi 10 perc — glow hatás beáll, fenntartás</div>
+        </div>
+        <div class="pp-expected">
+          <div class="pp-expected-title">Várt eredmények</div>
+          <p>Világosabb, egységesebb bőrtónus, természetes ragyogás. A sárga fény csökkenti a bőrpirosság megjelenését, a piros fény pedig mélyen táplálja a szöveteket.</p>
+        </div>
+        <div class="pp-tip">
+          <strong>Tipp:</strong> Különösen hatékony C-vitamin szérum használata után — a fényterápia segíti a hatóanyagok felszívódását.
+        </div>
+      </div>
+    </div>
+
+    <!-- Program 3: Clear & Balance -->
+    <div class="pp-program" onclick="this.classList.toggle('open')">
+      <div class="pp-program-header">
+        <div class="pp-program-colors">
+          <span class="pp-dot" style="background:#1565c0"></span>
+          <span class="pp-dot" style="background:#f9a825"></span>
+        </div>
+        <div class="pp-program-info">
+          <h3>Clear & Balance</h3>
+          <p>Tisztább megjelenés & egyensúly</p>
+        </div>
+        <div class="pp-program-meta">
+          <span class="pp-duration">6 hét</span>
+          <span class="pp-arrow">›</span>
+        </div>
+      </div>
+      <div class="pp-program-details">
+        <div class="pp-detail-grid">
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Kinek ajánljuk</div>
+            <div class="pp-detail-value">Problémás, zsírosságra hajlamos bőr, tágult pórusok, egyenetlen textúra</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Hullámhosszak</div>
+            <div class="pp-detail-value">🔵 Kék 415nm + 🟡 Sárga 590nm</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Napi kezelési idő</div>
+            <div class="pp-detail-value">15 perc</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Gyakoriság</div>
+            <div class="pp-detail-value">Naponta, este arctisztítás után</div>
+          </div>
+        </div>
+        <div class="pp-weekly">
+          <div class="pp-weekly-title">Heti bontás</div>
+          <div class="pp-week"><strong>1–2. hét:</strong> Napi 10 perc kék fény — bőr tisztulási folyamat indul</div>
+          <div class="pp-week"><strong>3–4. hét:</strong> Napi 15 perc kék + sárga váltakozva — egyensúly kialakulása</div>
+          <div class="pp-week"><strong>5–6. hét:</strong> Napi 15 perc kombinált — finomabb pórusok, egységes textúra</div>
+        </div>
+        <div class="pp-expected">
+          <div class="pp-expected-title">Várt eredmények</div>
+          <p>Tisztább, kiegyensúlyozottabb bőrkép, finomabb pórusok. A kék fény támogatja a bőr természetes tisztulási folyamatait, a sárga fény pedig nyugtatja és kiegyenlíti a bőrtónust.</p>
+        </div>
+        <div class="pp-tip">
+          <strong>Tipp:</strong> Ne használjon alkoholos tonikot előtte — enyhe, pH-semleges arctisztítás után a leghatékonyabb.
+        </div>
+      </div>
+    </div>
+
+    <!-- Program 4: Deep Cellular Repair -->
+    <div class="pp-program" onclick="this.classList.toggle('open')">
+      <div class="pp-program-header">
+        <div class="pp-program-colors">
+          <span class="pp-dot" style="background:#7b1fa2"></span>
+        </div>
+        <div class="pp-program-info">
+          <h3>Deep Cellular Repair</h3>
+          <p>Mély sejtszintű regeneráció</p>
+        </div>
+        <div class="pp-program-meta">
+          <span class="pp-duration">10 hét</span>
+          <span class="pp-arrow">›</span>
+        </div>
+      </div>
+      <div class="pp-program-details">
+        <div class="pp-detail-grid">
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Kinek ajánljuk</div>
+            <div class="pp-detail-value">Beavatkozás utáni regeneráció, strapabírt bőr, klinikai kezeléseket kiegészítve</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Hullámhossz</div>
+            <div class="pp-detail-value">🟤 NIR 850nm (közeli infravörös)</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Napi kezelési idő</div>
+            <div class="pp-detail-value">20 perc</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Gyakoriság</div>
+            <div class="pp-detail-value">Naponta, reggel és/vagy este</div>
+          </div>
+        </div>
+        <div class="pp-weekly">
+          <div class="pp-weekly-title">Heti bontás</div>
+          <div class="pp-week"><strong>1–3. hét:</strong> Napi 15 perc — sejtenergia fokozás, ATP stimuláció</div>
+          <div class="pp-week"><strong>4–6. hét:</strong> Napi 20 perc — mély szöveti regeneráció</div>
+          <div class="pp-week"><strong>7–10. hét:</strong> Napi 20 perc — tartós strukturális megújulás</div>
+        </div>
+        <div class="pp-expected">
+          <div class="pp-expected-title">Várt eredmények</div>
+          <p>Gyorsabb felépülés beavatkozások után, erősebb bőrszerkezet, csökkent érzékenység. A 850nm-es NIR fény a bőr mélyebb rétegeibe hatol, ahol a sejtek energiaközpontját (mitokondrium) aktiválja.</p>
+        </div>
+        <div class="pp-tip">
+          <strong>Tipp:</strong> ULTIMA Face klinikai kezelés után azonnal elkezdhető — a két technológia szinergikusan erősíti egymást.
+        </div>
+      </div>
+    </div>
+
+    <!-- Program 5: Quick Daily -->
+    <div class="pp-program" onclick="this.classList.toggle('open')">
+      <div class="pp-program-header">
+        <div class="pp-program-colors">
+          <span class="pp-dot" style="background:#c62828"></span>
+          <span class="pp-dot" style="background:#7b1fa2"></span>
+          <span class="pp-dot" style="background:#f9a825"></span>
+          <span class="pp-dot" style="background:#1565c0"></span>
+        </div>
+        <div class="pp-program-info">
+          <h3>Quick Daily Refresh</h3>
+          <p>Napi karbantartás & prevenció</p>
+        </div>
+        <div class="pp-program-meta">
+          <span class="pp-duration">Folyamatos</span>
+          <span class="pp-arrow">›</span>
+        </div>
+      </div>
+      <div class="pp-program-details">
+        <div class="pp-detail-grid">
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Kinek ajánljuk</div>
+            <div class="pp-detail-value">Mindenkinek — napi bőrkarbantartás, fiatalos megjelenés megőrzése</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Hullámhosszak</div>
+            <div class="pp-detail-value">Mind a 4 szín, rotálva</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Napi kezelési idő</div>
+            <div class="pp-detail-value">10 perc</div>
+          </div>
+          <div class="pp-detail-card">
+            <div class="pp-detail-label">Gyakoriság</div>
+            <div class="pp-detail-value">Naponta, bármikor</div>
+          </div>
+        </div>
+        <div class="pp-weekly">
+          <div class="pp-weekly-title">Heti rutin</div>
+          <div class="pp-week"><strong>Hétfő + Csütörtök:</strong> 🔴 Piros — kollagén karbantartás</div>
+          <div class="pp-week"><strong>Kedd + Péntek:</strong> 🟤 NIR — mély regeneráció</div>
+          <div class="pp-week"><strong>Szerda + Szombat:</strong> 🟡 Sárga — ragyogás, tónus</div>
+          <div class="pp-week"><strong>Vasárnap:</strong> 🔵 Kék — tisztítás, reset</div>
+        </div>
+        <div class="pp-expected">
+          <div class="pp-expected-title">Várt eredmények</div>
+          <p>Folyamatosan üde, egészségesen ragyogó bőr. A rotált program minden hullámhossz előnyét kihasználja, miközben a bőr nem szokja meg egyetlen stimulust sem.</p>
+        </div>
+        <div class="pp-tip">
+          <strong>Tipp:</strong> Ez az ideális fenntartó program bármelyik intenzív program befejezése után.
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="pp-disclaimer">
+      Az itt leírt programok általános szépségápolási útmutatók. Nem helyettesítik a szakorvosi tanácsadást. Bőrgyógyászati probléma esetén forduljon szakorvoshoz. A LED fényterápia kozmetikai célú, nem orvosi eszköz.
+    </div>
+
+  </div>
+</div>
+
+<style>
+/* ═══ PROGRAMS FAB ═══ */
+.programs-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #c9a84c 0%, #a8893a 100%);
+  color: #0d0d1a;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(201,168,76,0.35), 0 2px 8px rgba(0,0,0,0.3);
+  transition: all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+  animation: fabPulse 3s ease-in-out infinite;
+}
+.programs-fab:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(201,168,76,0.5), 0 4px 12px rgba(0,0,0,0.4);
+}
+.fab-icon {
+  font-size: 18px;
+  transition: transform 0.3s;
+}
+.programs-fab.active .fab-icon { transform: rotate(45deg); }
+.programs-fab.active .fab-text { display: none; }
+.programs-fab.active { padding: 14px 18px; border-radius: 50%; }
+@keyframes fabPulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(201,168,76,0.35), 0 2px 8px rgba(0,0,0,0.3); }
+  50% { box-shadow: 0 8px 40px rgba(201,168,76,0.55), 0 2px 8px rgba(0,0,0,0.3), 0 0 0 8px rgba(201,168,76,0.08); }
+}
+@media (max-width: 600px) {
+  .programs-fab { bottom: 20px; right: 16px; padding: 12px 18px; font-size: 13px; }
+}
+
+/* ═══ OVERLAY ═══ */
+.programs-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 9991;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.programs-overlay.show { display: block; opacity: 1; }
+
+/* ═══ SLIDE PANEL ═══ */
+.programs-panel {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: 520px;
+  max-width: 92vw;
+  z-index: 9992;
+  background: #111118;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 40px rgba(0,0,0,0.5);
+}
+.programs-panel.show { transform: translateX(0); }
+
+.pp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 28px 28px 20px;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  flex-shrink: 0;
+}
+.pp-header-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 6px;
+}
+.pp-header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #f5f0e8;
+  margin: 0;
+}
+.pp-header-sub {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: rgba(245,240,232,0.5);
+  margin: 6px 0 0;
+}
+.pp-close {
+  background: none;
+  border: 1px solid rgba(201,168,76,0.2);
+  color: #c9a84c;
+  font-size: 24px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.pp-close:hover { background: rgba(201,168,76,0.1); border-color: #c9a84c; }
+
+.pp-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 28px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,168,76,0.3) transparent;
+}
+.pp-body::-webkit-scrollbar { width: 5px; }
+.pp-body::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 3px; }
+
+/* ═══ COLOR GUIDE ═══ */
+.pp-color-guide {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 24px;
+}
+.pp-color-guide-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: #c9a84c;
+  margin-bottom: 16px;
+}
+.pp-colors { display: flex; flex-direction: column; gap: 12px; }
+.pp-color-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: #f5f0e8;
+}
+.pp-color-item span { color: rgba(245,240,232,0.55); font-size: 12px; }
+.pp-color-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+
+/* ═══ PROGRAM CARDS ═══ */
+.pp-program {
+  background: #18181f;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.pp-program:hover { border-color: rgba(201,168,76,0.2); }
+.pp-program.open { border-color: rgba(201,168,76,0.3); box-shadow: 0 4px 24px rgba(201,168,76,0.08); }
+
+.pp-program-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  cursor: pointer;
+}
+.pp-program-colors { display: flex; gap: 4px; flex-shrink: 0; }
+.pp-dot { width: 10px; height: 10px; border-radius: 50%; }
+.pp-program-info { flex: 1; }
+.pp-program-info h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #f5f0e8;
+  margin: 0;
+}
+.pp-program-info p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  color: rgba(245,240,232,0.45);
+  margin: 2px 0 0;
+}
+.pp-program-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.pp-duration {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #c9a84c;
+  background: rgba(201,168,76,0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(201,168,76,0.15);
+}
+.pp-arrow {
+  color: #c9a84c;
+  font-size: 22px;
+  transition: transform 0.3s;
+  line-height: 1;
+}
+.pp-program.open .pp-arrow { transform: rotate(90deg); }
+
+/* ═══ PROGRAM DETAILS (collapsed by default) ═══ */
+.pp-program-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.pp-program.open .pp-program-details { max-height: 800px; }
+
+.pp-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0 20px 16px;
+}
+.pp-detail-card {
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.pp-detail-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #c9a84c;
+  margin-bottom: 4px;
+}
+.pp-detail-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: #f5f0e8;
+  line-height: 1.4;
+}
+
+.pp-weekly {
+  padding: 0 20px 16px;
+}
+.pp-weekly-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #c9a84c;
+  margin-bottom: 10px;
+}
+.pp-week {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: rgba(245,240,232,0.75);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  line-height: 1.4;
+}
+.pp-week strong { color: #f5f0e8; }
+
+.pp-expected { padding: 0 20px 12px; }
+.pp-expected-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #c9a84c;
+  margin-bottom: 6px;
+}
+.pp-expected p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: rgba(245,240,232,0.65);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.pp-tip {
+  margin: 0 20px 20px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.04) 100%);
+  border-left: 3px solid #c9a84c;
+  border-radius: 0 10px 10px 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  color: rgba(245,240,232,0.7);
+  line-height: 1.5;
+}
+.pp-tip strong { color: #c9a84c; }
+
+.pp-disclaimer {
+  margin-top: 20px;
+  padding: 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  color: rgba(245,240,232,0.3);
+  line-height: 1.5;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+@media (max-width: 600px) {
+  .programs-panel { width: 100%; max-width: 100vw; }
+  .pp-header { padding: 20px 20px 16px; }
+  .pp-header-title { font-size: 24px; }
+  .pp-body { padding: 20px; }
+  .pp-detail-grid { grid-template-columns: 1fr; }
+  .pp-program-info h3 { font-size: 17px; }
+}
+</style>
+
+<script>
+function togglePrograms() {
+  var panel = document.getElementById('programsPanel');
+  var overlay = document.getElementById('programsOverlay');
+  var fab = document.getElementById('programsFab');
+  var isOpen = panel.classList.contains('show');
+
+  if (isOpen) {
+    panel.classList.remove('show');
+    overlay.classList.remove('show');
+    fab.classList.remove('active');
+    document.body.style.overflow = '';
+  } else {
+    panel.classList.add('show');
+    overlay.classList.add('show');
+    fab.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+// ESC to close
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    var panel = document.getElementById('programsPanel');
+    if (panel && panel.classList.contains('show')) togglePrograms();
+  }
+});
+</script>
+
 <script src="maszk.js"></script>
 
 <!-- ═══════════════════════════════════════════════════════
