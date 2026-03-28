@@ -544,6 +544,9 @@
             <p class="hero-desc">
                 4 hullámhosszú, ultrakönnyű LED maszk a bőr napi szintű megújításáért. Meghosszabbítja és fokozza a klinikai kezelések hatását — otthonról.
             </p>
+            <p class="hero-desire" style="font-family:var(--font-display);font-size:clamp(1.1rem,2vw,1.35rem);font-style:italic;color:var(--gold-light);max-width:520px;margin:0 auto 2rem;opacity:0;animation:fadeUp 0.8s ease forwards 0.55s;line-height:1.6;">
+                Az a megjelenés, amit eddig csak kezelések után láttál — most a mindennapjaid része lehet.
+            </p>
             <div class="hero-stats">
                 <div class="hero-stat">
                     <div class="hero-stat-num">93 g</div>
@@ -1285,11 +1288,12 @@
     <div class="container">
         <div class="fade-in">
             <div class="section-label" style="justify-content:center;">Következő lépés</div>
-            <h2 class="section-title">Vidd haza a <em>klinikai fényterápiát</em></h2>
-            <p class="section-subtitle">
-                A bőröd megújulása nem áll meg a rendelő ajtajában. Az ULTIMA LED Beauty Mask-kal napi szinten tartod bekapcsolva a kollagénaktivációt.
+            <h2 class="section-title" style="max-width:700px;margin-left:auto;margin-right:auto;">A változás nem egy kezelés után kezdődik.<br><em>Hanem azzal a döntéssel, hogy elkezded.</em></h2>
+            <p class="section-subtitle" style="text-align:center;margin:0 auto 1rem;">
+                Az ULTIMA Mask nem alkalmi megoldás — hanem egy rutin, amitől a megjelenésed napról napra változik.
             </p>
-            <a href="rendeles.html" target="_blank" rel="noopener noreferrer" class="btn-primary jotform-link" style="display:inline-flex; margin-top:1rem;">Megrendelés</a>
+            <p style="font-family:var(--font-display);font-size:1.05rem;font-style:italic;color:var(--gold-light);margin-bottom:2.5rem;">Az első változásokat már az első hetekben észreveszed.</p>
+            <a href="rendeles.html" target="_blank" rel="noopener noreferrer" class="btn-primary jotform-link" style="display:inline-flex;">Megrendelem</a>
         </div>
     </div>
 </section>
@@ -1420,6 +1424,7 @@
         <div class="pp-program-info">
           <h3>Anti-Aging Renewal</h3>
           <p>Kollagén újjáépítés & feszesítés</p>
+          <p class="pp-program-hook">Reggel a tükörbe nézve feszesebb, fiatalosabb arckontúrt szeretnél látni — nem drasztikusan, hanem természetesen.</p>
         </div>
         <div class="pp-program-meta">
           <span class="pp-duration">8 hét</span>
@@ -1472,6 +1477,7 @@
         <div class="pp-program-info">
           <h3>Glow & Brighten</h3>
           <p>Ragyogás & egyenletes bőrtónus</p>
+          <p class="pp-program-hook">Azt a belső ragyogást keresed, amitől úgy tűnsz, mintha mindig kipihenve lennél — még egy fárasztó hét után is.</p>
         </div>
         <div class="pp-program-meta">
           <span class="pp-duration">4 hét</span>
@@ -1524,6 +1530,7 @@
         <div class="pp-program-info">
           <h3>Clear & Balance</h3>
           <p>Tisztább megjelenés & egyensúly</p>
+          <p class="pp-program-hook">Azt szeretnéd, hogy a bőröd egyenletes és nyugodt legyen — smink nélkül is magabiztosan lépj ki az ajtón.</p>
         </div>
         <div class="pp-program-meta">
           <span class="pp-duration">6 hét</span>
@@ -1574,6 +1581,7 @@
         <div class="pp-program-info">
           <h3>Deep Cellular Repair</h3>
           <p>Mély sejtszintű regeneráció</p>
+          <p class="pp-program-hook">A bőröd megviselte a kezelés vagy az idő — és azt érzed, hogy mélyebb megújulásra van szükséged, belülről.</p>
         </div>
         <div class="pp-program-meta">
           <span class="pp-duration">10 hét</span>
@@ -1627,6 +1635,7 @@
         <div class="pp-program-info">
           <h3>Quick Daily Refresh</h3>
           <p>Napi karbantartás & prevenció</p>
+          <p class="pp-program-hook">Nem akarsz bonyolult rutint — csak napi 10 percet, ami meglátszik. Egyszerűen, minden nap.</p>
         </div>
         <div class="pp-program-meta">
           <span class="pp-duration">Folyamatos</span>
@@ -1678,6 +1687,19 @@
 </div>
 
 <style>
+/* ═══ PROGRAM HOOK MONDATOK ═══ */
+.pp-program-hook {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(201,168,76,0.7);
+  line-height: 1.5;
+  margin-top: 4px;
+  display: none;
+}
+.pp-program.open .pp-program-hook { display: none; }
+.pp-program:not(.open) .pp-program-hook { display: block; }
+
 /* ═══ PROGRAMS FAB ═══ */
 .programs-fab {
   position: fixed;
