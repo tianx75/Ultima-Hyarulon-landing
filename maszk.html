@@ -560,7 +560,7 @@
             </div>
             <div class="hero-buttons">
                 <a href="rendeles.html" target="_blank" rel="noopener noreferrer" class="btn-primary jotform-link">Érdeklődöm</a>
-                <a href="#wavelengths" class="btn-secondary">Felfedezem</a>
+                <a href="#program-finder" class="btn-secondary">Melyik program való nekem?</a>
             </div>
             <div class="hero-banner">
                 <section class="video-section">
@@ -578,6 +578,311 @@
         </div>
     </div>
 </section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PROGRAM FINDER — "Melyik program való nekem?"
+     ═══════════════════════════════════════════════════════ -->
+<section class="section" id="program-finder" style="background:linear-gradient(180deg,#0a0a14 0%,#111122 50%,#0d0d1a 100%);padding:5rem 0;">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;max-width:600px;margin:0 auto;">
+      <div class="section-label" style="justify-content:center;">Személyre szabott program</div>
+      <h2 class="section-title" style="text-align:center;">Nem tudod, melyik fény <em>való Neked?</em></h2>
+      <p class="section-subtitle" style="text-align:center;margin:0 auto 2.5rem;">Válaszd ki, milyen változást szeretnél elérni — és 30 másodperc alatt megmutatjuk a személyes ULTIMA programodat.</p>
+    </div>
+
+    <!-- Step 1: Goal cards -->
+    <div class="pf-step pf-step-1 pf-active" id="pfStep1">
+      <div class="pf-cards">
+        <button class="pf-card" onclick="pfSelect(1,'antiaging')" data-value="antiaging">
+          <div class="pf-card-glow" style="background:radial-gradient(circle,rgba(198,40,40,0.15) 0%,transparent 70%)"></div>
+          <div class="pf-card-icon">✦</div>
+          <div class="pf-card-title">Fiatalosabb, feszesebb bőr</div>
+          <div class="pf-card-tags">ráncok · tónus · lifting</div>
+        </button>
+        <button class="pf-card" onclick="pfSelect(1,'glow')" data-value="glow">
+          <div class="pf-card-glow" style="background:radial-gradient(circle,rgba(249,168,37,0.15) 0%,transparent 70%)"></div>
+          <div class="pf-card-icon">✦</div>
+          <div class="pf-card-title">Ragyogó, üde megjelenés</div>
+          <div class="pf-card-tags">fakó bőr · fáradtság · tónus</div>
+        </button>
+        <button class="pf-card" onclick="pfSelect(1,'clear')" data-value="clear">
+          <div class="pf-card-glow" style="background:radial-gradient(circle,rgba(21,101,192,0.15) 0%,transparent 70%)"></div>
+          <div class="pf-card-icon">✦</div>
+          <div class="pf-card-title">Tiszta, egyenletes bőr</div>
+          <div class="pf-card-tags">egyenetlen textúra · pórusok</div>
+        </button>
+        <button class="pf-card" onclick="pfSelect(1,'repair')" data-value="repair">
+          <div class="pf-card-glow" style="background:radial-gradient(circle,rgba(123,31,162,0.15) 0%,transparent 70%)"></div>
+          <div class="pf-card-icon">✦</div>
+          <div class="pf-card-title">Nyugodt, megújult bőr</div>
+          <div class="pf-card-tags">érzékenység · regeneráció</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Secondary goal -->
+    <div class="pf-step pf-step-2" id="pfStep2">
+      <div class="pf-step-label">Van másodlagos célod is?</div>
+      <div class="pf-pills" id="pfPills">
+        <!-- Filled dynamically -->
+      </div>
+    </div>
+
+    <!-- Step 3: Time -->
+    <div class="pf-step pf-step-3" id="pfStep3">
+      <div class="pf-step-label">Naponta mennyi időt szánsz a bőrödre?</div>
+      <div class="pf-time-options">
+        <button class="pf-time" onclick="pfSelect(3,'5')">5 perc</button>
+        <button class="pf-time" onclick="pfSelect(3,'10')">10 perc</button>
+        <button class="pf-time" onclick="pfSelect(3,'15')">15 perc</button>
+        <button class="pf-time" onclick="pfSelect(3,'20')">20+ perc</button>
+      </div>
+    </div>
+
+    <!-- Progress dots -->
+    <div class="pf-progress" id="pfProgress">
+      <span class="pf-dot-prog active"></span>
+      <span class="pf-dot-prog"></span>
+      <span class="pf-dot-prog"></span>
+    </div>
+  </div>
+</section>
+
+<!-- Result Modal -->
+<div class="pf-modal-overlay" id="pfModalOverlay" onclick="closePfModal()">
+  <div class="pf-modal" onclick="event.stopPropagation()">
+    <button class="pf-modal-close" onclick="closePfModal()">&times;</button>
+    <div class="pf-modal-header">
+      <div class="pf-modal-label">AZ ÖN SZEMÉLYES PROGRAMJA</div>
+      <h3 class="pf-modal-title" id="pfResultTitle"></h3>
+      <p class="pf-modal-subtitle" id="pfResultSubtitle"></p>
+    </div>
+    <div class="pf-modal-body" id="pfResultBody"></div>
+    <div class="pf-modal-footer">
+      <a href="rendeles.html" class="pf-modal-cta jotform-link" target="_blank" rel="noopener noreferrer">Megrendelem a maszkomat →</a>
+      <div class="pf-modal-note">Személyes Observ 520 bőrkonzultáció ajándékba klinikai átvétel esetén</div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ═══ PROGRAM FINDER ═══ */
+.pf-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:560px;margin:0 auto;}
+.pf-card{position:relative;background:#15151f;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:28px 22px;text-align:center;cursor:pointer;transition:all 0.35s;overflow:hidden;font-family:'Outfit',sans-serif;}
+.pf-card:hover{border-color:rgba(201,168,76,0.3);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.3);}
+.pf-card.selected{border-color:#c9a84c;box-shadow:0 0 0 1px #c9a84c,0 8px 32px rgba(201,168,76,0.15);}
+.pf-card-glow{position:absolute;inset:0;opacity:0;transition:opacity 0.4s;}
+.pf-card:hover .pf-card-glow,.pf-card.selected .pf-card-glow{opacity:1;}
+.pf-card-icon{font-size:22px;color:#c9a84c;margin-bottom:14px;position:relative;}
+.pf-card-title{font-family:'Cormorant Garamond',serif;font-size:19px;color:#f5f0e8;margin-bottom:8px;line-height:1.3;position:relative;}
+.pf-card-tags{font-size:11px;color:rgba(245,240,232,0.35);letter-spacing:0.03em;position:relative;}
+
+.pf-step{display:none;animation:pfFadeIn 0.4s ease-out;}
+.pf-step.pf-active{display:block;}
+@keyframes pfFadeIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+.pf-step-label{font-family:'Cormorant Garamond',serif;font-size:22px;color:#f5f0e8;text-align:center;margin-bottom:20px;}
+
+.pf-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:480px;margin:0 auto;}
+.pf-pill{background:#15151f;border:1px solid rgba(255,255,255,0.08);border-radius:50px;padding:12px 22px;color:#f5f0e8;font-family:'Outfit',sans-serif;font-size:14px;cursor:pointer;transition:all 0.25s;}
+.pf-pill:hover{border-color:rgba(201,168,76,0.3);}
+.pf-pill.selected{background:rgba(201,168,76,0.12);border-color:#c9a84c;color:#c9a84c;}
+
+.pf-time-options{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.pf-time{background:#15151f;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px 24px;color:#f5f0e8;font-family:'Cormorant Garamond',serif;font-size:22px;cursor:pointer;transition:all 0.25s;min-width:80px;}
+.pf-time:hover{border-color:rgba(201,168,76,0.3);transform:translateY(-2px);}
+
+.pf-progress{display:flex;justify-content:center;gap:8px;margin-top:28px;}
+.pf-dot-prog{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.12);transition:all 0.3s;}
+.pf-dot-prog.active{background:#c9a84c;width:24px;border-radius:4px;}
+
+/* ═══ RESULT MODAL ═══ */
+.pf-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);z-index:10000;align-items:center;justify-content:center;padding:16px;}
+.pf-modal-overlay.show{display:flex;animation:pfFadeIn 0.3s ease-out;}
+.pf-modal{background:#111118;border:1px solid rgba(201,168,76,0.15);border-radius:20px;max-width:460px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(201,168,76,0.08);scrollbar-width:thin;scrollbar-color:rgba(201,168,76,0.3) transparent;}
+.pf-modal::-webkit-scrollbar{width:4px;}.pf-modal::-webkit-scrollbar-thumb{background:rgba(201,168,76,0.3);border-radius:2px;}
+.pf-modal-close{position:absolute;top:16px;right:16px;background:none;border:1px solid rgba(201,168,76,0.2);color:#c9a84c;font-size:20px;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;z-index:1;}
+.pf-modal-close:hover{background:rgba(201,168,76,0.1);}
+.pf-modal-header{padding:32px 28px 20px;border-bottom:1px solid rgba(201,168,76,0.1);}
+.pf-modal-label{font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#c9a84c;margin-bottom:8px;}
+.pf-modal-title{font-family:'Cormorant Garamond',serif;font-size:28px;color:#f5f0e8;margin:0 0 6px;font-weight:400;}
+.pf-modal-subtitle{font-family:'Outfit',sans-serif;font-size:13px;color:rgba(245,240,232,0.5);margin:0;}
+.pf-modal-body{padding:24px 28px;}
+.pf-result-section{margin-bottom:20px;}
+.pf-result-label{font-family:'Outfit',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:#c9a84c;margin-bottom:8px;}
+.pf-result-colors{display:flex;gap:12px;margin-bottom:16px;}
+.pf-result-color{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:10px;padding:10px 14px;flex:1;}
+.pf-result-color-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
+.pf-result-color-info{font-family:'Outfit',sans-serif;font-size:12px;color:#f5f0e8;line-height:1.4;}
+.pf-result-color-info span{display:block;color:rgba(245,240,232,0.45);font-size:11px;}
+.pf-result-schedule{display:flex;flex-direction:column;gap:6px;}
+.pf-result-day{display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(255,255,255,0.02);border-radius:8px;font-family:'Outfit',sans-serif;font-size:13px;color:rgba(245,240,232,0.75);}
+.pf-result-day strong{color:#f5f0e8;min-width:90px;}
+.pf-result-day .pf-rd-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.pf-result-timeline{font-family:'Outfit',sans-serif;font-size:13px;color:rgba(245,240,232,0.65);line-height:1.6;}
+.pf-result-timeline strong{color:#f5f0e8;}
+.pf-modal-footer{padding:20px 28px 28px;border-top:1px solid rgba(201,168,76,0.1);}
+.pf-modal-cta{display:block;text-align:center;background:linear-gradient(135deg,#c9a84c 0%,#a8893a 100%);color:#0d0d1a;padding:16px;border-radius:12px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;text-decoration:none;letter-spacing:0.03em;transition:all 0.3s;box-shadow:0 4px 20px rgba(201,168,76,0.3);}
+.pf-modal-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,0.45);}
+.pf-modal-note{text-align:center;font-family:'Outfit',sans-serif;font-size:11px;color:rgba(245,240,232,0.35);margin-top:10px;}
+
+@media(max-width:600px){
+  .pf-cards{grid-template-columns:1fr;max-width:340px;}
+  .pf-card{padding:22px 18px;}
+  .pf-card-title{font-size:17px;}
+  .pf-time{padding:14px 18px;font-size:19px;min-width:70px;}
+  .pf-modal{border-radius:16px 16px 0 0;max-height:92vh;margin-top:auto;align-self:flex-end;}
+  .pf-modal-overlay{align-items:flex-end;}
+  .pf-modal-title{font-size:24px;}
+  .pf-modal-body{padding:20px;}
+  .pf-result-colors{flex-direction:column;}
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var answers = {};
+  var goals = {
+    antiaging: {label:'Fiatalosabb, feszesebb bőr',color1:'#c62828',color1name:'Piros 630nm',color1desc:'Kollagén aktiválás',color2:'#7b1fa2',color2name:'NIR 850nm',color2desc:'Mély sejtmegújulás'},
+    glow:      {label:'Ragyogó, üde megjelenés',color1:'#f9a825',color1name:'Sárga 590nm',color1desc:'Tónus kiegyenlítés',color2:'#c62828',color2name:'Piros 630nm',color2desc:'Bőrtáplálás'},
+    clear:     {label:'Tiszta, egyenletes bőr',color1:'#1565c0',color1name:'Kék 415nm',color1desc:'Tisztulás támogatás',color2:'#f9a825',color2name:'Sárga 590nm',color2desc:'Tónus javítás'},
+    repair:    {label:'Nyugodt, megújult bőr',color1:'#7b1fa2',color1name:'NIR 850nm',color1desc:'Mély regeneráció',color2:'#c62828',color2name:'Piros 630nm',color2desc:'Szövetmegerősítés'}
+  };
+  var programNames = {antiaging:'Anti-Aging Renewal',glow:'Glow & Brighten',clear:'Clear & Balance',repair:'Deep Cellular Repair'};
+  var durations = {antiaging:'8 hét',glow:'4 hét',clear:'6 hét',repair:'10 hét'};
+  var schedules = {
+    antiaging:[{d:'Hétfő–Szerda–Péntek',c:'#c62828',t:'Piros — kollagén boost'},{d:'Kedd–Csütörtök–Szombat',c:'#7b1fa2',t:'NIR — mély megújulás'},{d:'Vasárnap',c:'transparent',t:'Pihenőnap'}],
+    glow:[{d:'Hétfő–Szerda–Péntek',c:'#f9a825',t:'Sárga — ragyogás'},{d:'Kedd–Csütörtök',c:'#c62828',t:'Piros — bőrtáplálás'},{d:'Szombat–Vasárnap',c:'#f9a825',t:'Sárga — fenntartás'}],
+    clear:[{d:'Hétfő–Szerda–Péntek',c:'#1565c0',t:'Kék — tisztulás'},{d:'Kedd–Csütörtök',c:'#f9a825',t:'Sárga — nyugtatás'},{d:'Szombat',c:'#1565c0',t:'Kék — fenntartás'},{d:'Vasárnap',c:'transparent',t:'Pihenőnap'}],
+    repair:[{d:'Minden nap',c:'#7b1fa2',t:'NIR — mély sejtregeneráció'},{d:'Hétfő–Péntek extra',c:'#c62828',t:'Piros — szövetmegerősítés'}]
+  };
+  var timelines = {
+    antiaging:'<strong>1–2. hét:</strong> Bőr hozzászoktatás, napi {t} perc<br><strong>3–4. hét:</strong> Kollagén aktiválás megkezdődik<br><strong>5–8. hét:</strong> Látható feszesedés, finomabb ráncok',
+    glow:'<strong>1. hét:</strong> Bőr felkészítés, napi {t} perc<br><strong>2–3. hét:</strong> Tónus kiegyenlítődik<br><strong>4. hét:</strong> Természetes glow beáll',
+    clear:'<strong>1–2. hét:</strong> Tisztulási folyamat indul, napi {t} perc<br><strong>3–4. hét:</strong> Egyensúly kialakulása<br><strong>5–6. hét:</strong> Finomabb pórusok, egységes textúra',
+    repair:'<strong>1–3. hét:</strong> Sejtenergia fokozás, napi {t} perc<br><strong>4–6. hét:</strong> Mély szöveti regeneráció<br><strong>7–10. hét:</strong> Tartós strukturális megújulás'
+  };
+
+  window.pfSelect = function(step, value) {
+    if (step === 1) {
+      answers.goal = value;
+      // Highlight selected card
+      document.querySelectorAll('.pf-card').forEach(function(c){c.classList.remove('selected');});
+      document.querySelector('.pf-card[data-value="'+value+'"]').classList.add('selected');
+      // Build step 2 pills
+      setTimeout(function(){
+        var pills = document.getElementById('pfPills');
+        pills.innerHTML = '';
+        Object.keys(goals).forEach(function(k){
+          if (k !== value) {
+            var btn = document.createElement('button');
+            btn.className = 'pf-pill';
+            btn.textContent = goals[k].label;
+            btn.onclick = function(){
+              document.querySelectorAll('.pf-pill').forEach(function(p){p.classList.remove('selected');});
+              this.classList.add('selected');
+              answers.secondary = k;
+            };
+            pills.appendChild(btn);
+          }
+        });
+        var skipBtn = document.createElement('button');
+        skipBtn.className = 'pf-pill';
+        skipBtn.textContent = 'Nincs, csak ez';
+        skipBtn.style.borderColor = 'rgba(201,168,76,0.2)';
+        skipBtn.style.color = '#c9a84c';
+        skipBtn.onclick = function(){
+          document.querySelectorAll('.pf-pill').forEach(function(p){p.classList.remove('selected');});
+          this.classList.add('selected');
+          answers.secondary = null;
+        };
+        pills.appendChild(skipBtn);
+        // Add continue button
+        var contBtn = document.createElement('button');
+        contBtn.className = 'pf-pill';
+        contBtn.textContent = 'Tovább →';
+        contBtn.style.background = 'linear-gradient(135deg,#c9a84c,#a8893a)';
+        contBtn.style.color = '#0d0d1a';
+        contBtn.style.fontWeight = '600';
+        contBtn.style.borderColor = '#c9a84c';
+        contBtn.style.marginTop = '8px';
+        contBtn.onclick = function(){
+          showStep(3);
+        };
+        pills.appendChild(contBtn);
+        showStep(2);
+      }, 300);
+    } else if (step === 3) {
+      answers.time = value;
+      showResult();
+    }
+  };
+
+  function showStep(n) {
+    document.querySelectorAll('.pf-step').forEach(function(s){s.classList.remove('pf-active');});
+    document.getElementById('pfStep'+n).classList.add('pf-active');
+    document.querySelectorAll('.pf-dot-prog').forEach(function(d,i){
+      d.classList.toggle('active', i===n-1);
+    });
+  }
+
+  function showResult() {
+    var g = answers.goal;
+    var t = answers.time;
+    var goal = goals[g];
+    document.getElementById('pfResultTitle').textContent = programNames[g];
+    document.getElementById('pfResultSubtitle').textContent = goal.label + ' · ' + durations[g] + ' · napi ' + t + ' perc';
+
+    var body = '';
+    // Colors
+    body += '<div class="pf-result-section"><div class="pf-result-label">Az Ön hullámhosszai</div>';
+    body += '<div class="pf-result-colors">';
+    body += '<div class="pf-result-color"><div class="pf-result-color-dot" style="background:'+goal.color1+';box-shadow:0 0 10px '+goal.color1+'80"></div><div class="pf-result-color-info">'+goal.color1name+'<span>'+goal.color1desc+'</span></div></div>';
+    body += '<div class="pf-result-color"><div class="pf-result-color-dot" style="background:'+goal.color2+';box-shadow:0 0 10px '+goal.color2+'80"></div><div class="pf-result-color-info">'+goal.color2name+'<span>'+goal.color2desc+'</span></div></div>';
+    body += '</div></div>';
+
+    // Weekly schedule
+    body += '<div class="pf-result-section"><div class="pf-result-label">Heti kezelési terv</div>';
+    body += '<div class="pf-result-schedule">';
+    schedules[g].forEach(function(s){
+      body += '<div class="pf-result-day"><div class="pf-rd-dot" style="background:'+s.c+'"></div><strong>'+s.d+'</strong>'+s.t+'</div>';
+    });
+    body += '</div></div>';
+
+    // Timeline
+    body += '<div class="pf-result-section"><div class="pf-result-label">Mire számíthat</div>';
+    body += '<div class="pf-result-timeline">'+timelines[g].replace(/\{t\}/g,t)+'</div></div>';
+
+    // Secondary goal note
+    if (answers.secondary) {
+      var sec = goals[answers.secondary];
+      body += '<div class="pf-result-section" style="background:rgba(201,168,76,0.05);border-radius:12px;padding:14px 16px;border-left:3px solid #c9a84c;">';
+      body += '<div class="pf-result-label">Kiegészítő ajánlás</div>';
+      body += '<div style="font-family:Outfit,sans-serif;font-size:13px;color:rgba(245,240,232,0.7);line-height:1.5;">';
+      body += 'Az intenzív program befejezése után ajánljuk a <strong style="color:#f5f0e8;">'+programNames[answers.secondary]+'</strong> programot mint következő lépés — a '+sec.label.toLowerCase()+' érdekében.</div></div>';
+    }
+
+    document.getElementById('pfResultBody').innerHTML = body;
+    document.getElementById('pfModalOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+
+    // Reset for next use
+    setTimeout(function(){
+      showStep(1);
+      document.querySelectorAll('.pf-card').forEach(function(c){c.classList.remove('selected');});
+    }, 500);
+  }
+
+  window.closePfModal = function() {
+    document.getElementById('pfModalOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') closePfModal();
+  });
+})();
+</script>
 
 <section class="section" id="wavelengths">
     <div class="container">
