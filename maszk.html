@@ -616,7 +616,7 @@
       <span class="discount-label">Exkluzív influencer kedvezmény aktiválva</span>
       <span class="discount-detail">15% kedvezmény · <strong>102.000 Ft</strong> <s>120.000 Ft</s></span>
     </div>
-    <button class="discount-close" onclick="document.getElementById('discount-banner').style.display='none';document.body.classList.remove('has-discount-banner')" aria-label="Bezárás">&times;</button>
+    <button class="discount-close" onclick="document.getElementById('discount-banner').style.display='none';document.body.classList.remove('has-discount-banner');document.body.classList.add('discount-banner-dismissed')" aria-label="Bezárás">&times;</button>
   </div>
 </div>
 
@@ -648,7 +648,7 @@
             <p class="hero-desc">
                 4 hullámhosszú, ultrakönnyű LED maszk a bőr napi szintű megújításáért. Meghosszabbítja és fokozza a klinikai kezelések hatását — otthonról.
             </p>
-            <p class="hero-desire" style="font-family:var(--font-display);font-size:clamp(1.1rem,2vw,1.35rem);font-style:italic;color:var(--gold-light);max-width:520px;margin:0 auto 2rem;opacity:0;animation:fadeUp 1s ease forwards 0.7s;line-height:1.6;">
+            <p class="hero-desire" style="font-family:var(--font-display);font-size:clamp(1.1rem,2vw,1.35rem);font-style:italic;color:var(--gold-light);max-width:min(520px,90vw);margin:0 auto 2rem;opacity:0;animation:fadeUp 1s ease forwards 0.7s;line-height:1.6;">
                 Az a megjelenés, amit eddig csak kezelések után láttál — most a mindennapjaid része lehet.
             </p>
             <div class="hero-stats">
@@ -766,7 +766,7 @@
     </div>
     <div class="pf-modal-body" id="pfResultBody"></div>
     <div class="pf-modal-footer">
-      <a href="rendeles.html" class="pf-modal-cta jotform-link" target="_blank" rel="noopener noreferrer">Megrendelem a maszkomat →</a>
+      <a href="rendeles.html" class="pf-modal-cta jotform-link" id="pfOrderLink">Megrendelem a maszkomat →</a>
       <div class="pf-modal-note">Személyes Observ 520 bőrkonzultáció ajándékba klinikai átvétel esetén</div>
     </div>
   </div>
@@ -1864,7 +1864,7 @@
   position: fixed;
   top: 0; right: 0; bottom: 0;
   width: 520px;
-  max-width: 92vw;
+  max-width: 100vw;
   z-index: 9992;
   background: #111118;
   transform: translateX(100%);
