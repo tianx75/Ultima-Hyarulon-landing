@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /images/slides/
+
+Sitemap: https://tianx75.github.io/Ultima-Hyarulon-landing/sitemap.xml
