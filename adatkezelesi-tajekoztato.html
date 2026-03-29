@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adatkezelési Tájékoztató | The Ultimate Beauty Kft.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --bg-card: #161616;
+            --gold: #c9a84c;
+            --gold-light: #e4cfa0;
+            --text: #f0ece4;
+            --text-sec: #a09a90;
+            --text-muted: #8a857d;
+            --border: #2a2520;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text-sec);
+            font-family: var(--font-body);
+            font-weight: 300;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            transition: opacity 0.3s;
+        }
+        .back-link:hover { opacity: 0.7; }
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 300;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        h1 em { color: var(--gold-light); font-style: italic; }
+        .subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        h2 span {
+            color: var(--gold);
+            font-size: 0.85em;
+            margin-right: 8px;
+        }
+        h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--gold-light);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        p { margin-bottom: 1rem; }
+        strong { color: var(--text); font-weight: 500; }
+        ul, ol {
+            margin: 0.5rem 0 1rem 1.5rem;
+        }
+        li { margin-bottom: 0.4rem; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem;
+            font-size: 14px;
+        }
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            color: var(--gold);
+            font-weight: 500;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        td { color: var(--text-sec); }
+        .info-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .info-box p { margin-bottom: 0.3rem; }
+        .footer-legal {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        a { color: var(--gold); }
+        @media (max-width: 600px) {
+            .container { padding: 2rem 1.25rem; }
+            h1 { font-size: 1.8rem; }
+            table { font-size: 13px; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <a href="maszk.html" class="back-link">&larr; Vissza a termékhez</a>
+
+    <h1>Adatkezelési <em>Tájékoztató</em></h1>
+    <p class="subtitle">
+        Hatályos: 2026. március 28-tól &nbsp;|&nbsp; Utolsó módosítás: 2026. március 28.<br>
+        The Ultimate Beauty Kft. &nbsp;|&nbsp; GDPR (EU 2016/679 rendelet) szerinti tájékoztató
+    </p>
+
+    <!-- 1. Adatkezelő -->
+    <h2><span>1.</span> Az adatkezelő adatai</h2>
+    <div class="info-box">
+        <p><strong>Cégnév:</strong> The Ultimate Beauty Kft.</p>
+        <p><strong>Székhely:</strong> 1124 Budapest, Németvölgyi út 68.</p>
+        <p><strong>Adószám:</strong> 32868289-2-43</p>
+        <p><strong>Telefon:</strong> +36 70 554 9497</p>
+        <p><strong>Email:</strong> info@theultimatebeauty.net</p>
+        <p><strong>Weboldal:</strong> <a href="https://theultimatebeauty.net" target="_blank">theultimatebeauty.net</a></p>
+    </div>
+
+    <!-- 2. Fogalmak -->
+    <h2><span>2.</span> Alapfogalmak</h2>
+    <ul>
+        <li><strong>Személyes adat:</strong> bármely adat, amely alapján egy természetes személy azonosítható (pl. név, email cím, telefonszám).</li>
+        <li><strong>Adatkezelés:</strong> a személyes adatokon végzett bármely művelet (gyűjtés, rögzítés, tárolás, felhasználás, törlés).</li>
+        <li><strong>Érintett:</strong> az a természetes személy, akinek adatait kezeljük — azaz te, a weboldalunk látogatója vagy vásárlója.</li>
+        <li><strong>Adatfeldolgozó:</strong> az a személy vagy szervezet, amely az adatkezelő megbízásából adatokat kezel (pl. fizetési szolgáltató, szállítmányozó).</li>
+    </ul>
+
+    <!-- 3. Adatkezelési tevékenységek -->
+    <h2><span>3.</span> Milyen adatokat kezelünk és miért?</h2>
+
+    <h3>3.1. Termékrendelés (ULTIMA LED Beauty Mask)</h3>
+    <table>
+        <tr><th>Kezelt adat</th><th>Cél</th><th>Jogalap</th><th>Megőrzés</th></tr>
+        <tr><td>Teljes név</td><td>Rendelés teljesítése, kapcsolattartás</td><td>Szerződés teljesítése</td><td>5 év (számviteli kötelezettség)</td></tr>
+        <tr><td>Email cím</td><td>Visszaigazolás, rendelés állapot</td><td>Szerződés teljesítése</td><td>5 év</td></tr>
+        <tr><td>Telefonszám</td><td>Szállítási egyeztetés, kapcsolattartás</td><td>Szerződés teljesítése</td><td>5 év</td></tr>
+        <tr><td>Szállítási cím</td><td>Termék kézbesítése</td><td>Szerződés teljesítése</td><td>5 év</td></tr>
+        <tr><td>Számlázási cím</td><td>Számla kiállítása</td><td>Jogi kötelezettség (Áfa tv., Szt.)</td><td>8 év</td></tr>
+    </table>
+
+    <h3>3.2. Online fizetés (Stripe)</h3>
+    <p>Az online bankkártyás fizetést a <strong>Stripe, Inc.</strong> (354 Oyster Point Blvd, South San Francisco, CA 94080, USA) biztosítja mint független adatkezelő. A bankkártya adataidat közvetlenül a Stripe dolgozza fel — mi ezeket az adatokat <strong>nem tároljuk és nem látjuk</strong>.</p>
+    <p>A Stripe adatkezelési tájékoztatója: <a href="https://stripe.com/privacy" target="_blank">stripe.com/privacy</a></p>
+
+    <h3>3.3. Influencer program (ajánlói rendszer)</h3>
+    <table>
+        <tr><th>Kezelt adat</th><th>Cél</th><th>Jogalap</th><th>Megőrzés</th></tr>
+        <tr><td>Ajánlói azonosító (ref kód)</td><td>Kedvezmény aktiválás, ajánlói jutalék nyomon követése</td><td>Jogos érdek</td><td>A program időtartama alatt</td></tr>
+        <tr><td>Ajánlói név (influencer neve)</td><td>Kedvezményes ár megjelenítése a vásárlónak</td><td>Jogos érdek</td><td>A program időtartama alatt</td></tr>
+    </table>
+
+    <h3>3.4. Hírlevél feliratkozás</h3>
+    <table>
+        <tr><th>Kezelt adat</th><th>Cél</th><th>Jogalap</th><th>Megőrzés</th></tr>
+        <tr><td>Email cím</td><td>Promóciós ajánlatok, újdonságok küldése</td><td>Hozzájárulás (opt-in)</td><td>Leiratkozásig</td></tr>
+    </table>
+    <p>A hírlevélről bármikor leiratkozhatsz az emailben található "Leiratkozás" linkre kattintva, vagy az info@theultimatebeauty.net címre küldött kéréssel.</p>
+
+    <h3>3.5. Kapcsolatfelvétel, konzultáció</h3>
+    <p>Ha emailben, telefonon vagy a weboldalon keresztül felveszed velünk a kapcsolatot, a megadott adataidat (név, email, telefonszám, üzenet tartalma) a megkeresés megválaszolása céljából kezeljük. Jogalap: jogos érdek. Megőrzés: 1 év.</p>
+
+    <!-- 4. Adatfeldolgozók -->
+    <h2><span>4.</span> Adatfeldolgozók</h2>
+    <p>Az adatkezeléshez az alábbi partnereket vesszük igénybe:</p>
+    <table>
+        <tr><th>Partner</th><th>Tevékenység</th><th>Székhely</th></tr>
+        <tr><td>Stripe, Inc.</td><td>Online fizetés feldolgozása</td><td>USA (EU-US DPF keretrendszer)</td></tr>
+        <tr><td>Google LLC (Google Sheets)</td><td>Rendelési adatok ideiglenes tárolása</td><td>USA (EU-US DPF keretrendszer)</td></tr>
+        <tr><td>GitHub, Inc.</td><td>Weboldal tárhelyszolgáltató (GitHub Pages)</td><td>USA</td></tr>
+        <tr><td>Google LLC (Google Fonts)</td><td>Betűtípusok betöltése</td><td>USA</td></tr>
+    </table>
+    <p>Minden adatfeldolgozó rendelkezik a GDPR-nak megfelelő adatvédelmi szabályzattal és megfelelő garanciákkal az EU-n kívüli adattovábbításhoz.</p>
+
+    <!-- 5. Sütik -->
+    <h2><span>5.</span> Sütik (cookie-k) és helyi tárolás</h2>
+    <p>A weboldal <strong>nem használ sütiket (cookie-kat)</strong>.</p>
+    <p>A weboldal az alábbi helyi tárolási megoldásokat alkalmazza:</p>
+    <ul>
+        <li><strong>localStorage (böngésző helyi tárhelye):</strong> Az influencer ajánlói kód (ref paraméter) és a rendelési adatok biztonsági mentése céljából. Ezek az adatok kizárólag a te böngésződben maradnak, nem kerülnek továbbításra.</li>
+    </ul>
+
+    <!-- 6. Analitika -->
+    <h2><span>6.</span> Webanalitika</h2>
+    <p>A weboldal <strong>Google Analytics</strong> szolgáltatást használhat látogatottsági statisztikák készítéséhez. A Google Analytics anonimizált adatokat gyűjt a weboldal használatáról (oldalmegtekintések, időtartam, eszköztípus). Személyes adatokat nem tartalmaz.</p>
+    <p>A Google Analytics adatvédelmi tájékoztatója: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
+
+    <!-- 7. Jogok -->
+    <h2><span>7.</span> Az érintett jogai</h2>
+    <p>A GDPR alapján az alábbi jogok illetnek meg:</p>
+    <ul>
+        <li><strong>Hozzáférés joga:</strong> Kérheted, hogy tájékoztassunk, milyen adataidat kezeljük.</li>
+        <li><strong>Helyesbítés joga:</strong> Kérheted pontatlan adataid kijavítását.</li>
+        <li><strong>Törlés joga ("elfeledtetés"):</strong> Kérheted adataid törlését, amennyiben nincs jogszabályi akadálya.</li>
+        <li><strong>Korlátozás joga:</strong> Kérheted az adatkezelés korlátozását.</li>
+        <li><strong>Adathordozhatóság joga:</strong> Kérheted adataid géppel olvasható formátumban történő kiadását.</li>
+        <li><strong>Tiltakozás joga:</strong> Tiltakozhatsz a jogos érdeken alapuló adatkezelés ellen.</li>
+        <li><strong>Hozzájárulás visszavonása:</strong> A hozzájáruláson alapuló adatkezelés esetén bármikor visszavonhatod a hozzájárulásodat.</li>
+    </ul>
+    <p>Jogaid gyakorlásához vedd fel velünk a kapcsolatot az <strong>info@theultimatebeauty.net</strong> email címen. A kérésedre legkésőbb 30 napon belül válaszolunk.</p>
+
+    <!-- 8. Adatbiztonság -->
+    <h2><span>8.</span> Adatbiztonság</h2>
+    <p>A személyes adatok védelme érdekében az alábbi intézkedéseket alkalmazzuk:</p>
+    <ul>
+        <li>HTTPS titkosított kapcsolat a weboldal és a látogató között</li>
+        <li>A bankkártya adatokat kizárólag a Stripe PCI DSS tanúsítvánnyal rendelkező rendszere kezeli</li>
+        <li>A rendelési adatokhoz csak az arra jogosult munkatársak férnek hozzá</li>
+        <li>Rendszeres felülvizsgálat és frissítés</li>
+    </ul>
+
+    <!-- 9. Jogorvoslat -->
+    <h2><span>9.</span> Jogorvoslati lehetőségek</h2>
+    <p>Ha úgy érzed, hogy adatkezelésünk sérti a jogaidat, az alábbi lehetőségeid vannak:</p>
+    <ul>
+        <li>Fordulj hozzánk közvetlenül: <strong>info@theultimatebeauty.net</strong></li>
+        <li>Panaszt tehetsz a <strong>Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH)</strong>:
+            <ul>
+                <li>Székhely: 1055 Budapest, Falk Miksa utca 9-11.</li>
+                <li>Levelezési cím: 1363 Budapest, Pf. 9.</li>
+                <li>Telefon: +36 1 391 1400</li>
+                <li>Email: ugyfelszolgalat@naih.hu</li>
+                <li>Weboldal: <a href="https://naih.hu" target="_blank">naih.hu</a></li>
+            </ul>
+        </li>
+        <li>Bírósághoz fordulhatsz — az illetékes bíróság a te lakóhelyed szerinti törvényszék.</li>
+    </ul>
+
+    <!-- 10. Módosítások -->
+    <h2><span>10.</span> A tájékoztató módosítása</h2>
+    <p>Fenntartjuk a jogot, hogy ezt a tájékoztatót módosítsuk. A módosításokat ezen az oldalon tesszük közzé a hatálybalépés dátumával együtt. Lényeges változás esetén a weboldalon is tájékoztatjuk a látogatókat.</p>
+
+    <div class="footer-legal">
+        <p>&copy; 2026 The Ultimate Beauty Kft. &nbsp;|&nbsp; Minden jog fenntartva.</p>
+        <p style="margin-top:8px;">1124 Budapest, Németvölgyi út 68. &nbsp;&bull;&nbsp; info@theultimatebeauty.net &nbsp;&bull;&nbsp; +36 70 554 9497</p>
+    </div>
+
+</div>
+</body>
+</html>
