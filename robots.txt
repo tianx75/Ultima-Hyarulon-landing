@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /images/slides/
 
-Sitemap: https://tianx75.github.io/Ultima-Hyarulon-landing/sitemap.xml
+Sitemap: https://mask.theultimatebeauty.net/sitemap.xml
