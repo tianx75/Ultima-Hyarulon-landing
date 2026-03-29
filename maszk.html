@@ -1519,7 +1519,7 @@
     </div>
 
     <!-- Program 1: Anti-Aging -->
-    <div class="pp-program" onclick="this.classList.toggle('open')">
+    <div class="pp-program" onclick="ppToggle(this)">
       <div class="pp-program-header">
         <div class="pp-program-colors">
           <span class="pp-dot" style="background:#c62828"></span>
@@ -1568,11 +1568,12 @@
         <div class="pp-tip">
           <strong>Tipp:</strong> Kombinálva klinikai ULTIMA Face kezeléssel az eredmények akár 3× gyorsabban jelentkezhetnek.
         </div>
+        <button class="pp-back-btn" onclick="event.stopPropagation();ppClose(this)">▲ Vissza a programokhoz</button>
       </div>
     </div>
 
     <!-- Program 2: Glow & Brighten -->
-    <div class="pp-program" onclick="this.classList.toggle('open')">
+    <div class="pp-program" onclick="ppToggle(this)">
       <div class="pp-program-header">
         <div class="pp-program-colors">
           <span class="pp-dot" style="background:#f9a825"></span>
@@ -1621,11 +1622,12 @@
         <div class="pp-tip">
           <strong>Tipp:</strong> Különösen hatékony C-vitamin szérum használata után — a fényterápia segíti a hatóanyagok felszívódását.
         </div>
+        <button class="pp-back-btn" onclick="event.stopPropagation();ppClose(this)">▲ Vissza a programokhoz</button>
       </div>
     </div>
 
     <!-- Program 3: Clear & Balance -->
-    <div class="pp-program" onclick="this.classList.toggle('open')">
+    <div class="pp-program" onclick="ppToggle(this)">
       <div class="pp-program-header">
         <div class="pp-program-colors">
           <span class="pp-dot" style="background:#1565c0"></span>
@@ -1673,11 +1675,12 @@
         <div class="pp-tip">
           <strong>Tipp:</strong> Ne használj alkoholos tonikot előtte — enyhe, pH-semleges arctisztítás után a leghatékonyabb.
         </div>
+        <button class="pp-back-btn" onclick="event.stopPropagation();ppClose(this)">▲ Vissza a programokhoz</button>
       </div>
     </div>
 
     <!-- Program 4: Deep Cellular Repair -->
-    <div class="pp-program" onclick="this.classList.toggle('open')">
+    <div class="pp-program" onclick="ppToggle(this)">
       <div class="pp-program-header">
         <div class="pp-program-colors">
           <span class="pp-dot" style="background:#7b1fa2"></span>
@@ -1724,11 +1727,12 @@
         <div class="pp-tip">
           <strong>Tipp:</strong> ULTIMA Face klinikai kezelés után azonnal elkezdhető — a két technológia szinergikusan erősíti egymást.
         </div>
+        <button class="pp-back-btn" onclick="event.stopPropagation();ppClose(this)">▲ Vissza a programokhoz</button>
       </div>
     </div>
 
     <!-- Program 5: Quick Daily -->
-    <div class="pp-program" onclick="this.classList.toggle('open')">
+    <div class="pp-program" onclick="ppToggle(this)">
       <div class="pp-program-header">
         <div class="pp-program-colors">
           <span class="pp-dot" style="background:#c62828"></span>
@@ -1779,6 +1783,7 @@
         <div class="pp-tip">
           <strong>Tipp:</strong> Ez az ideális fenntartó program bármelyik intenzív program befejezése után.
         </div>
+        <button class="pp-back-btn" onclick="event.stopPropagation();ppClose(this)">▲ Vissza a programokhoz</button>
       </div>
     </div>
 
@@ -1803,6 +1808,25 @@
 }
 .pp-program.open .pp-program-hook { display: none; }
 .pp-program:not(.open) .pp-program-hook { display: block; }
+
+.pp-back-btn {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 10px;
+  color: #c9a84c;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.pp-back-btn:hover { background: rgba(201,168,76,0.15); }
 
 /* ═══ PROGRAMS FAB ═══ */
 .programs-fab {
@@ -2146,6 +2170,31 @@ document.addEventListener('keydown', function(e) {
     if (panel && panel.classList.contains('show')) togglePrograms();
   }
 });
+
+// ── Program accordion toggle & back ──
+function ppToggle(el) {
+  var wasOpen = el.classList.contains('open');
+  // Close all programs first
+  var all = document.querySelectorAll('.pp-program');
+  all.forEach(function(p) { p.classList.remove('open'); });
+  // If it wasn't open, open it and scroll into view
+  if (!wasOpen) {
+    el.classList.add('open');
+    setTimeout(function() {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  }
+}
+
+function ppClose(btn) {
+  var program = btn.closest('.pp-program');
+  if (program) {
+    program.classList.remove('open');
+    setTimeout(function() {
+      program.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 50);
+  }
+}
 </script>
 
 <script src="maszk.js"></script>
@@ -2162,7 +2211,11 @@ document.addEventListener('keydown', function(e) {
   var ref = params.get('ref');
 
   if (ref) {
-    try { sessionStorage.setItem('ultima_ref', ref); } catch(e) {}
+    try {
+      sessionStorage.setItem('ultima_ref', ref);
+      sessionStorage.setItem('mask_influencer_ref', ref);
+      sessionStorage.setItem('mask_discount_code', 'ULTIMA15');
+    } catch(e) {}
   } else {
     try { ref = sessionStorage.getItem('ultima_ref'); } catch(e) {}
   }
