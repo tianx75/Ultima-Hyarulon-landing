@@ -15,11 +15,14 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
-        document.getElementById('pdfModal').style.display = 'none';
-        document.getElementById('imageModal').style.display = 'none';
+        const pdfModal = document.getElementById('pdfModal');
+        const imageModal = document.getElementById('imageModal');
+        if (pdfModal) pdfModal.style.display = 'none';
+        if (imageModal) imageModal.style.display = 'none';
     }
-    if (e.key === 'ArrowRight' && document.getElementById('pdfModal').style.display === 'flex') changeSlide(1);
-    if (e.key === 'ArrowLeft' && document.getElementById('pdfModal').style.display === 'flex') changeSlide(-1);
+    const pdfModal = document.getElementById('pdfModal');
+    if (e.key === 'ArrowRight' && pdfModal && pdfModal.style.display === 'flex') changeSlide(1);
+    if (e.key === 'ArrowLeft' && pdfModal && pdfModal.style.display === 'flex') changeSlide(-1);
 });
 
 let currentSlide = 1;
