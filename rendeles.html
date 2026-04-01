@@ -1129,6 +1129,57 @@ body::before {
 </div>
 
 <script>
+// ============ SUPABASE INTEGRATION ============
+// Rendelesek mentese kozvetlenul az adatbazisba
+const SUPABASE_URL = 'https://pvidgrbcoxxlyvknlbef.supabase.co';
+const SUPABASE_ANON = 'sb_publishable_3AMyIlN4w5LT7CX6SQ2HiA_K7dI_ibx';
+
+async function saveOrderToSupabase(orderData) {
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/mask_orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON,
+        'Authorization': 'Bearer ' + SUPABASE_ANON,
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify({
+        customer_name: orderData.nev || '',
+        email: orderData.email || '',
+        phone: orderData.telefon || '',
+        delivery_method: orderData.delivery_method || '',
+        price: parseInt(orderData.ar) || 0,
+        influencer_ref: orderData.influencer || 'direkt',
+        discount_code: orderData.discount_code || '',
+        marketing_consent: orderData.marketing === 'igen',
+        shipping_zip: orderData.iranyitoszam || null,
+        shipping_city: orderData.varos || null,
+        shipping_address: orderData.utca || null,
+        billing_name: orderData.billing_name || null,
+        billing_tax_id: orderData.adoszam || null,
+        billing_address: orderData.billing_address || null,
+        appointment_type: orderData.appointment_type || null,
+        preferred_date: orderData.preferred_date || null,
+        preferred_time: orderData.preferred_time || null,
+        notes: orderData.megjegyzes || null,
+        status: 'pending',
+        raw_data: orderData
+      })
+    });
+    if (res.ok) {
+      console.log('[MASK] Rendeles mentve Supabase-be!');
+      return true;
+    } else {
+      console.warn('[MASK] Supabase mentes hiba:', res.status);
+      return false;
+    }
+  } catch (err) {
+    console.error('[MASK] Supabase hiba:', err);
+    return false;
+  }
+}
+
 // ============ CONFIGURATION ============
 // STRIPE PAYMENT LINKS — cseréld ki az éles linkekre!
 const STRIPE_LINKS = {
@@ -1371,6 +1422,9 @@ form.addEventListener('submit', async function(e) {
     const key = 'mask_order_' + (data.nev || 'unknown').replace(/\s/g, '_') + '_' + Date.now();
     localStorage.setItem(key, JSON.stringify(data));
   } catch(e) {}
+
+  // Save to Supabase (parallel — nem blokkolja a Stripe atiranyitast)
+  saveOrderToSupabase(data).catch(function() {});
 
   // Determine Stripe link
   let stripeLink = '';
