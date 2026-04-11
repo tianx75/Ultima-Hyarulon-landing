@@ -1424,26 +1424,26 @@ form.addEventListener('submit', async function(e) {
   data.influencer = influencerRef || 'direkt';
   data.marketing = document.getElementById('marketingCheck').checked ? 'igen' : 'nem';
 
-  // Save to Google Sheets (TUB CRM Master — Vercel proxy, nincs CORS probléma)
+  // Save to Google Sheets (TUB CRM Master — sync XHR → same-origin proxy)
   try {
-    await fetch('/api/sheet-proxy', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        form_type: 'mask-rendeles',
-        name: data.nev || '',
-        firstName: (data.nev || '').split(' ')[0] || '',
-        lastName: (data.nev || '').split(' ').slice(1).join(' ') || '',
-        email: data.email || '',
-        phone: data.telefon || '',
-        interest: '⏳ MASK FORM KITÖLTVE — fizetésre vár | ' + (currentDelivery === 'shipping' ? 'szállítás' : 'klinikai átvétel'),
-        message: 'Ár: ' + data.ar + ' Ft | Influencer: ' + data.influencer + ' | Marketing: ' + data.marketing,
-        source: 'mask-rendeles-form',
-        payment_status: 'pending'
-      })
-    });
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/sheet-proxy', false);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+      form_type: 'mask-rendeles',
+      name: data.nev || '',
+      firstName: (data.nev || '').split(' ')[0] || '',
+      lastName: (data.nev || '').split(' ').slice(1).join(' ') || '',
+      email: data.email || '',
+      phone: data.telefon || '',
+      interest: '⏳ MASK FORM KITÖLTVE — fizetésre vár | ' + (currentDelivery === 'shipping' ? 'szállítás' : 'klinikai átvétel'),
+      message: 'Ár: ' + data.ar + ' Ft | Influencer: ' + data.influencer + ' | Marketing: ' + data.marketing,
+      source: 'mask-rendeles-form',
+      payment_status: 'pending'
+    }));
+    console.log('[TUB Sheet] Proxy response:', xhr.status, xhr.responseText.substring(0,100));
   } catch (err) {
-    console.error('Sheet proxy error:', err);
+    console.error('[TUB Sheet] Proxy error:', err);
   }
   // Fallback: localStorage sheets URL
   const sheetsUrl = localStorage.getItem('tub_mask_sheets_url');
