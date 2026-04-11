@@ -1425,29 +1425,28 @@ form.addEventListener('submit', async function(e) {
   data.marketing = document.getElementById('marketingCheck').checked ? 'igen' : 'nem';
 
   // Save to Google Sheets (TUB CRM Master — mindig megy, Stripe előtt)
-  // Navigator.sendBeacon garantáltan elküldi az adatot, még ha az oldal elhagyásra kerül is
+  // Hidden iframe + form enctype=text/plain → e.postData.contents-be kerül
   const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbyPkz4jNjYHbRheU24YT9zV5BIqNw6B1jQ2PuQBaZ1kYYrkXBe6eNJht20e3GVRIC97xA/exec';
-  var sheetPayload = {
-    form_type: 'mask-rendeles',
-    name: data.nev || '',
-    firstName: (data.nev || '').split(' ')[0] || '',
-    lastName: (data.nev || '').split(' ').slice(1).join(' ') || '',
-    email: data.email || '',
-    phone: data.telefon || '',
-    interest: '⏳ MASK FORM KITÖLTVE — fizetésre vár | ' + (currentDelivery === 'shipping' ? 'szállítás' : 'klinikai átvétel'),
-    message: 'Ár: ' + data.ar + ' Ft | Influencer: ' + data.influencer + ' | Marketing: ' + data.marketing,
-    source: 'mask-rendeles-form',
-    payment_status: 'pending'
-  };
   try {
-    // Beacon method (legjobb: nem blokkolja a navigációt, garantáltan elküldi)
-    navigator.sendBeacon(SHEETS_WEBHOOK, JSON.stringify(sheetPayload));
+    var sheetData = JSON.stringify({
+      form_type: 'mask-rendeles',
+      name: data.nev || '',
+      firstName: (data.nev || '').split(' ')[0] || '',
+      lastName: (data.nev || '').split(' ').slice(1).join(' ') || '',
+      email: data.email || '',
+      phone: data.telefon || '',
+      interest: '⏳ MASK FORM KITÖLTVE — fizetésre vár | ' + (currentDelivery === 'shipping' ? 'szállítás' : 'klinikai átvétel'),
+      message: 'Ár: ' + data.ar + ' Ft | Influencer: ' + data.influencer + ' | Marketing: ' + data.marketing,
+      source: 'mask-rendeles-form',
+      payment_status: 'pending'
+    });
+    // XMLHttpRequest — szinkron, garantáltan elküldi a redirect előtt
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', SHEETS_WEBHOOK, false); // false = szinkron
+    xhr.setRequestHeader('Content-Type', 'text/plain');
+    xhr.send(sheetData);
   } catch (err) {
-    // Fallback: image pixel tracking (CORS-free, mindig működik)
-    try {
-      var img = new Image();
-      img.src = SHEETS_WEBHOOK + '?payload=' + encodeURIComponent(JSON.stringify(sheetPayload));
-    } catch(e) {}
+    console.error('Sheet XHR error:', err);
   }
   // Fallback: localStorage sheets URL
   const sheetsUrl = localStorage.getItem('tub_mask_sheets_url');
