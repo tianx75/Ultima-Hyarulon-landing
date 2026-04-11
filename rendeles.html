@@ -1425,27 +1425,29 @@ form.addEventListener('submit', async function(e) {
   data.marketing = document.getElementById('marketingCheck').checked ? 'igen' : 'nem';
 
   // Save to Google Sheets (TUB CRM Master — mindig megy, Stripe előtt)
+  // Navigator.sendBeacon garantáltan elküldi az adatot, még ha az oldal elhagyásra kerül is
   const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbyPkz4jNjYHbRheU24YT9zV5BIqNw6B1jQ2PuQBaZ1kYYrkXBe6eNJht20e3GVRIC97xA/exec';
+  var sheetPayload = {
+    form_type: 'mask-rendeles',
+    name: data.nev || '',
+    firstName: (data.nev || '').split(' ')[0] || '',
+    lastName: (data.nev || '').split(' ').slice(1).join(' ') || '',
+    email: data.email || '',
+    phone: data.telefon || '',
+    interest: '⏳ MASK FORM KITÖLTVE — fizetésre vár | ' + (currentDelivery === 'shipping' ? 'szállítás' : 'klinikai átvétel'),
+    message: 'Ár: ' + data.ar + ' Ft | Influencer: ' + data.influencer + ' | Marketing: ' + data.marketing,
+    source: 'mask-rendeles-form',
+    payment_status: 'pending'
+  };
   try {
-    await fetch(SHEETS_WEBHOOK, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({
-        form_type: 'mask-rendeles',
-        name: data.nev || '',
-        firstName: (data.nev || '').split(' ')[0] || '',
-        lastName: (data.nev || '').split(' ').slice(1).join(' ') || '',
-        email: data.email || '',
-        phone: data.telefon || '',
-        interest: '⏳ MASK FORM KITÖLTVE — fizetésre vár | ' + (currentDelivery === 'shipping' ? 'szállítás' : 'klinikai átvétel'),
-        message: 'Ár: ' + data.ar + ' Ft | Influencer: ' + data.influencer + ' | Marketing: ' + data.marketing,
-        source: 'mask-rendeles-form',
-        payment_status: 'pending'
-      })
-    });
+    // Beacon method (legjobb: nem blokkolja a navigációt, garantáltan elküldi)
+    navigator.sendBeacon(SHEETS_WEBHOOK, JSON.stringify(sheetPayload));
   } catch (err) {
-    console.error('Sheets webhook error:', err);
+    // Fallback: image pixel tracking (CORS-free, mindig működik)
+    try {
+      var img = new Image();
+      img.src = SHEETS_WEBHOOK + '?payload=' + encodeURIComponent(JSON.stringify(sheetPayload));
+    } catch(e) {}
   }
   // Fallback: localStorage sheets URL
   const sheetsUrl = localStorage.getItem('tub_mask_sheets_url');
