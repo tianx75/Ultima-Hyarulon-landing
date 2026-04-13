@@ -1424,38 +1424,40 @@ form.addEventListener('submit', async function(e) {
   data.influencer = influencerRef || 'direkt';
   data.marketing = document.getElementById('marketingCheck').checked ? 'igen' : 'nem';
 
-  // Save to Google Sheets (TUB CRM Master — sync XHR → same-origin proxy)
+  // Save to Google Sheets (TUB CRM — közvetlenül az Apps Script-be)
+  const TUB_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxz3yxK-opDoqCejyzsX-6mic5Hl1RaqtAy69bj8-Vn3NKvudur_scn2IDlL3x5EihFmQ/exec';
+  const sheetPayload = {
+    formType: 'mask-rendeles',
+    sheetName: 'Mask-Rendeles',
+    fullName: data.nev || '',
+    email: data.email || '',
+    phone: data.telefon || '',
+    delivery_method: currentDelivery,
+    ar: data.ar,
+    influencer: data.influencer,
+    payment_status: 'pending',
+    marketing: data.marketing,
+    iranyitoszam: data.iranyitoszam || '',
+    varos: data.varos || '',
+    utca: data.utca || '',
+    appointment_type: data.appointment_type || '',
+    preferred_date: data.preferred_date || '',
+    preferred_time: data.preferred_time || '',
+    megjegyzes: data.megjegyzes || '',
+    source: 'mask-rendeles-form',
+    timestamp: data.timestamp,
+    pageUrl: window.location.href
+  };
   try {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/api/sheet-proxy', false);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({
-      form_type: 'mask-rendeles',
-      name: data.nev || '',
-      firstName: (data.nev || '').split(' ')[0] || '',
-      lastName: (data.nev || '').split(' ').slice(1).join(' ') || '',
-      email: data.email || '',
-      phone: data.telefon || '',
-      interest: '⏳ MASK FORM KITÖLTVE — fizetésre vár | ' + (currentDelivery === 'shipping' ? 'szállítás' : 'klinikai átvétel'),
-      message: 'Ár: ' + data.ar + ' Ft | Influencer: ' + data.influencer + ' | Marketing: ' + data.marketing,
-      source: 'mask-rendeles-form',
-      payment_status: 'pending'
-    }));
-    console.log('[TUB Sheet] Proxy response:', xhr.status, xhr.responseText.substring(0,100));
+    await fetch(TUB_SCRIPT_URL, {
+      method: 'POST',
+      redirect: 'follow',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(sheetPayload)
+    });
+    console.log('[TUB Sheet] Mask rendelés mentve Google Sheet-be');
   } catch (err) {
-    console.error('[TUB Sheet] Proxy error:', err);
-  }
-  // Fallback: localStorage sheets URL
-  const sheetsUrl = localStorage.getItem('tub_mask_sheets_url');
-  if (sheetsUrl) {
-    try {
-      await fetch(sheetsUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify(data)
-      });
-    } catch (err) {}
+    console.error('[TUB Sheet] Google Sheet hiba:', err);
   }
 
   // Save locally as backup + email for Stripe return tracking
