@@ -1,0 +1,6 @@
+# Letöltött / influenszer PDF-ek ne kerüljenek a repóba — az aszf.pdf KIVÉTEL
+*.pdf
+!aszf.pdf
+
+# OS / szerkesztő szemét
+.DS_Store

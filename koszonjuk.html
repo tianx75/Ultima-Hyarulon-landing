@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Köszönjük a rendelést! | The Ultimate Beauty Clinic</title>
+<meta name="description" content="Sikeres rendelés — ULTIMA LED Beauty Mask. Köszönjük a bizalmad!">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+
+<!-- ===== TRACKING — Google (GA4 G-6FZ11T4EFD + Ads AW-18069239911 + GTM-WHG9BVJT) átvéve a theultimatebeauty.net-ről + Meta Pixel (Sorin) ===== -->
+<!-- Google Ads + GA4 (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18069239911"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18069239911');
+  gtag('config', 'G-6FZ11T4EFD');
+</script>
+<!-- Google Tag Manager -->
+<script>
+  (function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    var f = d.getElementsByTagName(s)[0], j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-WHG9BVJT');
+</script>
+<!-- End Google Tag Manager -->
+<!-- Meta Pixel Code (Sorin — 840347862102385) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '840347862102385');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=840347862102385&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- ===== /TRACKING ===== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --gold: #c9a96e; --gold-light: #e4cfa0; --gold-dark: #9a7b4f; --gold-alt: #c9a84c;
+  --bg-primary: #0a0a0a; --bg-secondary: #111111; --bg-card: #161616;
+  --text-primary: #f0ece4; --text-secondary: #a09a90; --text-muted: #8a857d;
+  --border: #2a2520; --error: #e74c3c; --success: #27ae60;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-weight: 300;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 18px;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(201,169,110,0.06) 0%, transparent 45%),
+    radial-gradient(circle at 80% 100%, rgba(201,169,110,0.04) 0%, transparent 40%);
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 52px 36px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.7s ease-out;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.brand {
+  font-size: 12px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 36px;
+  font-weight: 400;
+}
+
+.check-circle {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+  font-size: 40px;
+  color: var(--gold);
+  position: relative;
+  animation: pop 0.5s 0.3s both cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.check-circle::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,169,110,0.25);
+  animation: ring 2.4s ease-out infinite;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+h1 span { color: var(--gold); }
+
+.lead {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 8px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lead strong { color: var(--text-primary); font-weight: 500; }
+
+.order-ref {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 6px 16px;
+  background: rgba(201,169,110,0.08);
+  border: 1px solid rgba(201,169,110,0.2);
+  border-radius: 20px;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--gold-light);
+}
+
+.next-box {
+  background: linear-gradient(135deg, #161616 0%, #1a1a2e 50%, #161616 100%);
+  border: 1px solid var(--gold-dark);
+  border-radius: 16px;
+  padding: 28px 24px;
+  margin: 32px 0 8px;
+  text-align: left;
+  display: none;
+}
+
+.next-box.show { display: block; }
+
+.next-box .label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-alt);
+  margin-bottom: 14px;
+  justify-content: center;
+}
+
+.next-box h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 23px;
+  color: var(--gold-light);
+  font-weight: 400;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 0;
+}
+
+.step-num {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dark);
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.step-text {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.step-text strong { color: var(--text-primary); font-weight: 500; }
+
+.contact {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.contact p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.contact a {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.contact a:hover { color: var(--gold-light); }
+
+.home-btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 40px;
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.home-btn:hover {
+  background: var(--gold);
+  color: var(--bg-primary);
+}
+
+.footer {
+  margin-top: 32px;
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .card { padding: 44px 22px 32px; border-radius: 18px; }
+  h1 { font-size: 30px; }
+  .next-box { padding: 24px 18px; }
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WHG9BVJT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="card">
+  <div class="brand">The Ultimate Beauty</div>
+
+  <div class="check-circle">&#10003;</div>
+
+  <h1>Köszönjük a <span>rendelést!</span></h1>
+  <p class="lead">A fizetésed sikeresen megtörtént. A részleteket és a visszaigazolást
+  hamarosan <strong>emailben</strong> is elküldjük a megadott címedre.</p>
+  <div class="order-ref" id="orderRef" style="display:none;"></div>
+
+  <!-- KLINIKAI ÁTVÉTEL -->
+  <div class="next-box" id="boxClinic">
+    <div class="label"><span>&#9733;</span> A KÖVETKEZŐ LÉPÉSEK <span>&#9733;</span></div>
+    <h2>Ingyenes Observ&nbsp;520 bőrdiagnosztika</h2>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Munkatársunk <strong>hamarosan felveszi veled a kapcsolatot</strong>, és egyeztetjük a számodra legmegfelelőbb időpontot.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">A klinikán átveszed a maszkod, és <strong>személyes betanítást</strong> kapsz a használatához.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Elvégezzük az ingyenes <strong>Observ 520 bőranalízist</strong> — pontosan látni fogod, mire van szüksége a bőrödnek.</div>
+    </div>
+  </div>
+
+  <!-- HÁZHOZSZÁLLÍTÁS -->
+  <div class="next-box" id="boxShipping">
+    <div class="label"><span>&#128230;</span> A KÖVETKEZŐ LÉPÉSEK <span>&#128230;</span></div>
+    <h2>Csomagod hamarosan úton van</h2>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">A rendelésed feldolgozzuk, és a csomagot <strong>2–4 munkanapon belül</strong> kézbesítjük a megadott címre.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">A maszkhoz <strong>videós betanítást</strong> küldünk, hogy az első használattól kezdve magabiztosan tudd alkalmazni.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Bármikor jelentkezhetsz az ingyenes <strong>Observ 520 bőrdiagnosztikára</strong> a klinikánkon.</div>
+    </div>
+  </div>
+
+  <div class="contact">
+    <p>Kérdésed van a rendeléssel kapcsolatban? Szívesen segítünk.</p>
+    <a href="tel:+36705549497">+36 70 554 9497</a> &nbsp;&bull;&nbsp;
+    <a href="mailto:info@theultimatebeauty.net">info@theultimatebeauty.net</a>
+  </div>
+
+  <a href="https://theultimatebeauty.net" class="home-btn">Vissza a klinika oldalára</a>
+
+  <div class="footer">
+    The Ultimate Beauty Kft. &bull; Adószám: 32868289-2-43<br>
+    1124 Budapest, Németvölgyi út 68.
+  </div>
+</div>
+
+<script>
+(function() {
+  var params = new URLSearchParams(window.location.search);
+
+  // ---- 1) Rendelés azonosító megjelenítése (ha Stripe átadta) ----
+  var sessionId = params.get('session_id') || '';
+  if (sessionId) {
+    var shortRef = sessionId.replace('cs_live_', '').replace('cs_test_', '').slice(0, 12).toUpperCase();
+    var refEl = document.getElementById('orderRef');
+    refEl.textContent = 'Rendelés azonosító: ' + shortRef;
+    refEl.style.display = 'inline-block';
+  }
+
+  // ---- 2) Klinikai vs. szállítás box megjelenítése ----
+  // A rendeles.html a fizetés előtt elmenti a választott módot localStorage-be.
+  var delivery = params.get('delivery') || localStorage.getItem('mask_last_delivery') || 'clinic';
+  if (delivery === 'shipping') {
+    document.getElementById('boxShipping').classList.add('show');
+  } else {
+    document.getElementById('boxClinic').classList.add('show');
+  }
+
+  // ---- 3) Rendelés "FIZETVE" jelölése a CRM-ben (best-effort, kliens oldali) ----
+  // FIGYELEM: ez csak akkor fut le, ha a vevő visszatér erre az oldalra.
+  // A megbízható, szerver oldali megerősítés a Stripe webhook (lásd dokumentáció).
+  // A webhook URL-nek meg KELL egyeznie a CRM "fizetve" kezelőjével.
+  var WEBHOOK = 'https://script.google.com/macros/s/AKfycbyPkz4jNjYHbRheU24YT9zV5BIqNw6B1jQ2PuQBaZ1kYYrkXBe6eNJht20e3GVRIC97xA/exec';
+  var email = params.get('email') || localStorage.getItem('mask_last_email') || '';
+
+  // Duplikált jelölés elkerülése (oldal-frissítés esetére)
+  var guardKey = 'mask_paid_fired_' + (sessionId || email || 'x');
+  if (!localStorage.getItem(guardKey)) {
+    try {
+      fetch(WEBHOOK, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({
+          form_type: 'mask-rendeles',
+          email: email,
+          stripe_session_id: sessionId,
+          delivery_method: delivery,
+          interest: '✅ MASK RENDELÉS — FIZETVE (Stripe)',
+          message: 'Stripe fizetés visszaigazolva (köszönő oldal)',
+          source: 'mask-stripe-success',
+          payment_status: 'paid'
+        })
+      }).catch(function(){});
+      localStorage.setItem(guardKey, '1');
+    } catch (e) {}
+  }
+})();
+</script>
+</body>
+</html>
