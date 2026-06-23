@@ -1516,6 +1516,17 @@ form.addEventListener('submit', async function(e) {
   // Save to Supabase (parallel — nem blokkolja a Stripe atiranyitast)
   saveOrderToSupabase(data).catch(function() {});
 
+  // GHL Integrációs Híd (F2) — fail-open + keepalive (túléli a Stripe-redirectet).
+  // A híd hibája SOSEM töri a rendelést: a Sheet/Supabase/Stripe lábak változatlanul futnak.
+  try {
+    fetch('https://tub-integracios-hid.vercel.app/api/mask-rendeles', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+      keepalive: true
+    }).catch(function() {});
+  } catch (e) {}
+
   // Determine Stripe link
   let stripeLink = '';
   if (isInfluencer) {
