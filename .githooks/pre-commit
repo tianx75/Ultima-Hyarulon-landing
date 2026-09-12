@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# pre-commit secret-scan wrapper — verziózott hook (a klónnal/forkkal utazik → Melinda-fork + felhő is védve).
+# Bekötés: git config core.hooksPath .githooks
+# Fail-open, ha a szken MAGA nem futtatható (nincs python3) — ne blokkoljon vakon;
+# fail-CLOSED, ha a szken titkot talál (a blokk reverzibilis → AUTONOMIA-LETRA 1. fok).
+HOOK_DIR="$(cd "$(dirname "$0")" && pwd)"
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "⚠ pre-commit secret-scan: nincs python3 → szken KIHAGYVA (fail-open). Légy óvatos a titkokkal!" >&2
+  exit 0
+fi
+git diff --cached -U0 --no-color | python3 "$HOOK_DIR/secret-scan.py"
+rc=$?
+if [ "$rc" = "2" ]; then
+  echo "⚠ pre-commit secret-scan: a szken ÖNTESZTJE bukott (regex elromlott) → fail-open, de JAVÍTSD a .githooks/secret-scan.py-t!" >&2
+  exit 0   # az önteszt-bukás ne blokkolja a munkát, de hangos figyelmeztetés
+fi
+exit $rc
