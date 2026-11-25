@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Ár-kapu a maszk-oldalakhoz (2026-11-25).
+"""Ár-kapu a maszk RENDELŐLAPJÁHOZ (2026-11-25).
+
+Csak a rendelőlapot és a konfigurációt nézi. A termékoldal (theultimatebeauty.net/mask)
+Melindáé, a régi maszk.html és az ÁSZF-oldal sem a mi körünk (Krisztián, 2026-11-25).
 
 Élesítés előtt futtasd:   python3 scripts/ar-kapu.py
 A kupon lenyomatát is:    MASK_KUPON=<kód> python3 scripts/ar-kapu.py
@@ -59,8 +62,8 @@ if cfg:
             figyelmeztetesek.append("az áthúzott 120.000 Ft BE van kapcsolva — csak Vanda igenje után élesíthető")
 
 # ── 2. Tiltott maradványok (régi ár, influenszer-kedvezmény, régi Stripe-linkek) ──
-oldalak = ["rendeles.html", "maszk.html", "aszf-webshop.html", "koszonjuk.html", "mask-ar.js", "maszk.js"]
-engedett = {"maszk.html": ["120.000–180.000 Ft"]}   # a piaci összehasonlító oszlop, nem a mi árunk
+oldalak = ["rendeles.html", "mask-ar.js"]
+engedett = {}
 tiltott = [r"102[.\s]?000", r"ULTIMA15", r"influencer_ref=", r"14A3cx8hl3h91hudv72B201",
            r"28E28tdBFbNFgco4YB2B202", r"7sYdRb8hlg3V0dqdv72B203", r"6oU3cx415bNFbW89eR2B204"]
 tartalom = {o: olvas(o) for o in oldalak}
@@ -75,22 +78,17 @@ for o, s in tartalom.items():
         if talalat:
             hibak.append(f"{o}: régi elem maradt ({minta}) × {len(talalat)}")
 
-# ── 3. A Google-nak szóló gépi ár és a látható árak ──
+# ── 3. A rendelőlap látható árai ──
 if nyilv:
-    m = re.search(r'"price":\s*"(\d+)"', tartalom["maszk.html"])
-    if not m or int(m.group(1)) != nyilv:
-        hibak.append(f"maszk.html: a gépi ár (JSON-LD) {m.group(1) if m else 'nincs'}, nem {nyilv}")
-    else:
-        rendben.append(f"maszk.html: a gépi ár {nyilv}")
-    elvart = {"maszk.html": 3, "rendeles.html": 3, "aszf-webshop.html": 1}
+    elvart = {"rendeles.html": 3}
     for o, db in elvart.items():
         n = tartalom[o].count(ft(nyilv)) + tartalom[o].count(ft(nyilv).replace(" Ft", " <small>Ft</small>"))
         (rendben if n >= db else hibak).append(f"{o}: a látható nyilvános ár {n}× (elvárt ≥ {db})")
     if kupon and ft(kupon).replace(" Ft", " <small>Ft</small>") not in tartalom["rendeles.html"]:
         hibak.append("rendeles.html: a kuponos ár kártyája nem a konfiguráció szerinti")
 
-# ── 4. Mindkét oldal betölti a konfigurációt ──
-for o in ("rendeles.html", "maszk.html"):
+# ── 4. A rendelőlap betölti a konfigurációt ──
+for o in ("rendeles.html",):
     if '<script src="mask-ar.js"></script>' not in tartalom[o]:
         hibak.append(f"{o}: nem tölti be a mask-ar.js-t")
 

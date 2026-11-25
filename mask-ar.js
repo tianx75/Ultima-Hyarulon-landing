@@ -3,11 +3,14 @@
    2026-11-25 · Krisztián + Heni: nyilvános ár 89.900 Ft, kuponos ár 84.900 Ft,
    szállítás 1.990 Ft. Az influenszer-kedvezmény megszűnt.
 
+   Ez a fájl CSAK a rendelőlapot (rendeles.html) szolgálja ki. A termékoldal
+   (theultimatebeauty.net/mask) Melindáé; ott az árat ő írja át.
+
    Árváltozásnál EGYÜTT írandó át:
      ① ez a fájl
-     ② a maszk.html gépi ára (JSON-LD "price") és a látható árak
-     ③ a rendeles.html és az aszf-webshop.html látható árai
-     ④ a Stripe-ban az árak, a linkek és a kupon
+     ② a rendeles.html statikus árai (a JS-t nem futtató olvasóknak)
+     ③ a Stripe-ban az árak, a linkek és a kupon
+     ④ szólni Melindának (termékoldal, ÁSZF, Google Shopping)
    Ellenőrzés: python3 scripts/ar-kapu.py
 
    A kupont a STRIPE ellenőrzi és vonja le: ez a fájl csak azt dönti el,
