@@ -128,7 +128,7 @@ src="https://www.facebook.com/tr?id=840347862102385&ev=PageView&noscript=1"/></n
       },
       "offers": {
         "@type": "Offer",
-        "price": "120000",
+        "price": "89900",
         "priceCurrency": "HUF",
         "availability": "https://schema.org/InStock",
         "url": "https://mask.theultimatebeauty.net/maszk.html",
@@ -158,7 +158,7 @@ src="https://www.facebook.com/tr?id=840347862102385&ev=PageView&noscript=1"/></n
     <link rel="stylesheet" href="maszk.css">
 
     <!-- ═══════════════════════════════════════════════════════
-         INFLUENCER REF TRACKING — Kedvezmény rendszer CSS
+         HÍRLEVÉL-KUPON SÁV — CSS (2026-11-25-ig az influenszer-sávé volt)
          ═══════════════════════════════════════════════════════ -->
     <style>
       #discount-banner {
@@ -662,14 +662,14 @@ src="https://www.facebook.com/tr?id=840347862102385&ev=PageView&noscript=1"/></n
 <!-- End Google Tag Manager (noscript) -->
 
 <!-- ═══════════════════════════════════════════════════════
-     KEDVEZMÉNY BANNER (csak influencer ref-nél jelenik meg)
+     KUPON-SÁV (csak érvényes hírlevél-kuponnal jelenik meg)
      ═══════════════════════════════════════════════════════ -->
 <div id="discount-banner">
   <div class="discount-banner-inner">
     <div class="discount-icon">✦</div>
     <div class="discount-text">
-      <span class="discount-label">Exkluzív influencer kedvezmény aktiválva</span>
-      <span class="discount-detail">15% kedvezmény · <strong>102.000 Ft</strong> <s>120.000 Ft</s></span>
+      <span class="discount-label">Hírlevél-kupon aktív</span>
+      <span class="discount-detail"><strong id="kuponSavAr">84.900 Ft</strong> <s id="kuponSavEredeti">89.900 Ft</s> · a rendelésnél automatikusan érvényesül</span>
     </div>
     <button class="discount-close" onclick="document.getElementById('discount-banner').style.display='none';document.body.classList.remove('has-discount-banner');document.body.classList.add('discount-banner-dismissed')" aria-label="Bezárás">&times;</button>
   </div>
@@ -720,7 +720,7 @@ src="https://www.facebook.com/tr?id=840347862102385&ev=PageView&noscript=1"/></n
                     <div class="hero-stat-label">Vízálló</div>
                 </div>
             </div>
-            <div class="hero-price mask-price">120.000 Ft</div>
+            <div class="hero-price mask-price">89.900 Ft</div>
             <ul class="buy-terms">
                 <li><strong>2 év jótállás</strong></li>
                 <li>Kiszállítás <strong>2–4 munkanap</strong> alatt (1.990 Ft)</li>
@@ -1368,7 +1368,7 @@ src="https://www.facebook.com/tr?id=840347862102385&ev=PageView&noscript=1"/></n
                 </tr>
                 <tr>
                     <td>Ár</td>
-                    <td class="gold-val mask-price">120.000 Ft</td>
+                    <td class="gold-val mask-price">89.900 Ft</td>
                     <td>120.000–180.000 Ft</td>
                 </tr>
             </tbody>
@@ -1384,7 +1384,7 @@ src="https://www.facebook.com/tr?id=840347862102385&ev=PageView&noscript=1"/></n
         </div>
         <div class="pricing-card fade-in">
             <div class="pricing-treatment">ULTIMA LED Beauty Mask</div>
-            <div class="pricing-amount mask-price">120.000 Ft</div>
+            <div class="pricing-amount mask-price">89.900 Ft</div>
             <div class="pricing-unit">ajánlott kiskereskedelmi ár</div>
             <ul class="buy-terms">
                 <li><strong>2 év jótállás</strong></li>
@@ -2268,82 +2268,56 @@ function ppClose(btn) {
 <script src="maszk.js"></script>
 
 <!-- ═══════════════════════════════════════════════════════
-     INFLUENCER REF TRACKING — JavaScript
+     ÁRAK + HÍRLEVÉL-KUPON — JavaScript (2026-11-25)
+     Az árak és a kupon a mask-ar.js-ben vannak. Az influenszer-kedvezmény
+     megszűnt: a régi ?ref= linkek tovább működnek, a nyilvános árral.
      ═══════════════════════════════════════════════════════ -->
+<script src="mask-ar.js"></script>
 <script>
 (function() {
   'use strict';
+  var AR = window.MASK_AR;
+  var ft = MaskAr.ft;
 
-  // ── 1. REF PARAMÉTER KINYERÉSE ──
-  var params = new URLSearchParams(window.location.search);
-  var ref = params.get('ref');
-
-  if (ref) {
-    try {
-      sessionStorage.setItem('ultima_ref', ref);
-      sessionStorage.setItem('mask_influencer_ref', ref);
-      sessionStorage.setItem('mask_discount_code', 'ULTIMA15');
-    } catch(e) {}
-  } else {
-    try { ref = sessionStorage.getItem('ultima_ref'); } catch(e) {}
-  }
-
-  // ── 2. INFLUENCER ADATOK ──
-  var influencers = {
-    'zsedavue':            { name: 'Zsédenyi Adrienn',    ig: '@zsedavue' },
-    'anikoungar':          { name: 'Ungár Anikó',         ig: '@anikoungar' },
-    'brigittaerdohegyi':   { name: 'Erdőhegyi Brigitta',  ig: '@brigittaerdohegyiofficial' },
-    'vigmann_berni':       { name: 'Vigmann Bernadett',    ig: '@vigmann_berni' },
-    'noraaradi':           { name: 'Aradi Nóra',           ig: '@noraaradimakeup' },
-    'alfoldy_anna':        { name: 'Alföldy Anna',         ig: '@alfoldy_anna' }
-  };
-
-  // Ha nincs érvényes ref, nem csinálunk semmit
-  if (!ref || !influencers[ref]) return;
-
-  // ── 3. KEDVEZMÉNY BANNER MEGJELENÍTÉSE ──
-  var banner = document.getElementById('discount-banner');
-  if (banner) {
-    banner.style.display = 'block';
-    document.body.classList.add('has-discount-banner');
-  }
-
-  // ── 4. ÁRAK MÓDOSÍTÁSA ──
-  // Pricing card fő ár
-  var priceEls = document.querySelectorAll('.mask-price');
-  priceEls.forEach(function(el) {
-    el.innerHTML = '<span class="price-discounted">102.000 Ft</span> <span class="price-original-strikethrough">120.000 Ft</span>';
-  });
-
-  // Pricing amount specifikus
-  var pricingAmount = document.querySelector('.pricing-amount');
-  if (pricingAmount && !pricingAmount.classList.contains('mask-price')) {
-    var txt = pricingAmount.textContent.trim();
-    if (txt.match(/120[\.\s,]?000/)) {
-      pricingAmount.innerHTML = '<span class="price-discounted">102.000 Ft</span> <span class="price-original-strikethrough">120.000 Ft</span>';
-    }
-  }
-
-  // ── 5. RENDELÉSI LINKEK MÓDOSÍTÁSA (influencer paraméterek hozzáfűzése) ──
-  var orderLinks = document.querySelectorAll('.jotform-link, a[href*="rendeles"]');
-  orderLinks.forEach(function(link) {
-    var href = link.getAttribute('href');
-    if (href && href.indexOf('rendeles') > -1) {
-      var sep = href.indexOf('?') > -1 ? '&' : '?';
-      link.setAttribute('href', href + sep + 'influencer_ref=' + encodeURIComponent(ref) + '&discount_code=ULTIMA15');
-    }
-  });
-
-  // ── 6. GOOGLE ANALYTICS EVENT ──
-  if (typeof gtag === 'function') {
-    gtag('event', 'influencer_visit', {
-      'influencer_ref': ref,
-      'influencer_name': influencers[ref].name
+  // ── 1. ÁTHÚZOTT EREDETI ÁR (csak Vanda igenje után; alapból ki) ──
+  if (AR.athuzottEredetiAr) {
+    document.querySelectorAll('.mask-price').forEach(function(el) {
+      el.innerHTML = '<span class="price-discounted">' + ft(AR.nyilvanos) + '</span> <span class="price-original-strikethrough">' + ft(AR.eredeti) + '</span>';
     });
   }
 
-  // ── 7. KONZOL LOG ──
-  console.log('[ULTIMA Mask] Influencer ref aktív:', ref, '—', influencers[ref].name);
+  // ── 2. KUPON: a levélben kapott link (?kupon=…) vagy a munkamenetben már beváltott ──
+  var params = new URLSearchParams(window.location.search);
+  var bejovo = params.get('kupon') || MaskAr.taroltKupon();
+  if (!bejovo) return;
+
+  MaskAr.kuponEllenoriz(bejovo).then(function(kupon) {
+    MaskAr.kuponTarol(kupon || '');
+    if (!kupon) return;   // ismeretlen kód: marad a nyilvános ár, szó nélkül
+
+    // Sáv
+    document.getElementById('kuponSavAr').textContent = ft(AR.kuponos);
+    document.getElementById('kuponSavEredeti').textContent = ft(AR.nyilvanos);
+    var banner = document.getElementById('discount-banner');
+    if (banner && !document.body.classList.contains('discount-banner-dismissed')) {
+      banner.style.display = 'block';
+      document.body.classList.add('has-discount-banner');
+    }
+
+    // Árak az oldalon
+    document.querySelectorAll('.mask-price').forEach(function(el) {
+      el.innerHTML = '<span class="price-discounted">' + ft(AR.kuponos) + '</span> <span class="price-original-strikethrough">' + ft(AR.nyilvanos) + '</span>';
+    });
+
+    // A rendelési linkek viszik tovább a kódot
+    document.querySelectorAll('a[href*="rendeles"]').forEach(function(link) {
+      var href = link.getAttribute('href');
+      if (href.indexOf('kupon=') > -1) return;
+      link.setAttribute('href', href + (href.indexOf('?') > -1 ? '&' : '?') + 'kupon=' + encodeURIComponent(kupon));
+    });
+
+    if (typeof gtag === 'function') gtag('event', 'hirlevel_kupon_aktiv');
+  });
 
 })();
 </script>

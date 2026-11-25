@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ULTIMA LED Beauty Mask - Rendelés | The Ultimate Beauty Clinic</title>
-<meta name="description" content="ULTIMA LED Beauty Mask rendelés — 120.000 Ft, ingyenes Observ 520 bőrdiagnosztika ajándékba. Klinikai átvétel vagy házhozszállítás.">
+<meta name="description" content="ULTIMA LED Beauty Mask rendelés — 89.900 Ft, ingyenes Observ 520 bőrdiagnosztika ajándékba. Klinikai átvétel vagy házhozszállítás.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0a0a0a">
 
@@ -420,6 +420,44 @@ body::before {
   border-radius: 20px;
   margin-bottom: 4px;
 }
+
+.price-card .price .eredeti-ar {
+  font-size: 0.55em;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  margin-right: 6px;
+}
+
+/* ===== KUPON ===== */
+.kupon-sor { margin-bottom: 18px; }
+.kupon-mezo { display: flex; gap: 10px; }
+.kupon-mezo input { flex: 1; min-width: 0; text-transform: uppercase; }
+.kupon-mezo button {
+  flex: 0 0 auto;
+  padding: 0 18px;
+  background: transparent;
+  border: 1px solid var(--gold-dark);
+  border-radius: 10px;
+  color: var(--gold);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+.kupon-mezo button:hover { border-color: var(--gold); }
+.kupon-uzenet { min-height: 18px; margin-top: 6px; font-size: 13px; color: var(--text-muted); }
+.kupon-uzenet.ok { color: var(--gold); }
+.fizetes-hiba {
+  display: none;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid #b4584f;
+  border-radius: 10px;
+  color: #e8b4ae;
+  font-size: 14px;
+  text-align: center;
+}
+.fizetes-hiba.show { display: block; }
 
 /* ===== FORM SECTIONS ===== */
 .form-section {
@@ -974,20 +1012,19 @@ body::before {
     <div class="pricing-badge">
       <div class="price-card active" id="priceNormal">
         <div class="price-label">Maszk ára</div>
-        <div class="price" id="mainPrice">120.000 <small>Ft</small></div>
+        <div class="price" id="mainPrice">89.900 <small>Ft</small></div>
         <div class="price-note" id="priceNote">Direkt vásárlás</div>
       </div>
-      <div class="price-card" id="priceInfluencer" style="display:none;">
-        <div class="discount-tag">-15% KEDVEZMÉNY</div>
-        <div class="price-label">Influencer ár</div>
-        <div class="price">102.000 <small>Ft</small></div>
-        <div class="price-note" id="influencerRefName"></div>
+      <div class="price-card" id="priceKupon" style="display:none;">
+        <div class="discount-tag">HÍRLEVÉL-KUPON</div>
+        <div class="price-label">Kuponos ár</div>
+        <div class="price" id="kuponPrice">84.900 <small>Ft</small></div>
+        <div class="price-note" id="kuponNote"></div>
       </div>
     </div>
 
     <form id="orderForm" novalidate>
       <!-- Hidden fields -->
-      <input type="hidden" name="influencer_ref" id="influencerRef" value="">
       <input type="hidden" name="discount_code" id="discountCode" value="">
       <input type="hidden" name="delivery_method" id="deliveryMethod" value="clinic">
 
@@ -1111,9 +1148,23 @@ body::before {
       <div class="form-section">
         <div class="section-title">Összesítés</div>
 
+        <div class="form-group kupon-sor">
+          <label for="kuponInput">Kuponkód</label>
+          <div class="kupon-mezo">
+            <input type="text" id="kuponInput" placeholder="Ha kaptál, írd be" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="40">
+            <button type="button" id="kuponGomb">Beváltom</button>
+          </div>
+          <div class="kupon-uzenet" id="kuponUzenet" aria-live="polite"></div>
+        </div>
+
         <div class="summary-line">
           <span class="label">ULTIMA LED Beauty Mask</span>
-          <span class="value" id="summaryMaskPrice">120.000 Ft</span>
+          <span class="value" id="summaryMaskPrice">89.900 Ft</span>
+        </div>
+
+        <div class="summary-line" id="summaryKupon" style="display:none;">
+          <span class="label" id="summaryKuponLabel">Hírlevél-kupon</span>
+          <span class="value" id="summaryKuponValue">−5.000 Ft</span>
         </div>
 
         <div class="summary-line" id="summaryObserv">
@@ -1128,7 +1179,7 @@ body::before {
 
         <div class="summary-line total">
           <span class="label">Összesen</span>
-          <span class="value" id="summaryTotal">120.000 Ft</span>
+          <span class="value" id="summaryTotal">89.900 Ft</span>
         </div>
 
         <div style="margin-top:20px;">
@@ -1148,6 +1199,11 @@ body::before {
         <span class="btn-text">TOVÁBB A FIZETÉSHEZ</span>
         <span class="spinner"></span>
       </button>
+
+      <div class="fizetes-hiba" id="fizetesHiba" role="alert">
+        Az online fizetés most nem elérhető. Kérlek, hívj minket:
+        <a href="tel:+36705549497" style="color:inherit;">+36 70 554 9497</a>
+      </div>
 
       <div class="payment-icons">
         <span>Biztonságos fizetés:</span>
@@ -1195,6 +1251,7 @@ body::before {
 
 </div>
 
+<script src="mask-ar.js"></script>
 <script>
 // ============ SUPABASE INTEGRATION ============
 // Rendelesek mentese kozvetlenul az adatbazisba
@@ -1247,35 +1304,56 @@ async function saveOrderToSupabase(orderData) {
   }
 }
 
-// ============ CONFIGURATION ============
-// STRIPE PAYMENT LINKS — cseréld ki az éles linkekre!
-const STRIPE_LINKS = {
-  normal_clinic: 'https://buy.stripe.com/14A3cx8hl3h91hudv72B201',         // 120.000 Ft - klinikai átvétel
-  normal_shipping: 'https://buy.stripe.com/28E28tdBFbNFgco4YB2B202',        // 121.990 Ft - szállítással
-  influencer_clinic: 'https://buy.stripe.com/7sYdRb8hlg3V0dqdv72B203',      // 102.000 Ft - influencer klinika
-  influencer_shipping: 'https://buy.stripe.com/6oU3cx415bNFbW89eR2B204'     // 103.990 Ft - influencer szállítás
-};
+// ============ ÁRAK + HÍRLEVÉL-KUPON ============
+// Az árak, a kupon lenyomata és a Stripe-linkek a mask-ar.js-ben vannak (egy helyen).
+// A kupont a Stripe vonja le; az oldal csak érvényes kódra mutatja a kuponos árat.
+const AR = window.MASK_AR;
+let aktivKupon = null;   // a normalizált, érvényes kód — vagy null
 
-// ============ URL PARAMS (influencer tracking) ============
-const params = new URLSearchParams(window.location.search);
-const influencerRef = params.get('influencer_ref') || sessionStorage.getItem('mask_influencer_ref') || '';
-const discountCode = params.get('discount_code') || sessionStorage.getItem('mask_discount_code') || '';
-const isInfluencer = !!(influencerRef && discountCode);
+function kuponUzenet(szoveg, ok) {
+  const el = document.getElementById('kuponUzenet');
+  el.textContent = szoveg;
+  el.classList.toggle('ok', !!ok);
+}
 
-// Persist in session
-if (influencerRef) sessionStorage.setItem('mask_influencer_ref', influencerRef);
-if (discountCode) sessionStorage.setItem('mask_discount_code', discountCode);
-
-document.getElementById('influencerRef').value = influencerRef;
-document.getElementById('discountCode').value = discountCode;
-
-if (isInfluencer) {
-  document.getElementById('priceInfluencer').style.display = 'block';
-  document.getElementById('priceNormal').classList.remove('active');
-  document.getElementById('priceInfluencer').classList.add('active');
-  document.getElementById('influencerRefName').textContent = 'Kód: ' + discountCode;
+function kuponAlkalmaz(kod) {
+  aktivKupon = kod;
+  MaskAr.kuponTarol(kod || '');
+  document.getElementById('discountCode').value = kod || '';
+  document.getElementById('priceKupon').style.display = kod ? 'block' : 'none';
+  document.getElementById('priceNormal').classList.toggle('active', !kod);
+  document.getElementById('priceKupon').classList.toggle('active', !!kod);
+  document.getElementById('kuponNote').textContent = kod ? 'Kód: ' + kod : '';
+  if (kod) document.getElementById('kuponInput').value = kod;
   updatePricing();
 }
+
+function kuponBevaltas(kod, csendben) {
+  if (!MaskAr.normalizal(kod)) {
+    kuponAlkalmaz(null);
+    if (!csendben) kuponUzenet('Írd be a kuponkódot.', false);
+    return Promise.resolve(null);
+  }
+  return MaskAr.kuponEllenoriz(kod).then(function (ervenyes) {
+    kuponAlkalmaz(ervenyes);
+    if (ervenyes) {
+      kuponUzenet('A kupon érvényes: ' + MaskAr.ft(AR.nyilvanos - AR.kuponos) + ' kedvezmény.', true);
+    } else if (!csendben) {
+      kuponUzenet('Ezt a kódot nem ismerjük. A rendelés a nyilvános áron megy tovább.', false);
+    }
+    return ervenyes;
+  });
+}
+
+document.getElementById('kuponGomb').addEventListener('click', function () {
+  kuponBevaltas(document.getElementById('kuponInput').value, false);
+});
+document.getElementById('kuponInput').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();   // ne küldje el a rendelést
+    kuponBevaltas(this.value, false);
+  }
+});
 
 // Set min date for date picker (tomorrow)
 const tomorrow = new Date();
@@ -1355,31 +1433,42 @@ function toggleBilling() {
 }
 
 // ============ PRICING ============
+function rendelesOsszeg() {
+  const maszk = aktivKupon ? AR.kuponos : AR.nyilvanos;
+  const szallitas = currentDelivery === 'shipping' ? AR.szallitas : 0;
+  return maszk + szallitas;
+}
+
 function updatePricing() {
-  const maskPrice = isInfluencer ? 102000 : 120000;
-  const shippingPrice = currentDelivery === 'shipping' ? 1990 : 0;
-  const total = maskPrice + shippingPrice;
+  const kedvezmeny = AR.nyilvanos - AR.kuponos;
 
-  // Update mask price display
-  const priceFormatted = maskPrice.toLocaleString('hu-HU');
-  document.getElementById('summaryMaskPrice').textContent = priceFormatted + ' Ft';
+  // A maszk sora mindig a nyilvános árat mutatja; a kupon külön sorban von le.
+  document.getElementById('summaryMaskPrice').textContent = MaskAr.ft(AR.nyilvanos);
+  document.getElementById('summaryKupon').style.display = aktivKupon ? 'flex' : 'none';
+  document.getElementById('summaryKuponLabel').textContent = 'Hírlevél-kupon' + (aktivKupon ? ' (' + aktivKupon + ')' : '');
+  document.getElementById('summaryKuponValue').textContent = '−' + MaskAr.ft(kedvezmeny);
 
-  // Show/hide shipping line
+  // Szállítás
   document.getElementById('summaryShipping').style.display = currentDelivery === 'shipping' ? 'flex' : 'none';
-
-  // Show/hide observ line based on delivery
+  document.getElementById('summaryShippingPrice').textContent = MaskAr.ft(AR.szallitas);
   document.getElementById('summaryObserv').style.display = 'flex';
 
-  // Total
-  document.getElementById('summaryTotal').textContent = total.toLocaleString('hu-HU') + ' Ft';
+  // Végösszeg
+  document.getElementById('summaryTotal').textContent = MaskAr.ft(rendelesOsszeg());
 
-  // Main price card
-  if (!isInfluencer) {
-    document.getElementById('mainPrice').innerHTML = maskPrice.toLocaleString('hu-HU') + ' <small>Ft</small>';
-  }
+  // Ár-kártyák
+  const eredeti = AR.athuzottEredetiAr ? '<span class="eredeti-ar">' + MaskAr.ft(AR.eredeti) + '</span>' : '';
+  document.getElementById('mainPrice').innerHTML = eredeti + MaskAr.ft(AR.nyilvanos).replace(' Ft', ' <small>Ft</small>');
+  document.getElementById('kuponPrice').innerHTML = MaskAr.ft(AR.kuponos).replace(' Ft', ' <small>Ft</small>');
 }
 
 updatePricing();
+
+// A levélben kapott link (?kupon=…) vagy a termékoldalon már beváltott kupon.
+// Itt, a currentDelivery után — korábban hívva a let-változó még nem élne.
+const params = new URLSearchParams(window.location.search);
+const bejovoKupon = params.get('kupon') || MaskAr.taroltKupon();
+if (bejovoKupon) kuponBevaltas(bejovoKupon, false);
 
 // ============ FORM VALIDATION ============
 const form = document.getElementById('orderForm');
@@ -1454,6 +1543,15 @@ form.addEventListener('submit', async function(e) {
     return;
   }
 
+  // Ha a Stripe-linkek még nincsenek beírva, nem gyűjtünk rendelést és nem írunk sehová.
+  const fizetesHiba = document.getElementById('fizetesHiba');
+  if (!MaskAr.stripeBekotve()) {
+    fizetesHiba.classList.add('show');
+    console.error('[MASK] A Stripe-linkek nincsenek beállítva (mask-ar.js) — a rendelés nem indult el.');
+    return;
+  }
+  fizetesHiba.classList.remove('show');
+
   // Show loading
   const btn = document.getElementById('submitBtn');
   btn.classList.add('loading');
@@ -1465,8 +1563,9 @@ form.addEventListener('submit', async function(e) {
   formData.forEach((val, key) => data[key] = val);
   data.timestamp = new Date().toISOString();
   data.delivery_method = currentDelivery;
-  data.ar = isInfluencer ? (currentDelivery === 'shipping' ? '103990' : '102000') : (currentDelivery === 'shipping' ? '121990' : '120000');
-  data.influencer = influencerRef || 'direkt';
+  data.ar = String(rendelesOsszeg());
+  data.discount_code = aktivKupon || '';
+  data.influencer = 'direkt';   // az influenszer-rendszer 2026-11-25-én megszűnt; a mező a régi táblák miatt marad
   data.marketing = document.getElementById('marketingCheck').checked ? 'igen' : 'nem';
 
   // Save to Google Sheets (TUB CRM — közvetlenül az Apps Script-be)
@@ -1527,43 +1626,11 @@ form.addEventListener('submit', async function(e) {
     }).catch(function() {});
   } catch (e) {}
 
-  // Determine Stripe link
-  let stripeLink = '';
-  if (isInfluencer) {
-    stripeLink = currentDelivery === 'shipping' ? STRIPE_LINKS.influencer_shipping : STRIPE_LINKS.influencer_clinic;
-  } else {
-    stripeLink = currentDelivery === 'shipping' ? STRIPE_LINKS.normal_shipping : STRIPE_LINKS.normal_clinic;
-  }
-
-  // Add customer info to Stripe link as prefill
-  const stripeParams = new URLSearchParams();
-  if (data.email) stripeParams.set('prefilled_email', data.email);
-
-  // Redirect to Stripe OR show thank you if no Stripe configured
+  // Tovább a Stripe-ra: a választott átvételi mód linkje, előtöltött e-maillel,
+  // és ha van érvényes kupon, a kóddal (a Stripe ellenőrzi és vonja le).
+  const stripeLink = MaskAr.stripeUrl(currentDelivery, data.email, aktivKupon);
   setTimeout(() => {
-    if (stripeLink && !stripeLink.startsWith('STRIPE_LINK_')) {
-      // Redirect to Stripe Checkout
-      const separator = stripeLink.includes('?') ? '&' : '?';
-      window.location.href = stripeLink + separator + stripeParams.toString();
-    } else {
-      // No Stripe configured — show thank you (for testing)
-      document.getElementById('formContainer').style.display = 'none';
-      const ty = document.getElementById('thankYou');
-      ty.classList.add('show');
-
-      // Show appropriate thank you section
-      if (currentDelivery === 'clinic') {
-        document.getElementById('thankYouClinic').style.display = 'block';
-        document.getElementById('thankYouShipping').style.display = 'none';
-      } else {
-        document.getElementById('thankYouClinic').style.display = 'none';
-        document.getElementById('thankYouShipping').style.display = 'block';
-      }
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      btn.classList.remove('loading');
-      btn.disabled = false;
-    }
+    window.location.href = stripeLink;
   }, 800);
 });
 
