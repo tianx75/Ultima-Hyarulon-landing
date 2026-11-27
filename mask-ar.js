@@ -32,8 +32,8 @@
     // Stripe fizetési linkek — mindkettőn bekapcsolt kuponmezővel.
     // Amíg itt helyőrző áll, az oldal nem enged fizetni (és nem ír sehová).
     stripe: {
-      klinika: 'STRIPE_LINK_KLINIKA',     // 89.900 Ft — klinikai átvétel
-      szallitas: 'STRIPE_LINK_SZALLITAS'  // 91.890 Ft — házhozszállítással
+      klinika: 'https://buy.stripe.com/3cI28tfJNaJBd0c62F2B205',     // 89.900 Ft — klinikai átvétel
+      szallitas: 'https://buy.stripe.com/cNi4gBapt8Bt3pCdv72B206'  // 91.890 Ft — házhozszállítással
     }
   };
 
