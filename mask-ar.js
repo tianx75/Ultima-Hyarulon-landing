@@ -9,8 +9,9 @@
    Árváltozásnál EGYÜTT írandó át:
      ① ez a fájl
      ② a rendeles.html statikus árai (a JS-t nem futtató olvasóknak)
+        és az aszf-webshop.html ártáblája
      ③ a Stripe-ban az árak, a linkek és a kupon
-     ④ szólni Melindának (termékoldal, ÁSZF, Google Shopping)
+     ④ szólni Melindának (termékoldal, Google Shopping)
    Ellenőrzés: python3 scripts/ar-kapu.py
 
    A kupont a STRIPE ellenőrzi és vonja le: ez a fájl csak azt dönti el,

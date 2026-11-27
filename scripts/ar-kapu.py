@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Ár-kapu a maszk RENDELŐLAPJÁHOZ (2026-11-25).
 
-Csak a rendelőlapot és a konfigurációt nézi. A termékoldal (theultimatebeauty.net/mask)
-Melindáé, a régi maszk.html és az ÁSZF-oldal sem a mi körünk (Krisztián, 2026-11-25).
+A rendelőlapot, a konfigurációt és a webshop-ÁSZF ártábláját nézi. A termékoldal
+(theultimatebeauty.net/mask) Melindáé, a régi maszk.html sem a mi körünk (Krisztián, 2026-11-25);
+az ÁSZF ártáblája igen (Krisztián, 2026-11-27).
 
 Élesítés előtt futtasd:   python3 scripts/ar-kapu.py
 A kupon lenyomatát is:    MASK_KUPON=<kód> python3 scripts/ar-kapu.py
@@ -62,7 +63,8 @@ if cfg:
             figyelmeztetesek.append("az áthúzott 120.000 Ft BE van kapcsolva — csak Vanda igenje után élesíthető")
 
 # ── 2. Tiltott maradványok (régi ár, influenszer-kedvezmény, régi Stripe-linkek) ──
-oldalak = ["rendeles.html", "mask-ar.js"]
+# Az ÁSZF ártáblája is a miénk (Krisztián, 2026-11-27: „Igen, mi”).
+oldalak = ["rendeles.html", "mask-ar.js", "aszf-webshop.html"]
 engedett = {}
 tiltott = [r"102[.\s]?000", r"ULTIMA15", r"influencer_ref=", r"14A3cx8hl3h91hudv72B201",
            r"28E28tdBFbNFgco4YB2B202", r"7sYdRb8hlg3V0dqdv72B203", r"6oU3cx415bNFbW89eR2B204"]
@@ -80,7 +82,7 @@ for o, s in tartalom.items():
 
 # ── 3. A rendelőlap látható árai ──
 if nyilv:
-    elvart = {"rendeles.html": 3}
+    elvart = {"rendeles.html": 3, "aszf-webshop.html": 1}
     for o, db in elvart.items():
         n = tartalom[o].count(ft(nyilv)) + tartalom[o].count(ft(nyilv).replace(" Ft", " <small>Ft</small>"))
         (rendben if n >= db else hibak).append(f"{o}: a látható nyilvános ár {n}× (elvárt ≥ {db})")
