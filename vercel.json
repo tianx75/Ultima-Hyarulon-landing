@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    { "source": "/", "destination": "https://theultimatebeauty.net/mask", "permanent": false },
+    { "source": "/index.html", "destination": "https://theultimatebeauty.net/mask", "permanent": false },
+    { "source": "/maszk.html", "destination": "https://theultimatebeauty.net/mask", "permanent": false },
+    { "source": "/maszk", "destination": "https://theultimatebeauty.net/mask", "permanent": false },
+    { "source": "/maszk-en.html", "destination": "https://theultimatebeauty.net/en/mask", "permanent": false }
+  ]
+}
